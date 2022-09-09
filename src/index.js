@@ -3,12 +3,21 @@ console.log('hola')
 
 
 // url del backend
-const api_url = 'https://tempec-cloud-rafamr-git-main-rafamreyes17-gmailcom.vercel.app/enterprise'
+const api_url = 'https://tempec.vercel.app/enterprise'
+
+
+// nodes
+const signInButton = document.getElementById('signInButton')
+const dataUser = document.getElementById('loginUser')
+const dataPassword = document.getElementById('loginPassword')
+
+// buttons
+signInButton.addEventListener('click', () => {
+    login()
+})
 
 
 async function login() {
-    
-    
 
     console.log('access')
     // const res = await fetch(api_url)
@@ -20,11 +29,12 @@ async function login() {
             'Content-Type': 'application/json'
         },
         // se envia el body convertido en json por que no sabemos con que lenguaje fue escrito el backend
-        body: JSON.stringify({
-                "name": "Esteban",
-                "userName": "raf",
-                "password": "123456j"
-        })
+        body: JSON.stringify(
+            {
+                "name": dataUser.value,
+                "password": dataPassword.value
+            }
+        )
     })
     const data = await res.json()
     console.log(data)
@@ -37,7 +47,4 @@ async function login() {
     }
 }
 
-login()
 
-const signInButton = document.getElementById('signInButton')
-signInButton.addEventListener('click', login)
