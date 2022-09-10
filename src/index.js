@@ -3,7 +3,22 @@ console.log('hola')
 
 
 // url del backend
+<<<<<<< HEAD
 const api_url = 'https://tempec.vercel.app/'
+=======
+const api_url = 'https://tempec.vercel.app/enterprise'
+
+
+// nodes
+const signInButton = document.getElementById('signInButton')
+const dataUser = document.getElementById('loginUser')
+const dataPassword = document.getElementById('loginPassword')
+
+// buttons
+signInButton.addEventListener('click', () => {
+    login()
+})
+>>>>>>> 7f9ec10fd279cfd398b7d6f6930676d76c2a133e
 
 // nodos
 
@@ -53,7 +68,11 @@ async function createEnterprise(){
 }
 
 async function login() {
+<<<<<<< HEAD
     console.log(user.value)
+=======
+
+>>>>>>> 7f9ec10fd279cfd398b7d6f6930676d76c2a133e
     console.log('access')
     // const res = await fetch(api_url)
     const res = await fetch(api_url, {
@@ -64,11 +83,20 @@ async function login() {
             'Content-Type': 'application/json'
         },
         // se envia el body convertido en json por que no sabemos con que lenguaje fue escrito el backend
+<<<<<<< HEAD
         body: JSON.stringify({
                 "name": user.value,
                 "userName": "raf",
                 "password": password.value
         })
+=======
+        body: JSON.stringify(
+            {
+                "name": dataUser.value,
+                "password": dataPassword.value
+            }
+        )
+>>>>>>> 7f9ec10fd279cfd398b7d6f6930676d76c2a133e
     })
     const data = await res.json()
     console.log(data)
@@ -81,6 +109,9 @@ async function login() {
     }
 }
 
+<<<<<<< HEAD
 // login()
 
+=======
+>>>>>>> 7f9ec10fd279cfd398b7d6f6930676d76c2a133e
 
