@@ -32,11 +32,6 @@ signInButton.addEventListener('click', () => {
 //     createEnterprise()
 // })
 
-// signInButton.addEventListener('click', () => {
-//     console.log('lo logre')
-//     login()
-// })
-
 // functions
 
 async function createEnterprise(){
@@ -70,9 +65,9 @@ async function login(){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-                "name": user.value,
+                "name": dataUser.value,
                 "userName": "raf",
-                "password": password.value
+                "password": dataPassword.value
     })
     
 })
