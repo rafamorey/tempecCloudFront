@@ -3,7 +3,7 @@ console.log('hola')
 
 
 // url del backend
-const api_url = 'https://tempec.vercel.app/enterprise'
+const api_url = 'https://tempec.vercel.app/enterprise/id'
 
 
 // nodes
@@ -22,9 +22,9 @@ async function login() {
     console.log('access')
     // const res = await fetch(api_url)
     const res = await fetch(api_url, {
-        // especificamos el metodo de la peticion
+        // // especificamos el metodo de la peticion
         method: 'POST',
-        // se envia el header para indicar que es un json
+        // // se envia el header para indicar que es un json
         headers: {
             'Content-Type': 'application/json'
         },
@@ -39,7 +39,8 @@ async function login() {
     const data = await res.json()
     console.log(data)
     
-    if(res.status !== 201){
+    if(res.status !== 200){
+        console.log(res.status)
         console.log('error de conexion')
     }else {
         // console.log(data)
