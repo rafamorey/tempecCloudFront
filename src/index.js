@@ -14,6 +14,7 @@ const dataPassword = document.getElementById('loginPassword')
 // buttons
 signInButton.addEventListener('click', () => {
     login()
+    
 })
 
 
