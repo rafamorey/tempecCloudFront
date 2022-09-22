@@ -3,7 +3,7 @@
 console.log('hola')
 
 
-// url al backend
+// url del backend
 
 // getting info one user
 const api_urlId = 'https://tempec.vercel.app/enterprise/id'
@@ -86,4 +86,16 @@ async function login() {
             // console.log(data)
             return data
         }
-}
+    }
+    if(res.status !== 200){
+        console.log(res.status)
+        console.log('error de conexion')
+    }else {
+        // console.log(data)
+
+        return data
+    }
+
+
+
+
