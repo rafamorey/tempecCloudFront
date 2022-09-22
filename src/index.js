@@ -5,10 +5,11 @@ console.log('hola')
 
 // url del backend
 
+// getting info one user
 const api_urlId = 'https://tempec.vercel.app/enterprise/id'
-
+// common url
 const api_url = 'https://tempec.vercel.app/'
-
+// getting all enterprises
 const api_urlEnterprise = 'https://tempec.vercel.app/enterprise'
 
 // nodes
@@ -16,13 +17,8 @@ const signInButton = document.getElementById('signInButton')
 const dataUser = document.getElementById('loginUser')
 const dataPassword = document.getElementById('loginPassword')
 
-// buttons
-signInButton.addEventListener('click', () => {
-    login()
-    
-})
 
-    // nodos account
+// nodos account
 const accountEnterprise = document.getElementById('accountEnterprise')
 const accountName = document.getElementById('accountName')
 const accountUser = document.getElementById('accountUser')
@@ -32,14 +28,13 @@ const accountPhone = document.getElementById('accountPhone')
 const accountSendButton = document.getElementById('accountSendButton')
 
 // buttons
-accountSendButton.addEventListener('click', () => {
-    console.log('Sending Data')
-    createEnterprise()
+signInButton.addEventListener('click', () => {
+    login()
 })
 
-// signInButton.addEventListener('click', () => {
-//     console.log('lo logre')
-//     login()
+// accountSendButton.addEventListener('click', () => {
+//     console.log('Sending Data')
+//     createEnterprise()
 // })
 
 // functions
@@ -59,6 +54,7 @@ async function createEnterprise(){
             "email": accountEmail.value,
             "phone": accountPhone.value,
         })
+        
     })
 }
 
@@ -76,13 +72,21 @@ async function login() {
         body: JSON.stringify(
             {
                 "name": dataUser.value,
+                "userName": "raf",
                 "password": dataPassword.value
-            }
-        )
     })
-    const data = await res.json()
-    console.log(data)
     
+})
+        const data = await res.json()
+        console.log(data)
+
+        if(res.status !== 201){
+            console.log('error de conexion')
+        }else {
+            // console.log(data)
+            return data
+        }
+    }
     if(res.status !== 200){
         console.log(res.status)
         console.log('error de conexion')
@@ -91,7 +95,7 @@ async function login() {
 
         return data
     }
-}
+
 
 
 
