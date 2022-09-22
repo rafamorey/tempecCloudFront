@@ -1,3 +1,9 @@
+html{
+  min-height: 100%;
+  position: relative;
+}
+
+
 header{
   display:flex;
   justify-content: center;
@@ -25,7 +31,7 @@ header{
   /* display:flex;
   justify-content: space-between; */
   width: 15%;
-
+  
 }
 
 .headerMenu{
@@ -48,7 +54,7 @@ header{
 *{
   margin: 0;
   padding: 0;
-
+  
 }
 
 body{
@@ -57,6 +63,81 @@ body{
   /* background-size: 10rem; */
   /* min-height: 90vh; */
   /* display: flex; */
+    margin:0;
+    margin-bottom: 40px;
+}
+
+/* styles for dashboard.html */
+.devicesContainer{
+  background-color: red;
+  padding:20px;
+}
+
+.deviceContainer{
+  border: 1px solid black;
+  width:30%;
+  height:40%;
+  margin:0;
+  /* position:relative; */
+  z-index:0;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    " . ideal ideal"
+    "temp temp temp"
+    "min min min"
+    "max max max"
+    ". . ."
+    "button button button"
+}
+
+.deviceName{
+  position:absolute;
+  top:-10px;
+  left: 15px;
+  z-index:3;
+  background-color:lightgreen;
+}
+
+.ideal{
+  background-color: blue;
+  grid-column-start:2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.temp{
+  background-color: lightcoral;
+  grid-column-start:2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.min{
+  background-color: lightcyan;
+  grid-column-start:2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.max{
+  background-color: lightgreen;
+  grid-column-start:2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.deviceButton{
+  background-color: lightsalmon;
+  grid-column-start:2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
 .buttonBack{
@@ -170,6 +251,56 @@ form a{
   .formInputInside:not(:placeholder-shown) ~ .formLine{
     transform: scale(1)
   }   
+
+/* Footer */
+
+footer{
+  color: gray;
+  font-size: small;
+  position:absolute;
+  bottom: 0;
+  width:100%;
+  height:40px;
+}
+.cr{
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.legal{
+  display: flex;
+  width: 100%
+  /* justify-content:space-around; */
+}
+
+.legal ul{
+  display:flex;
+  width: 100%;
+  list-style:none;
+}
+
+.legalTerms{
+
+  /* justify-content:flex-start; */
+}
+
+.legalTerms li{
+  margin: 15px 15px 15px 5px;
+}
+
+.legalSocial{
+  justify-content:flex-end;
+}
+
+.legalSocial li{
+  margin: 5px
+}
+
+
+
+
+
+
 
   @media (max-width: 425px){
     h2{
