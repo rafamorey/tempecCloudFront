@@ -1,21 +1,15 @@
 
 
-console.log('hola')
+console.log('account')
 
 
 // url al backend
 
-// getting info one user
-const api_urlId = 'https://tempec.vercel.app/enterprise/id'
-// common url
-const api_url = 'https://tempec.vercel.app/'
 // getting all enterprises
-const api_urlEnterprise = 'https://tempec.vercel.app/enterprise'
+const api_UrlEnterprise = 'https://tempec.vercel.app/enterprise'
 
 // nodes
-const signInButton = document.getElementById('signInButton')
-const dataUser = document.getElementById('loginUser')
-const dataPassword = document.getElementById('loginPassword')
+const signInButton = document.getElementById('accountSendButton')
 
 
 // nodos account
@@ -29,18 +23,13 @@ const accountSendButton = document.getElementById('accountSendButton')
 
 // buttons
 signInButton.addEventListener('click', () => {
-    login()
+    createEnterprise()
 })
-
-// accountSendButton.addEventListener('click', () => {
-//     console.log('Sending Data')
-//     createEnterprise()
-// })
 
 // functions
 
 async function createEnterprise(){
-    console.log(accountName.value)
+    console.log("accessing")
     const res = await fetch(api_UrlEnterprise , {
         method: 'POST',
         headers: {
@@ -56,34 +45,17 @@ async function createEnterprise(){
         })
         
     })
-}
-
-async function login() {
-    console.log('access')
-    // const res = await fetch(api_url)
-    const res = await fetch(api_urlId, {
-        // // especificamos el metodo de la peticion
-        method: 'POST',
-        // // se envia el header para indicar que es un json
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        // se envia el body convertido en json por que no sabemos con que lenguaje fue escrito el backend
-        body: JSON.stringify(
-            {
-                "name": dataUser.value,
-                "userName": "raf",
-                "password": dataPassword.value
-    })
-    
-})
         const data = await res.json()
         console.log(data)
-
-        if(res.status !== 200){
+        
+        if(res.status !== 201){
             console.log('error de conexion')
         }else {
             // console.log(data)
             return data
         }
 }
+
+
+    
+   
