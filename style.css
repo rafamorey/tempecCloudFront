@@ -71,73 +71,96 @@ body{
 .devicesContainer{
   background-color: red;
   padding:20px;
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+  /* width: 100%; */
 }
 
 .deviceContainer{
-  border: 1px solid black;
+  
   width:30%;
-  height:40%;
-  margin:0;
+  /* height:250px; */
+  /* margin:0 10px 0 0; */
   /* position:relative; */
   z-index:0;
+}
+
+.deviceContainer-description{
+  /* width */
+  border: 1px solid black;
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(12, 1fr);
   grid-template-areas:
-    " . ideal ideal"
-    "temp temp temp"
-    "min min min"
-    "max max max"
-    ". . ."
-    "button button button"
+    " . . ideal ideal"
+    "temp temp temp temp"
+    "min min min min"
+    "max max max max"
+    "button button button button";
 }
 
 .deviceName{
   position:absolute;
-  top:-10px;
-  left: 15px;
+  top:60px;
+  left: 45px;
   z-index:3;
   background-color:lightgreen;
 }
 
 .ideal{
   background-color: blue;
-  grid-column-start:2;
-  grid-column-end: 3;
+  grid-column-start: 5;
+  grid-column-end: 11;
   grid-row-start: 2;
-  grid-row-end: 4;
+  grid-row-end: 3;
+  display:flex;
+  justify-content:space-around;
+  align-items: flex-end;
 }
 
 .temp{
   background-color: lightcoral;
   grid-column-start:2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 4;
+  grid-column-end: 11;
+  grid-row-start: 3;
+  grid-row-end: 5;
+  display: flex;
+  justify-content:space-around;
+  align-items:center
 }
 
 .min{
   background-color: lightcyan;
   grid-column-start:2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 4;
+  grid-column-end: 11;
+  grid-row-start: 5;
+  grid-row-end: 7;
+  display: flex;
+  justify-content:space-around;
+  align-items:center
 }
 
 .max{
   background-color: lightgreen;
   grid-column-start:2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 4;
+  grid-column-end: 11;
+  grid-row-start: 7;
+  grid-row-end: 9;
+  display: flex;
+  justify-content:space-around;
+  align-items:center
 }
 
-.deviceButton{
+.deviceButtons{
   background-color: lightsalmon;
   grid-column-start:2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 4;
+  grid-column-end: 11;
+  grid-row-start: 10;
+  grid-row-end: 12;
+  display: flex;
+  justify-content:space-around;
+  align-items:center
 }
 
 .buttonBack{

@@ -46,10 +46,7 @@ header{
 }
 
 /* ----------------------------------------------- */
-section{
-  
 
-}
 
 .groupContainer{
   background-color: red;
@@ -59,11 +56,11 @@ section{
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas: 
-    "graf graf graf maxMin"
-    "graf graf graf maxMin"
-    "graf graf graf maxMin"
-    "value value value ."
-    ;
+    "graf raf graf maxMin"
+    "graf gaf graf maxMin"
+    "grf gra graf maxMin"
+    "value value sd ."
+    
 }
 
 .grafContainer{
@@ -87,5 +84,5 @@ section{
   grid-column-start: 4;
   grid-column-end: 5;
   grid-row-start: 1;
-  grid-row-end: 4k;
+  grid-row-end: 4;
 }
