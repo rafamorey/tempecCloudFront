@@ -23,14 +23,15 @@ addDevice.addEventListener('click', () =>{
 
 function  deployFormForID(){
   console.log("adding device")
-  const capa = document.createElement('div')
+  const formNewID = document.createElement('div')
+  formNewID.classList.add('')
   
 }
 
 // funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
 async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
-}
+}ASDFASDSADASD
 
 async function bringDeviceById(id){
   // console.log(`getting device ${id}`)
