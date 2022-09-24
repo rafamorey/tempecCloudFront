@@ -23,17 +23,41 @@ addDevice.addEventListener('click', () =>{
 
 function  deployFormForID(){
   console.log("adding device")
-  const formNewID = document.createElement('div')
-  formNewID.classList.add('')
+  const divFormNewDevice = document.getElementById('divFormNewDevice')
+  const formFormNewDevice = document.createElement('form')
+  const pFormNewDevice = document.createElement('p')
+  const pTextNodeFormNewDevice = document.createTextNode('Please introduce the name and Id for your Tempec Device')
+  pFormNewDevice.append(pTextNodeFormNewDevice)
+  const inputNameFormNewDevice = document.createElement('input')
+  inputNameFormNewDevice.setAttribute('type', "text")
+  inputNameFormNewDevice.setAttribute('placeholder', "Name device")
+  const inputIdFormNewDevice = document.createElement('input')
+  inputIdFormNewDevice.setAttribute('type', "text")
+  inputIdFormNewDevice.setAttribute('placeholder', "Id device")
+  const inputSendFormNewDevice = document.createElement('input')
+  inputSendFormNewDevice.setAttribute("type", "button")
+  inputSendFormNewDevice.setAttribute("value", "Send")
+  formFormNewDevice.appendChild(pFormNewDevice)
+  formFormNewDevice.appendChild(inputNameFormNewDevice)
+  formFormNewDevice.appendChild(inputIdFormNewDevice)
+  formFormNewDevice.appendChild(inputSendFormNewDevice)
+  divFormNewDevice.appendChild(formFormNewDevice)
+  const data = {
+    name: inputNameFormNewDevice.value,
+    "id": inputIdFormNewDevice.value
+  }
   
+  inputSendFormNewDevice.addEventListener('click', () => {
+    bringDeviceById(data)
+  })
 }
 
 // funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
 async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
-}ASDFASDSADASD
+}
 
-async function bringDeviceById(id){
+async function bringDeviceById(data){
   // console.log(`getting device ${id}`)
   // const res = await fetch(api_urlGetDeviceById)
   // const data = await res.json()
@@ -47,7 +71,7 @@ async function bringDeviceById(id){
   // div divece name
   const divDeviceName =  document.createElement('div')
   divDeviceName.classList.add('deviceName')
-  const divTextNode = document.createTextNode('deviceName')
+  const divTextNode = document.createTextNode(data.name)
   divDeviceName.appendChild(divTextNode)  
 divDeviceContainer.appendChild(divDeviceName)
 
