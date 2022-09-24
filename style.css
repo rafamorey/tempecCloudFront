@@ -76,27 +76,27 @@ body{
 }
 
 .sectionAddButton input{
-  width: 30px;
+  /* width: 30px;
   height: 30px;
   border-radius: 20%;
-  color: green;
+  color: green; */
 }
 
 /* styles for dashboard.html */
 .devicesContainer{
   background-color: red;
-  padding:20px;
-  display: flex;
-  justify-content: space-between;
-  height: 500px;
-  /* width: 100%; */
+  padding:30px;
+  /* margin-bottom: 20px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 .deviceContainer{
   
-  width:30%;
+  /* width:30%; */
   /* height:250px; */
-  /* margin:0 10px 0 0; */
+  margin:0 0 10px 0;
   position:relative;
   z-index:0;
 }

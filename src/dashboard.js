@@ -12,7 +12,7 @@ const deleteDevice = document.getElementById('deleteDeviceButton')
 
 const statusDevice = document.getElementById('statusDeviceButton')
 
-const sectionDevicesContainer = document.getElementById('devsCont')
+// const sectionDevicesContainer = document.getElementById('devsCont')
 
 // Listener Buttons
 
@@ -21,14 +21,35 @@ addDevice.addEventListener('click', () =>{
 })
 
 
-async function  deployFormForID(){
+function  deployFormForID(){
+  console.log("adding device")
+  const capa = document.createElement('div')
+  
+}
+
+// funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
+async function bringAllDevices(){
+  console.log("getting devices for user ...(put id for this user)")
+}
+
+async function bringDeviceById(id){
+  // console.log(`getting device ${id}`)
+  // const res = await fetch(api_urlGetDeviceById)
+  // const data = await res.json()
+  // console.log(data)
+  console.log("adding device")
+  const sectionDevicesContainer = document.getElementById('devsCont')
   sectionDevicesContainer.innerHtml= "";
   // deviceContainer
   const divDeviceContainer = document.createElement("div")
   divDeviceContainer.classList.add('deviceContainer')
   // div divece name
-  const divDeviceName = createElement('div')
+  const divDeviceName =  document.createElement('div')
   divDeviceName.classList.add('deviceName')
+  const divTextNode = document.createTextNode('deviceName')
+  divDeviceName.appendChild(divTextNode)  
+divDeviceContainer.appendChild(divDeviceName)
+
   const divDeviceContainerDescription = document.createElement('div')
   divDeviceContainerDescription.classList.add('deviceContainer-description')
   divDeviceContainer.appendChild(divDeviceName)
@@ -73,8 +94,12 @@ async function  deployFormForID(){
   const inputDelete = document.createElement('input')
   inputDelete.setAttribute
   ("id", "deleteDeviceButton")
+  inputDelete.setAttribute("value", "Delete")
+  inputDelete.setAttribute("type", "Button") 
   const inputStatus = document.createElement('input')
   inputStatus.setAttribute("id", "statusDeviceButton")
+  inputStatus.setAttribute("value", "Status")
+  inputStatus.setAttribute("type", "Button") 
   divDeviceButtons.appendChild(inputDelete)
   divDeviceButtons.appendChild(inputStatus)
   // element to container description
@@ -85,16 +110,6 @@ async function  deployFormForID(){
   divDeviceContainerDescription.appendChild(divDeviceButtons)
   // elements to divDeviceContainer
   divDeviceContainer.appendChild( divDeviceContainerDescription)
-}
-
-// funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
-async function bringAllDevices(){
-  console.log("getting devices for user ...(put id for this user)")
-}
-
-async function bringDeviceById(id){
-  console.log(`getting device ${id}`)
-  const res = await fetch(api_urlGetDeviceById, {
-
-  })
+// elements to decvicesContainer
+  sectionDevicesContainer.appendChild( divDeviceContainer)
 }
