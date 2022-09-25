@@ -22,33 +22,42 @@ addDevice.addEventListener('click', () =>{
 
 
 function  deployFormForID(){
+
   console.log("adding device")
   const divFormNewDevice = document.getElementById('divFormNewDevice')
-  const formFormNewDevice = document.createElement('form')
+  divFormNewDevice.innerHTML = ""
+  const formFormNewDevice = document.createElement('div')
+  formFormNewDevice.setAttribute("action", "./dashboard.js")
   const pFormNewDevice = document.createElement('p')
   const pTextNodeFormNewDevice = document.createTextNode('Please introduce the name and Id for your Tempec Device')
   pFormNewDevice.append(pTextNodeFormNewDevice)
   const inputNameFormNewDevice = document.createElement('input')
   inputNameFormNewDevice.setAttribute('type', "text")
   inputNameFormNewDevice.setAttribute('placeholder', "Name device")
+  inputNameFormNewDevice.setAttribute('id', "nameDevice")
+  inputNameFormNewDevice.setAttribute('value', "nameDevice")
   const inputIdFormNewDevice = document.createElement('input')
   inputIdFormNewDevice.setAttribute('type', "text")
   inputIdFormNewDevice.setAttribute('placeholder', "Id device")
   const inputSendFormNewDevice = document.createElement('input')
-  inputSendFormNewDevice.setAttribute("type", "button")
+  inputSendFormNewDevice.setAttribute("type", "submit")
   inputSendFormNewDevice.setAttribute("value", "Send")
   formFormNewDevice.appendChild(pFormNewDevice)
   formFormNewDevice.appendChild(inputNameFormNewDevice)
   formFormNewDevice.appendChild(inputIdFormNewDevice)
   formFormNewDevice.appendChild(inputSendFormNewDevice)
   divFormNewDevice.appendChild(formFormNewDevice)
+
+  const inputName = document.getElementById('nameDevice')
   const data = {
-    name: inputNameFormNewDevice.value,
-    "id": inputIdFormNewDevice.value
+    name: inputName.value,
+    id: inputIdFormNewDevice.value
   }
   
   inputSendFormNewDevice.addEventListener('click', () => {
+    console.log(inputName)
     bringDeviceById(data)
+    divFormNewDevice.innerHTML = ""
   })
 }
 
@@ -62,13 +71,14 @@ async function bringDeviceById(data){
   // const res = await fetch(api_urlGetDeviceById)
   // const data = await res.json()
   // console.log(data)
+  console.log(data)
   console.log("adding device")
   const sectionDevicesContainer = document.getElementById('devsCont')
   sectionDevicesContainer.innerHtml= "";
   // deviceContainer
   const divDeviceContainer = document.createElement("div")
   divDeviceContainer.classList.add('deviceContainer')
-  // div divece name
+  // div device name
   const divDeviceName =  document.createElement('div')
   divDeviceName.classList.add('deviceName')
   const divTextNode = document.createTextNode(data.name)
@@ -137,4 +147,24 @@ divDeviceContainer.appendChild(divDeviceName)
   divDeviceContainer.appendChild( divDeviceContainerDescription)
 // elements to decvicesContainer
   sectionDevicesContainer.appendChild( divDeviceContainer)
+// nodes buttons
+  const deleteDeviceButton = document.getElementById('deleteDeviceButton')
+  const statusDeviceButton = document.getElementById('statusDeviceButton')
+// click on buttons
+  deleteDeviceButton.addEventListener( 'click', () => {
+    deleteDevice(id)
+  })
+
+  deleteDeviceButton.addEventListener( 'click', () => {
+    statusDevice(id)
+  })
+
+}
+
+function deleteDevice(id){
+  
+}
+
+function statusDevice(id){
+  
 }
