@@ -29,6 +29,7 @@ const accountSendButton = document.getElementById('accountSendButton')
 
 // buttons
 signInButton.addEventListener('click', () => {
+    console.log(accountName.value)
     login()
 })
 
