@@ -151,20 +151,20 @@ divDeviceContainer.appendChild(divDeviceName)
   const deleteDeviceButton = document.getElementById('deleteDeviceButton')
   const statusDeviceButton = document.getElementById('statusDeviceButton')
 // click on buttons
-  deleteDeviceButton.addEventListener( 'click', () => {
-    deleteDevice(id)
-  })
+//   deleteDeviceButton.addEventListener( 'click', () => {
+//     deleteDevice(id)
+//   })
 
-  deleteDeviceButton.addEventListener( 'click', () => {
-    statusDevice(id)
-  })
+//   deleteDeviceButton.addEventListener( 'click', () => {
+//     statusDevice(id)
+//   })
 
-}
+// }
 
-function deleteDevice(id){
+// function deleteDevice(id){
   
-}
+// }
 
-function statusDevice(id){
-  
+// function statusDevice(id){
+// }
 }
