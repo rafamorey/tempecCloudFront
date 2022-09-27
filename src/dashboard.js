@@ -1,10 +1,26 @@
 
 // Url backend
-api_urlGetDeviceById = 'https://tempec.vercel.app/device/'
+api_urlDevice = 'https://tempec.vercel.app/device/'
+// api de prueba con server.js 
+api_urlDeviceTest = 'http://localhost:3002/device/'
 
-api_urlGetDevicesUser = 'https://tempec.vercel.app/user/devices'
+api_urlUser = 'https://tempec.vercel.app/user/'
 
+<<<<<<< HEAD
 api_urldeleteDeviceButtonById = 'https://tempec.vercel.app/user'
+=======
+api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
+
+// Nodes
+const addDevice = document.getElementById('addDeviceButton')
+
+const deleteDevice = document.getElementById('deleteDeviceButton')
+
+const statusDevice = document.getElementById('statusDeviceButton')
+>>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
+
+const sectionDevicesContainer = document.getElementById('devsCont')
+
 
 // Count id devices in screen
 var counterDevicesShown = 0 
@@ -58,8 +74,12 @@ function  deployFormForID(){
       name: inputName.value,
       id: inputIdFormNewDevice.value
     }
+<<<<<<< HEAD
     createDevice(data)
     // bringDeviceById(data)
+=======
+    bringDeviceById(data)
+>>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
     divFormNewDevice.innerHTML = ""
   })
 }
@@ -69,36 +89,60 @@ async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
 }
 
+<<<<<<< HEAD
 async function bringDeviceById(id){
   const res = await fetch(api_urlGetDeviceById,{
     method: 'POST',
+=======
+async function bringDeviceById(device){
+  console.log(device)
+  const name = device.name
+  const id = device.id
+  // const res = await fetch(`${api_urlDevice}id`)
+  const res = await fetch(`${api_urlDevice}id`,{
+    method:'POST',
+>>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
+<<<<<<< HEAD
       idDevice: id
     })
   })
   const data = await res.json()
   console.log(data)
   createDevice(data)
+=======
+      "name": device.name,
+      "id": device.id
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 200){
+    console.log('No se encontro device')
+  } else{
+    console.log('Device ok')
+    createDevice(data)
+  }
+>>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
 }
 
 async function createDevice(data){
-
   counterDevicesShown++
   console.log(data)
-  console.log("adding device")
-  const sectionDevicesContainer = document.getElementById('devsCont')
+  console.log("creating device")
+  // const sectionDevicesContainer = document.getElementById('devsCont')
   sectionDevicesContainer.innerHtml= "";
   // deviceContainer
   const divDeviceContainer = document.createElement("div")
   divDeviceContainer.classList.add('deviceContainer')
   divDeviceContainer.setAttribute('id', `divDeviceContainer#${counterDevicesShown}`)
+  // divDeviceContainer.setAttribute('id', deviceId)
   // div device name
   const divDeviceName =  document.createElement('div')
   divDeviceName.classList.add('deviceName')
-  const divTextNode = document.createTextNode(data.name)
+  const divTextNode = document.createTextNode(data.body.name)
   divDeviceName.appendChild(divTextNode)  
 divDeviceContainer.appendChild(divDeviceName)
 
@@ -120,11 +164,20 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceTemp = document.createElement('div')
   divDeviceTemp.classList.add('temp')
   const divTemp = document.createElement('div')
+<<<<<<< HEAD
   const divDeviceTempTextNode = document.createTextNode('Temperatura')
   divDeviceTemp.appendChild(divDeviceTempTextNode)
   const divTempIdeal = document.createElement('div')
   const divDeviceTempIdealTextNode = document.createTextNode(data.tempIdeal)
   divDeviceTemp.appendChild(divDeviceTempIdealTextNode)
+=======
+  const divTempTextNode = document.createTextNode("Temp")
+  divTemp.appendChild(divTempTextNode)
+  const divTempIdeal = document.createElement('div')
+  const divTempIdealTextNode = document.createTextNode(data.body.id)
+  divTempIdeal.appendChild(divTempIdealTextNode)
+  divTempIdeal.setAttribute("id", data.body.id)
+>>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
   const divTempActual = document.createElement('div')
   const divDeviceTempActualTextNode = document.createTextNode(data.tempActual)
   divDeviceTemp.appendChild(divDeviceTempActualTextNode)
@@ -166,8 +219,7 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceButtons = document.createElement('div')
   divDeviceButtons.classList.add('deviceButtons')
   const inputDelete = document.createElement('input')
-  inputDelete.setAttribute
-  ("id", "deleteDeviceButton")
+  inputDelete.setAttribute("id", "deleteDeviceButton")
   inputDelete.setAttribute("value", "Delete")
   inputDelete.setAttribute("type", "Button") 
   const inputStatus = document.createElement('input')
@@ -190,29 +242,41 @@ divDeviceContainer.appendChild(divDeviceName)
   const deleteDeviceButton = document.getElementById('deleteDeviceButton')
   const statusDeviceButton = document.getElementById('statusDeviceButton')
   const idDevice = document.getElementById(`divDeviceContainer#${counterDevicesShown}`)
+  
+  // console.log(idDevice.id)
 
 // click on buttons
-  deleteDeviceButton.addEventListener( 'click', () => {
-    deleteDevice(idDevice)
+  deleteDeviceButton.addEventListener('click', () => {
+    deleteDeviceById(idDevice.id, divTempIdeal)
   })
 
-  statusDeviceButton.addEventListener( 'click', () => {
-    statusDevice(idDevice)
+  statusDeviceButton.addEventListener('click', () => {
+    getStatusDevice(idDevice)
   })
 
 }
 
+<<<<<<< HEAD
 async function deleteDevice(id){
 const res =  await fetch(api_urldeleteDeviceButtonById,{
+=======
+async function deleteDeviceById(idDeviceContainer, idDevice){
+  console.log(idDevice)
+  console.log(idDevice.id)
+  console.log(idDeviceContainer)
+  console.log(idDeviceContainer.value)
+const res =  await fetch(`${api_urlDevice}id`,{
+>>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    idDevice: id
+    "id": idDevice.id
   })
 })
   const data = await res.json();
+<<<<<<< HEAD
   if(res.status !== 200){
     console.log('Error de conexion')
   } else {
@@ -223,6 +287,22 @@ const res =  await fetch(api_urldeleteDeviceButtonById,{
 
 async function statusDevice(id){
   const res = await fetch(api_urlGetDeviceById+'', {
+=======
+  console.log(res.status)
+  if(res.status !== 201){
+    // spanError.innerHtml = "Hubo un error: " + res.status + data.Message
+  } else {
+    console.log('deleting device')
+    console.log(data)
+    const deviceToDelete = document.getElementById(idDeviceContainer)
+    console.log(deviceToDelete)
+    sectionDevicesContainer.removeChild(deviceToDelete)
+  }
+}
+
+async function getStatusDevice(id){
+  const res = await fetch(api_urlGetDeviceById, {
+>>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
     method: 'POST',
     headers:{
       'Content-Type': 'application/json'
