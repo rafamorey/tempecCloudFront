@@ -1,18 +1,22 @@
 
 // Url backend
-api_urlGetDeviceById = 'https://tempec.vercel.app/device/'
+api_urlDevice = 'https://tempec.vercel.app/device/'
+// api de prueba con server.js 
+api_urlDeviceTest = 'http://localhost:3002/device/'
 
-api_urlGetDevicesUser = 'https://tempec.vercel.app/user/devices'
+api_urlUser = 'https://tempec.vercel.app/user/'
 
-api_urlDeleteDeviceById = 'https://tempec.vercel.app/user/devices'
+api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
 
 // Nodes
-
 const addDevice = document.getElementById('addDeviceButton')
 
 const deleteDevice = document.getElementById('deleteDeviceButton')
 
 const statusDevice = document.getElementById('statusDeviceButton')
+
+const sectionDevicesContainer = document.getElementById('devsCont')
+
 
 // Count id devices in screen
 var counterDevicesShown = 0 
@@ -66,7 +70,7 @@ function  deployFormForID(){
       name: inputName.value,
       id: inputIdFormNewDevice.value
     }
-    createDevice(data)
+    bringDeviceById(data)
     divFormNewDevice.innerHTML = ""
   })
 }
@@ -76,30 +80,49 @@ async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
 }
 
-async function bringDeviceById(){
-
-  createDevice()
+async function bringDeviceById(device){
+  console.log(device)
+  const name = device.name
+  const id = device.id
+  // const res = await fetch(`${api_urlDevice}id`)
+  const res = await fetch(`${api_urlDevice}id`,{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "name": device.name,
+      "id": device.id
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 200){
+    console.log('No se encontro device')
+  } else{
+    console.log('Device ok')
+    createDevice(data)
+  }
 }
 
 async function createDevice(data){
-
   counterDevicesShown++
   // console.log(`getting device ${id}`)
   // const res = await fetch(api_urlGetDeviceById)
   // const data = await res.json()
   // console.log(data)
   console.log(data)
-  console.log("adding device")
-  const sectionDevicesContainer = document.getElementById('devsCont')
+  console.log("creating device")
+  // const sectionDevicesContainer = document.getElementById('devsCont')
   sectionDevicesContainer.innerHtml= "";
   // deviceContainer
   const divDeviceContainer = document.createElement("div")
   divDeviceContainer.classList.add('deviceContainer')
   divDeviceContainer.setAttribute('id', `divDeviceContainer#${counterDevicesShown}`)
+  // divDeviceContainer.setAttribute('id', deviceId)
   // div device name
   const divDeviceName =  document.createElement('div')
   divDeviceName.classList.add('deviceName')
-  const divTextNode = document.createTextNode(data.name)
+  const divTextNode = document.createTextNode(data.body.name)
   divDeviceName.appendChild(divTextNode)  
 divDeviceContainer.appendChild(divDeviceName)
 
@@ -117,7 +140,12 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceTemp = document.createElement('div')
   divDeviceTemp.classList.add('temp')
   const divTemp = document.createElement('div')
+  const divTempTextNode = document.createTextNode("Temp")
+  divTemp.appendChild(divTempTextNode)
   const divTempIdeal = document.createElement('div')
+  const divTempIdealTextNode = document.createTextNode(data.body.id)
+  divTempIdeal.appendChild(divTempIdealTextNode)
+  divTempIdeal.setAttribute("id", data.body.id)
   const divTempActual = document.createElement('div')
   divDeviceTemp.appendChild(divTemp)
   divDeviceTemp.appendChild(divTempIdeal)
@@ -145,8 +173,7 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceButtons = document.createElement('div')
   divDeviceButtons.classList.add('deviceButtons')
   const inputDelete = document.createElement('input')
-  inputDelete.setAttribute
-  ("id", "deleteDeviceButton")
+  inputDelete.setAttribute("id", "deleteDeviceButton")
   inputDelete.setAttribute("value", "Delete")
   inputDelete.setAttribute("type", "Button") 
   const inputStatus = document.createElement('input')
@@ -169,37 +196,48 @@ divDeviceContainer.appendChild(divDeviceName)
   const deleteDeviceButton = document.getElementById('deleteDeviceButton')
   const statusDeviceButton = document.getElementById('statusDeviceButton')
   const idDevice = document.getElementById(`divDeviceContainer#${counterDevicesShown}`)
+  
+  // console.log(idDevice.id)
 
 // click on buttons
-  deleteDeviceButton.addEventListener( 'click', () => {
-    deleteDevice(idDevice)
+  deleteDeviceButton.addEventListener('click', () => {
+    deleteDeviceById(idDevice.id, divTempIdeal)
   })
 
-  statusDeviceButton.addEventListener( 'click', () => {
-    statusDevice(idDevice)
+  statusDeviceButton.addEventListener('click', () => {
+    getStatusDevice(idDevice)
   })
 
 }
 
-async function deleteDeviceById(id){
-const res =  await fetch(api_urlDeleteDeviceById(id),{
+async function deleteDeviceById(idDeviceContainer, idDevice){
+  console.log(idDevice)
+  console.log(idDevice.id)
+  console.log(idDeviceContainer)
+  console.log(idDeviceContainer.value)
+const res =  await fetch(`${api_urlDevice}id`,{
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    idDevice: id
+    "id": idDevice.id
   })
 })
   const data = await res.json();
-  if(res.status !== 200){
+  console.log(res.status)
+  if(res.status !== 201){
     // spanError.innerHtml = "Hubo un error: " + res.status + data.Message
   } else {
-    console.log('')
+    console.log('deleting device')
+    console.log(data)
+    const deviceToDelete = document.getElementById(idDeviceContainer)
+    console.log(deviceToDelete)
+    sectionDevicesContainer.removeChild(deviceToDelete)
   }
 }
 
-async function statusDevice(id){
+async function getStatusDevice(id){
   const res = await fetch(api_urlGetDeviceById, {
     method: 'POST',
     headers:{
