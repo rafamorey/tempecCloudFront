@@ -4,15 +4,7 @@ api_urlGetDeviceById = 'https://tempec.vercel.app/device/'
 
 api_urlGetDevicesUser = 'https://tempec.vercel.app/user/devices'
 
-api_urlDeleteDeviceById = 'https://tempec.vercel.app/user/devices'
-
-// Nodes
-
-const addDevice = document.getElementById('addDeviceButton')
-
-const deleteDevice = document.getElementById('deleteDeviceButton')
-
-const statusDevice = document.getElementById('statusDeviceButton')
+api_urldeleteDeviceButtonById = 'https://tempec.vercel.app/user'
 
 // Count id devices in screen
 var counterDevicesShown = 0 
@@ -67,6 +59,7 @@ function  deployFormForID(){
       id: inputIdFormNewDevice.value
     }
     createDevice(data)
+    // bringDeviceById(data)
     divFormNewDevice.innerHTML = ""
   })
 }
@@ -76,18 +69,24 @@ async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
 }
 
-async function bringDeviceById(){
-
-  createDevice()
+async function bringDeviceById(id){
+  const res = await fetch(api_urlGetDeviceById,{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      idDevice: id
+    })
+  })
+  const data = await res.json()
+  console.log(data)
+  createDevice(data)
 }
 
 async function createDevice(data){
 
   counterDevicesShown++
-  // console.log(`getting device ${id}`)
-  // const res = await fetch(api_urlGetDeviceById)
-  // const data = await res.json()
-  // console.log(data)
   console.log(data)
   console.log("adding device")
   const sectionDevicesContainer = document.getElementById('devsCont')
@@ -110,15 +109,25 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceIdeal = document.createElement('div')
   divDeviceIdeal.classList.add('ideal')
   const divIdeal = document.createElement('div')
+  const divIdealTextNode = document.createTextNode('Ideal')
+  divIdeal.appendChild(divIdealTextNode)
   const divActual = document.createElement('div')
+  const divActualTextNode = document.createTextNode('Actual')
+  divActual.appendChild(divActualTextNode)
   divDeviceIdeal.appendChild( divIdeal)
   divDeviceIdeal.appendChild( divActual)
 // div temp
   const divDeviceTemp = document.createElement('div')
   divDeviceTemp.classList.add('temp')
   const divTemp = document.createElement('div')
+  const divDeviceTempTextNode = document.createTextNode('Temperatura')
+  divDeviceTemp.appendChild(divDeviceTempTextNode)
   const divTempIdeal = document.createElement('div')
+  const divDeviceTempIdealTextNode = document.createTextNode(data.tempIdeal)
+  divDeviceTemp.appendChild(divDeviceTempIdealTextNode)
   const divTempActual = document.createElement('div')
+  const divDeviceTempActualTextNode = document.createTextNode(data.tempActual)
+  divDeviceTemp.appendChild(divDeviceTempActualTextNode)
   divDeviceTemp.appendChild(divTemp)
   divDeviceTemp.appendChild(divTempIdeal)
   divDeviceTemp.appendChild(divTempActual)
@@ -126,8 +135,14 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceMin = document.createElement('div')
   divDeviceMin.classList.add('min')
   const divMin = document.createElement('div')
+  const divDeviceMinTextNode = document.createTextNode('Min')
+  divDeviceMin.appendChild(divDeviceMinTextNode)
   const divMinIdeal = document.createElement('div')
+  const divDeviceMinIdealTextNode = document.createTextNode(data.minIdeal)
+  divDeviceMin.appendChild(divDeviceMinIdealTextNode)
   const divMinActual = document.createElement('div')
+  const divDeviceActualTextNode = document.createTextNode(data.minActual)
+  divDeviceMin.appendChild(divDeviceActualTextNode)
   divDeviceMin.appendChild(divMin)
   divDeviceMin.appendChild(divMinIdeal)
   divDeviceMin.appendChild(divMinActual)
@@ -136,8 +151,14 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceMax = document.createElement('div')
   divDeviceMax.classList.add('max')
   const divMax = document.createElement('div')
+  const divDeviceMaxTextNode = document.createTextNode('Max')
+  divDeviceMax.appendChild(divDeviceMaxTextNode)
   const divMaxIdeal = document.createElement('div')
+  const divDeviceMaxIdealTextNode = document.createTextNode(data.maxIdeal)
+  divDeviceMax.appendChild(divDeviceMaxIdealTextNode)
   const divMaxActual = document.createElement('div')
+  const divDeviceMaxActualTextNode = document.createTextNode(data.maxActual)
+  divDeviceMax.appendChild(divDeviceMaxActualTextNode)
   divDeviceMax.appendChild(divMax)
   divDeviceMax.appendChild(divMaxIdeal)
   divDeviceMax.appendChild(divMaxActual)
@@ -181,8 +202,8 @@ divDeviceContainer.appendChild(divDeviceName)
 
 }
 
-async function deleteDeviceById(id){
-const res =  await fetch(api_urlDeleteDeviceById(id),{
+async function deleteDevice(id){
+const res =  await fetch(api_urldeleteDeviceButtonById,{
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json'
@@ -193,14 +214,15 @@ const res =  await fetch(api_urlDeleteDeviceById(id),{
 })
   const data = await res.json();
   if(res.status !== 200){
-    // spanError.innerHtml = "Hubo un error: " + res.status + data.Message
+    console.log('Error de conexion')
   } else {
-    console.log('')
+    console.log('Success')
+    
   }
 }
 
 async function statusDevice(id){
-  const res = await fetch(api_urlGetDeviceById, {
+  const res = await fetch(api_urlGetDeviceById+'', {
     method: 'POST',
     headers:{
       'Content-Type': 'application/json'
