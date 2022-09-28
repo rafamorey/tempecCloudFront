@@ -6,9 +6,6 @@ api_urlDeviceTest = 'http://localhost:3002/device/'
 
 api_urlUser = 'https://tempec.vercel.app/user/'
 
-<<<<<<< HEAD
-api_urldeleteDeviceButtonById = 'https://tempec.vercel.app/user'
-=======
 api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
 
 // Nodes
@@ -17,11 +14,11 @@ const addDevice = document.getElementById('addDeviceButton')
 const deleteDevice = document.getElementById('deleteDeviceButton')
 
 const statusDevice = document.getElementById('statusDeviceButton')
->>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
 
 const sectionDevicesContainer = document.getElementById('devsCont')
 
 
+  
 // Count id devices in screen
 var counterDevicesShown = 0 
 
@@ -74,12 +71,7 @@ function  deployFormForID(){
       name: inputName.value,
       id: inputIdFormNewDevice.value
     }
-<<<<<<< HEAD
-    createDevice(data)
-    // bringDeviceById(data)
-=======
     bringDeviceById(data)
->>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
     divFormNewDevice.innerHTML = ""
   })
 }
@@ -89,31 +81,15 @@ async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
 }
 
-<<<<<<< HEAD
-async function bringDeviceById(id){
-  const res = await fetch(api_urlGetDeviceById,{
-    method: 'POST',
-=======
 async function bringDeviceById(device){
   console.log(device)
-  const name = device.name
-  const id = device.id
   // const res = await fetch(`${api_urlDevice}id`)
   const res = await fetch(`${api_urlDevice}id`,{
     method:'POST',
->>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-<<<<<<< HEAD
-      idDevice: id
-    })
-  })
-  const data = await res.json()
-  console.log(data)
-  createDevice(data)
-=======
       "name": device.name,
       "id": device.id
     })
@@ -125,7 +101,6 @@ async function bringDeviceById(device){
     console.log('Device ok')
     createDevice(data)
   }
->>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
 }
 
 async function createDevice(data){
@@ -164,20 +139,12 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceTemp = document.createElement('div')
   divDeviceTemp.classList.add('temp')
   const divTemp = document.createElement('div')
-<<<<<<< HEAD
-  const divDeviceTempTextNode = document.createTextNode('Temperatura')
-  divDeviceTemp.appendChild(divDeviceTempTextNode)
-  const divTempIdeal = document.createElement('div')
-  const divDeviceTempIdealTextNode = document.createTextNode(data.tempIdeal)
-  divDeviceTemp.appendChild(divDeviceTempIdealTextNode)
-=======
   const divTempTextNode = document.createTextNode("Temp")
   divTemp.appendChild(divTempTextNode)
   const divTempIdeal = document.createElement('div')
   const divTempIdealTextNode = document.createTextNode(data.body.id)
   divTempIdeal.appendChild(divTempIdealTextNode)
   divTempIdeal.setAttribute("id", data.body.id)
->>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
   const divTempActual = document.createElement('div')
   const divDeviceTempActualTextNode = document.createTextNode(data.tempActual)
   divDeviceTemp.appendChild(divDeviceTempActualTextNode)
@@ -219,7 +186,7 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceButtons = document.createElement('div')
   divDeviceButtons.classList.add('deviceButtons')
   const inputDelete = document.createElement('input')
-  inputDelete.setAttribute("id", "deleteDeviceButton")
+  inputDelete.setAttribute("id", `deleteDeviceButton${counterDevicesShown}`)
   inputDelete.setAttribute("value", "Delete")
   inputDelete.setAttribute("type", "Button") 
   const inputStatus = document.createElement('input')
@@ -239,34 +206,34 @@ divDeviceContainer.appendChild(divDeviceName)
 // elements to decvicesContainer
   sectionDevicesContainer.appendChild( divDeviceContainer)
 // nodes buttons
-  const deleteDeviceButton = document.getElementById('deleteDeviceButton')
-  const statusDeviceButton = document.getElementById('statusDeviceButton')
-  const idDevice = document.getElementById(`divDeviceContainer#${counterDevicesShown}`)
   
   // console.log(idDevice.id)
-
-// click on buttons
-  deleteDeviceButton.addEventListener('click', () => {
-    deleteDeviceById(idDevice.id, divTempIdeal)
+  // const deleteDeviceButton = document.getElementById('deleteDeviceButton')
+  // const statusDeviceButton = document.getElementById('statusDeviceButton')
+  const buttonDelete = document.getElementById(inputDelete.id)
+  // click on buttons 
+  buttonDelete.addEventListener('click', () => {
+    deleteDeviceById(divDeviceContainer, divTempIdeal)
   })
 
-  statusDeviceButton.addEventListener('click', () => {
-    getStatusDevice(idDevice)
-  })
+  // statusDeviceButton.addEventListener('click', () => {
+  //   getStatusDevice(idDevice)
+  // })
 
 }
 
-<<<<<<< HEAD
-async function deleteDevice(id){
-const res =  await fetch(api_urldeleteDeviceButtonById,{
-=======
+async function getIdButtonDelete(){
+  
+}
+
 async function deleteDeviceById(idDeviceContainer, idDevice){
+  
+  
   console.log(idDevice)
   console.log(idDevice.id)
   console.log(idDeviceContainer)
-  console.log(idDeviceContainer.value)
+  console.log(idDeviceContainer.id)
 const res =  await fetch(`${api_urlDevice}id`,{
->>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json'
@@ -276,25 +243,13 @@ const res =  await fetch(`${api_urlDevice}id`,{
   })
 })
   const data = await res.json();
-<<<<<<< HEAD
-  if(res.status !== 200){
-    console.log('Error de conexion')
-  } else {
-    console.log('Success')
-    
-  }
-}
-
-async function statusDevice(id){
-  const res = await fetch(api_urlGetDeviceById+'', {
-=======
   console.log(res.status)
   if(res.status !== 201){
     // spanError.innerHtml = "Hubo un error: " + res.status + data.Message
   } else {
     console.log('deleting device')
     console.log(data)
-    const deviceToDelete = document.getElementById(idDeviceContainer)
+    const deviceToDelete = document.getElementById(idDeviceContainer.id)
     console.log(deviceToDelete)
     sectionDevicesContainer.removeChild(deviceToDelete)
   }
@@ -302,7 +257,6 @@ async function statusDevice(id){
 
 async function getStatusDevice(id){
   const res = await fetch(api_urlGetDeviceById, {
->>>>>>> 1e5e74de0d5338fbb7374dffeeeeadfcf86070f5
     method: 'POST',
     headers:{
       'Content-Type': 'application/json'
