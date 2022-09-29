@@ -207,11 +207,9 @@ divDeviceContainer.appendChild(divDeviceName)
   sectionDevicesContainer.appendChild( divDeviceContainer)
 // nodes buttons
   
-  // console.log(idDevice.id)
-  // const deleteDeviceButton = document.getElementById('deleteDeviceButton')
-  // const statusDeviceButton = document.getElementById('statusDeviceButton')
+  // le asigno id a boton de borrar para identificar que boton es el que se oprime
   const buttonDelete = document.getElementById(inputDelete.id)
-  // click on buttons 
+  // click on buttons, le paso el contenedor del device a eliminar, y el segundo parametro es el id del dispositivo en la base de datos
   buttonDelete.addEventListener('click', () => {
     deleteDeviceById(divDeviceContainer, divTempIdeal)
   })
@@ -222,17 +220,9 @@ divDeviceContainer.appendChild(divDeviceName)
 
 }
 
-async function getIdButtonDelete(){
-  
-}
 
 async function deleteDeviceById(idDeviceContainer, idDevice){
   
-  
-  console.log(idDevice)
-  console.log(idDevice.id)
-  console.log(idDeviceContainer)
-  console.log(idDeviceContainer.id)
 const res =  await fetch(`${api_urlDevice}id`,{
   method: 'DELETE',
   headers: {
@@ -243,14 +233,14 @@ const res =  await fetch(`${api_urlDevice}id`,{
   })
 })
   const data = await res.json();
-  console.log(res.status)
   if(res.status !== 201){
     // spanError.innerHtml = "Hubo un error: " + res.status + data.Message
   } else {
-    console.log('deleting device')
-    console.log(data)
+    // console.log('deleting device')
+    // console.log(data)
+// selecciono el elemento
     const deviceToDelete = document.getElementById(idDeviceContainer.id)
-    console.log(deviceToDelete)
+    // remuevo el contenedor del device
     sectionDevicesContainer.removeChild(deviceToDelete)
   }
 }
