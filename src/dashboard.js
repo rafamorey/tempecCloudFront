@@ -204,7 +204,7 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceButtons = document.createElement('div')
   divDeviceButtons.classList.add('deviceButtons')
   const inputDelete = document.createElement('input')
-  inputDelete.setAttribute("id", `deleteDeviceButton${data.id}`)
+  inputDelete.setAttribute("id", data.id)
   inputDelete.setAttribute("value", "Delete")
   inputDelete.setAttribute("type", "Button") 
   const inputStatus = document.createElement('input')
@@ -241,10 +241,8 @@ divDeviceContainer.appendChild(divDeviceName)
 
 
 async function deleteDeviceById(idDeviceContainer, idDevice, deviceUser){
-  
   console.log(deviceUser.body.name)
-  console.log(deviceUser)
-  console.log(idDevice)
+  console.log(idDevice.id)
 const res =  await fetch(`${api_urlEnterprise}deviceid`,{
   method: 'DELETE',
   headers: {
@@ -252,7 +250,7 @@ const res =  await fetch(`${api_urlEnterprise}deviceid`,{
   },
   body: JSON.stringify({
     "name": deviceUser.body.name,
-    "id": idDevice.id
+      "id": idDevice.id
   })
 })
   const data = await res.json();
