@@ -1,8 +1,22 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
 html{
   min-height: 100%;
   position: relative;
 }
 
+body{
+  /* background-image: url("/icons/background/1062.jpg"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: 10rem; */
+  /* min-height: 90vh; */
+  /* display: flex; */
+    margin:0;
+    /* margin-bottom: 40px; */
+}
 
 header{
   display:flex;
@@ -51,20 +65,13 @@ header{
 }
 
 /* form user password */
-*{
-  margin: 0;
-  padding: 0;
-  
-}
-
-body{
-  /* background-image: url("/icons/background/1062.jpg"); */
-  /* background-repeat: no-repeat; */
-  /* background-size: 10rem; */
-  /* min-height: 90vh; */
-  /* display: flex; */
-    margin:0;
-    margin-bottom: 40px;
+.principalContainer{
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  padding:0;
 }
 
 .sectionAddButton{
@@ -85,7 +92,8 @@ body{
 /* styles for dashboard.html */
 .devicesContainer{
   background-color: red;
-  padding:30px;
+  padding:10px;
+  margin-bottom: 40px;
   /* margin-bottom: 20px; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -99,6 +107,7 @@ body{
   margin:0 0 10px 0;
   position:relative;
   z-index:0;
+
 }
 
 .deviceContainer-description{
@@ -258,6 +267,16 @@ form a{
   transition: transform .5s, color .3s
 }
 
+.errorUserInfo{
+  background-color:red;
+  color:#fff;
+  font-weight: 300;
+  font-size: 1rem;
+  padding: .8em 0;
+  border: none;
+  border-radius: .5em;
+}
+
 .formSubmit{
   background-color:#3866f2;
   color:#fff;
@@ -334,6 +353,9 @@ footer{
   margin: 5px
 }
 
+footer{
+  margin-top: 20px;
+}
 
 
 

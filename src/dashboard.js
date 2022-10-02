@@ -18,7 +18,11 @@ const statusDevice = document.getElementById('statusDeviceButton')
 const sectionDevicesContainer = document.getElementById('devsCont')
 
 
-  
+// localStorage
+const userData = localStorage.getItem('1')
+  const userDataParser = JSON.parse(userData)
+console.log(userDataParser)
+
 // Count id devices in screen
 var counterDevicesShown = 0 
 
@@ -71,7 +75,7 @@ function  deployFormForID(){
       name: inputName.value,
       id: inputIdFormNewDevice.value
     }
-    bringDeviceById(data)
+    createDeviceById(data)
     divFormNewDevice.innerHTML = ""
   })
 }
@@ -79,31 +83,45 @@ function  deployFormForID(){
 // funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
 async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
+  // const userData = localStorage.getItem('1')
+  // const userDataParser = JSON.parse(userData)
+  
+  // console.log(devicesUser)
+  if(userDataParser.body == null){
+    console.log("no devices")
+  }else{
+    const devicesUser = userDataParser.body.devices
+    devicesUser.forEach(device => {
+      createDeviceContainer(device)
+    })
+  }
+
 }
 
-async function bringDeviceById(device){
-  console.log(device)
+async function createDeviceById(device){
   // const res = await fetch(`${api_urlDevice}id`)
-  const res = await fetch(`${api_urlDevice}id`,{
+  const res = await fetch(`${api_urlEnterprise}deviceid`,{
     method:'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       "name": device.name,
-      "id": device.id
+      "devices": [{
+        "id": device.id
+      }]
     })
   })
   const data = await res.json() 
-  if(res.status !== 200){
+  if(res.status !== 201){
     console.log('No se encontro device')
   } else{
     console.log('Device ok')
-    createDevice(data)
+    createDeviceContainer(data)
   }
 }
 
-async function createDevice(data){
+async function createDeviceContainer(data){
   counterDevicesShown++
   console.log(data)
   console.log("creating device")
@@ -112,12 +130,12 @@ async function createDevice(data){
   // deviceContainer
   const divDeviceContainer = document.createElement("div")
   divDeviceContainer.classList.add('deviceContainer')
-  divDeviceContainer.setAttribute('id', `divDeviceContainer#${counterDevicesShown}`)
+  divDeviceContainer.setAttribute('id', `divDeviceContainer#${data.id}`)
   // divDeviceContainer.setAttribute('id', deviceId)
   // div device name
   const divDeviceName =  document.createElement('div')
   divDeviceName.classList.add('deviceName')
-  const divTextNode = document.createTextNode(data.body.name)
+  const divTextNode = document.createTextNode(data.name)
   divDeviceName.appendChild(divTextNode)  
 divDeviceContainer.appendChild(divDeviceName)
 
@@ -142,9 +160,9 @@ divDeviceContainer.appendChild(divDeviceName)
   const divTempTextNode = document.createTextNode("Temp")
   divTemp.appendChild(divTempTextNode)
   const divTempIdeal = document.createElement('div')
-  const divTempIdealTextNode = document.createTextNode(data.body.id)
+  const divTempIdealTextNode = document.createTextNode(data.id)
   divTempIdeal.appendChild(divTempIdealTextNode)
-  divTempIdeal.setAttribute("id", data.body.id)
+  divTempIdeal.setAttribute("id", data.id)
   const divTempActual = document.createElement('div')
   const divDeviceTempActualTextNode = document.createTextNode(data.tempActual)
   divDeviceTemp.appendChild(divDeviceTempActualTextNode)
@@ -186,7 +204,7 @@ divDeviceContainer.appendChild(divDeviceName)
   const divDeviceButtons = document.createElement('div')
   divDeviceButtons.classList.add('deviceButtons')
   const inputDelete = document.createElement('input')
-  inputDelete.setAttribute("id", `deleteDeviceButton${counterDevicesShown}`)
+  inputDelete.setAttribute("id", `deleteDeviceButton${data.id}`)
   inputDelete.setAttribute("value", "Delete")
   inputDelete.setAttribute("type", "Button") 
   const inputStatus = document.createElement('input')
@@ -208,10 +226,11 @@ divDeviceContainer.appendChild(divDeviceName)
 // nodes buttons
   
   // le asigno id a boton de borrar para identificar que boton es el que se oprime
-  const buttonDelete = document.getElementById(inputDelete.id)
+  // const buttonDelete = document.getElementById(data.id)
   // click on buttons, le paso el contenedor del device a eliminar, y el segundo parametro es el id del dispositivo en la base de datos
-  buttonDelete.addEventListener('click', () => {
-    deleteDeviceById(divDeviceContainer, divTempIdeal)
+  inputDelete.addEventListener('click', () => {
+    // console.log(data.id)
+    deleteDeviceById(divDeviceContainer, inputDelete ,userDataParser)
   })
 
   // statusDeviceButton.addEventListener('click', () => {
@@ -221,14 +240,18 @@ divDeviceContainer.appendChild(divDeviceName)
 }
 
 
-async function deleteDeviceById(idDeviceContainer, idDevice){
+async function deleteDeviceById(idDeviceContainer, idDevice, deviceUser){
   
-const res =  await fetch(`${api_urlDevice}id`,{
+  console.log(deviceUser.body.name)
+  console.log(deviceUser)
+  console.log(idDevice)
+const res =  await fetch(`${api_urlEnterprise}deviceid`,{
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
+    "name": deviceUser.body.name,
     "id": idDevice.id
   })
 })
@@ -256,3 +279,6 @@ async function getStatusDevice(id){
     })
   })
 }
+
+
+bringAllDevices()
