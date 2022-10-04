@@ -250,7 +250,7 @@ const res =  await fetch(`${api_urlEnterprise}deviceid`,{
   },
   body: JSON.stringify({
     "name": deviceUser.body.name,
-      "id": idDevice.id
+    "id": idDevice.id
   })
 })
   const data = await res.json();
@@ -263,7 +263,9 @@ const res =  await fetch(`${api_urlEnterprise}deviceid`,{
     const deviceToDelete = document.getElementById(idDeviceContainer.id)
     // remuevo el contenedor del device
     sectionDevicesContainer.removeChild(deviceToDelete)
+    
   }
+  // bringAllDevices()
 }
 
 async function getStatusDevice(id){
