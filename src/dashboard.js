@@ -20,24 +20,9 @@ const divMax = document.getElementById('divMax')
 divMaxTextNode = document.createTextNode(userDataParser.tempMax)
 divMax.appendChild(divMaxTextNode)
 
-async function getDeviceConfig(idDevice){
-  console.log("device config coming...")
-  const res = fetch(API_URLDEVICEconfig,{
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify({
 
-    })
-  })
-  const data = await res.json()
-  if(res.status !==201){
-    console.log("cant fetch data for this device")
-  }else{
-    console.log("fetching devices config parameters")
-  }
-}
+
+
 
 async function getDeviceValues(){
   console.log("devie values coming...")
