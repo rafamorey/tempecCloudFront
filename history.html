@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <title>Document</title>
+</head>
+<body>
+  <header >
+    <div class="headerLogo">
+      <img src="./icons/icono.jpg" alt="">
+    </div>
+    <div class="title">  
+      <h1>Diinpec</h1>
+    </div>
+  </header>
+  <main>
+    <section class="menu">
+      <ul>
+        <li><a class="linkMenuOption" href="./device.html">Home</a></li>
+        <li><a class="linkMenuOption" href="">Dashboard</a></li>
+        <li><a class="linkMenuOption" href="./history.html">History</a></li>
+        <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
+        <li><a class="linkMenuOption" href="./.html">Sign out</a></li>
+      </ul>
+    </section>
+    <section class="sectionChart">
+      <div class="chartContainer" >
+        <canvas id="myChart">
+        </canvas>
+      </div>
+      <div class="valuesContainer">
+        <div class="divValue" id="divBeggin">Start</div>
+        <div class="divValue" id="divEnd">End</div>
+      </div>
+      <div class="exportContainer">
+        <input class="divValue" id="divExport" value="Export" type="button"></input>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="cr">
+      Copyright 1995-2022 DIINPEC. Todods los derechos reservados
+    </div>
+    <div class="legal">
+      <ul class="legalTerms">
+        <li>Mexico</li>
+        <li>Accesibilidad</li>
+        <li>Terminos y condiciones</li>
+        <li>Privacidad</li>
+        <li>Legales</li>
+      </ul>
+      <ul class="legalSocial">
+        <li>SIGUENOS EN</li>
+        <li>logoF</li>
+        <li>logoT</li>
+        <li>logoI</li>
+        <li>logoL</li>
+      </ul>    </div>
+    
+  </footer>
+  <script src="./src/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [15.5,15.8, 16, 18.2, 17.5, 17, 16,15.5,15.8, 16, 18.2, 17.5, 17, 16,15.5,15.8, 16, 18.2]
+      },
+      {
+        label: 'My First dataset',
+        backgroundColor: 'rgb(220, 199, 1)',
+        borderColor: 'rgb(220, 199, 1)',
+        data: [15, 15, 15, 16, 16, 15, 15,15, 15, 15, 16, 16, 15, 15,15, 15, 15, 16,]
+      },
+      {
+        label: 'My First dataset',
+        backgroundColor: 'rgb(2, 99, 132)',
+        borderColor: 'rgb(2, 99, 132)',
+        data: [17, 17, 17, 20, 20, 18, 18,17, 17, 17, 20, 20, 18, 18,17, 17, 17, 20,],
+      }]
+    };
+  
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+    </script>
+  <script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+      );
+      </script>
+
+</body>
+</html>
