@@ -1,7 +1,13 @@
 // url
 API_URLDEVICEconfig = 'https://tempec.vercel.app/enterprise/deviceConfig'
 
+<<<<<<< HEAD
 API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
+=======
+API_URLDEVICEvalues = 'https://tempec.vercel.app/device/'
+
+api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
+>>>>>>> 7c002657e0fb47d9f88e7ead49a8064121160398
 
 
 const userData = localStorage.getItem('device')
@@ -41,7 +47,34 @@ async function getDeviceValues(){
     console.log("cant fetch data for this device")
   }else{
     console.log("fetching devices config parameters")
+    console.log(data)
   }
 }
 
+<<<<<<< HEAD
+=======
+// async function createDeviceById(device){
+//   // const res = await fetch(`${api_urlDevice}id`)
+//   const res = await fetch(`${api_urlEnterprise}deviceid`,{
+//     method:'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       "name": "Esteban",
+//       "devices": [{
+//         "id": "uno"
+//       }]
+//     })
+//   })
+//   const data = await res.json() 
+//   if(res.status !== 201){
+//     console.log('No se encontro device')
+//   } else{
+//     console.log('Device ok')
+//     // createDeviceContainer(data)
+//   }
+// }
+
+>>>>>>> 7c002657e0fb47d9f88e7ead49a8064121160398
 getDeviceValues()
