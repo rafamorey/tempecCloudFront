@@ -1,7 +1,7 @@
 // url
 API_URLDEVICEconfig = 'https://tempec.vercel.app/enterprise/deviceConfig'
 
-API_URLDEVICEvalues = 'https://tempec.vercel.app/enterprise/deviceValues'
+API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
 
 
 const userData = localStorage.getItem('device')
@@ -25,20 +25,23 @@ divMax.appendChild(divMaxTextNode)
 
 
 async function getDeviceValues(){
-  console.log("devie values coming...")
+  console.log("device values are coming...")
   const res = fetch(API_URLDEVICEvalues,{
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
     },
     body: JSON.stringify({
-      
+      "name": "ok",
+      "id": "uno"
     })
   })
   const data = await res.json()
-  if(res.status !==201){
+  if(res.status !==200){
     console.log("cant fetch data for this device")
   }else{
     console.log("fetching devices config parameters")
   }
 }
+
+getDeviceValues()
