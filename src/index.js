@@ -74,10 +74,16 @@ async function login() {
             })
         })
                 const data = await res.json()
-        
                 if(res.status !== 200){
                     console.log('error de conexion')
-                }else {
+                }else if(!data.body ){
+                    console.log("enterprise doesnt exist")
+                    const errorUserInfo = document.getElementById('errorUserInfo')
+                    errorUserInfo.classList.add('errorUserInfo')
+                    const pErrorText = document.createTextNode('Usuario o contraseña incorrecta')
+                    errorUserInfo.innerHTML = ""
+                    errorUserInfo.appendChild(pErrorText)
+                }else{
                     localStorage.setItem('1',JSON.stringify(data))
                     window.location.href = 'http://127.0.0.1:5501/device.html'
                     return data
