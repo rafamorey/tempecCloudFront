@@ -302,8 +302,8 @@ async function getStatusDevice(device){
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "name": device.name,
-      "id": device.id
+      "name": "ok",
+      "id": "uno"
     })
   })
   const data = await res.json() 
