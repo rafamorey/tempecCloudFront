@@ -22,8 +22,9 @@ const sectionDevicesContainer = document.getElementById('devsCont')
 
 // localStorage
 const userData = localStorage.getItem('1')
-  const userDataParser = JSON.parse(userData)
+const userDataParser = JSON.parse(userData)
 console.log(userDataParser)
+console.log('ESTE es data parser')
 
 // Count id devices in screen
 var counterDevicesShown = 0 
@@ -104,6 +105,8 @@ function  deployFormForID(){
 // funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
 async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
+  
+
   // const userData = localStorage.getItem('1')
   // const userDataParser = JSON.parse(userData)
   
@@ -140,6 +143,10 @@ async function createDeviceById(device){
   } else{
     console.log('Device ok')
     createDeviceContainer(data)
+    userDataParser.body.devices.push(device)
+    localStorage.setItem('1', JSON.stringify(userDataParser))
+    //  console.log(userDataParser)
+     console.log('localstorage update')
   }
 }
 
@@ -285,11 +292,34 @@ const res =  await fetch(`${api_urlEnterprise}deviceid`,{
     // console.log(data)
 // selecciono el elemento
     const deviceToDelete = document.getElementById(idDeviceContainer.id)
+
+    updateDeletedLocalstorage(idDevice)
     // remuevo el contenedor del device
     sectionDevicesContainer.removeChild(deviceToDelete)
+    bringAllDevices()
   }
 }
 
+function updateDeletedLocalstorage(deviceToDeleteId){
+  // let existing = localStorage.getItem('1')
+  // existing = existing ? JSON.parse(existing): {}
+// console.log(`este es el id${deviceToDeleteId.id}`)
+// console.log(`este es el objeto de objetos${userDataParser}`)
+
+const findDevice = userDataParser.body.devices.find(device =>{
+  if(device.id === deviceToDeleteId.id){
+    return device
+  }
+ })
+//  console.log(deleteDevice)
+ const indexOfDevice = userDataParser.body.devices.indexOf(findDevice)
+//  console.log(deviceToDelete)
+ userDataParser.body.devices.splice(indexOfDevice,1)
+//  console.log(userDataParser)
+ localStorage.setItem('1', JSON.stringify(userDataParser))
+//  console.log(userDataParser)
+ console.log('localstorage update')
+}
 
 
 
