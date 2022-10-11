@@ -24,7 +24,7 @@
         <li><a class="linkMenuOption" href="">Dashboard</a></li>
         <li><a class="linkMenuOption" href="./history.html">History</a></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
-        <li><a class="linkMenuOption" href="./.html">Sign out</a></li>
+        <li><div type="button"  id="signOut" class="linkMenuOption" href="./index.html">Sign out</div></li>
       </ul>
     </section>
     <section class="sectionChart">
@@ -63,25 +63,46 @@
   <!-- <script src="./src/dashboard.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+
+const btnSignOut = document.getElementById('signOut')
+btnSignOut.addEventListener('click', ()=>{
+  localStorage.removeItem('deviceData')
+  localStorage.removeItem('deviceStatus')
+  localStorage.removeItem('deviceValues')
+  
+  window.location.href = 'http://127.0.0.1:5501/index.html'
+})
     // url
     const deviceData = localStorage.getItem('deviceData')
   const deviceDataParser = JSON.parse(deviceData)
 console.log(deviceDataParser)
-
+console.log('deviceDataParser')
 const deviceValues = localStorage.getItem('deviceValues')
 const deviceValuesParser = JSON.parse(deviceValues)
+// console.log("deviceValues")
 console.log(deviceValuesParser)
+console.log("deviceValues")
+
+const deviceStatus = localStorage.getItem('deviceStatus')
+const deviceStatusParser = JSON.parse(deviceStatus)
+// console.log("deviceStatus")
+console.log(deviceStatusParser)
+console.log("deviceStatus")
 
 const divSetpoint = document.getElementById('divSetpoint')
-divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
+divSetpointTextNode = document.createTextNode(deviceStatusParser.body.setPoint)
+// divSetpoint.innerHTML= ""
 divSetpoint.appendChild(divSetpointTextNode)
 
+
 const divMin = document.getElementById('divMin')
-divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
+divMinTextNode = document.createTextNode(deviceStatusParser.body.tempMin)
+// divMin.innerHTML= ""
 divMin.appendChild(divMinTextNode)
 
 const divMax = document.getElementById('divMax')
-divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
+divMaxTextNode = document.createTextNode(deviceStatusParser.body.tempMax)
+// divMax.innerHTML= ""
 divMax.appendChild(divMaxTextNode)
 
 

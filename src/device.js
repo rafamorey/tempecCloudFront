@@ -1,8 +1,6 @@
 
 // Url backend
 api_urlDevice = 'https://tempec.vercel.app/device/'
-// api de prueba con server.js 
-api_urlDeviceTest = 'http://localhost:3002/device/'
 
 api_urlUser = 'https://tempec.vercel.app/user/'
 
@@ -114,6 +112,7 @@ async function bringAllDevices(){
   if(userDataParser.body == null){
     console.log("no devices")
   }else{
+    sectionDevicesContainer.innerHTML=""
     const devicesUser = userDataParser.body.devices
     devicesUser.forEach(device => {
       createDeviceContainer(device)
@@ -125,15 +124,17 @@ async function bringAllDevices(){
 async function createDeviceById(device){
   // const res = await fetch(`${api_urlDevice}id`)
   console.log(device)
+  
   const res = await fetch(`${api_urlEnterprise}deviceid`,{
     method:'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "name": device.name,
+      "enterprise": userDataParser.body.enterprise,
       "devices": [{
-        "id": device.id
+        "id": device.id,
+        "name": device.name
       }]
     })
   })
@@ -145,9 +146,25 @@ async function createDeviceById(device){
     createDeviceContainer(data)
     userDataParser.body.devices.push(device)
     localStorage.setItem('1', JSON.stringify(userDataParser))
+    bringAllDevices()
     //  console.log(userDataParser)
      console.log('localstorage update')
+     createSingleDevice(device)
   }
+}
+
+async function createSingleDevice(device){
+  const resDevice = await fetch(`${api_urlDevice}`,{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "enterprise": userDataParser.body.enterprise,
+        "id": device.id,
+        "name": device.name
+    })
+  })
 }
 
 async function createDeviceContainer(data){
@@ -296,8 +313,22 @@ const res =  await fetch(`${api_urlEnterprise}deviceid`,{
     updateDeletedLocalstorage(idDevice)
     // remuevo el contenedor del device
     sectionDevicesContainer.removeChild(deviceToDelete)
-    bringAllDevices()
+    deleteSingleDevice(idDevice)
   }
+}
+
+async function deleteSingleDevice(idDevice){
+  const res =  await fetch(`${api_urlDevice}id`,{
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "enterprise": userDataParser.body.enterprise,
+        "id": idDevice.id
+    })
+  })
+  console.log(idDevice.id,userDataParser.body.enterprise)
 }
 
 function updateDeletedLocalstorage(deviceToDeleteId){
@@ -321,19 +352,18 @@ const findDevice = userDataParser.body.devices.find(device =>{
  console.log('localstorage update')
 }
 
-
-
 async function getStatusDevice(device){
   console.log("device values coming...")
   console.log(device)
-  const res = await fetch(API_URLDEVICEvalues,{
+  const res = await fetch(`${api_urlDevice}status`,{
     method:'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "name": "ok",
-      "id": "uno"
+      "enterprise": device.enterprise,
+      "name": device.name,
+      "id": device.id
     })
   })
   const data = await res.json() 
@@ -342,6 +372,31 @@ async function getStatusDevice(device){
   } else{
     console.log(data)
     localStorage.setItem('deviceData', JSON.stringify(device))
+    localStorage.setItem('deviceStatus', JSON.stringify(data))
+    getValuesDevice(device)
+      // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+  }
+}
+
+async function getValuesDevice(device){
+  console.log("device values coming...")
+  console.log(device)
+  const res = await fetch(`${api_urlDevice}deviceValues`,{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      // "enterprise": device.enterprise,
+      "name": device.name,
+      "id": device.id
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 200){
+    console.log('No se encontro device')
+  } else{
+    console.log(data)
     localStorage.setItem('deviceValues', JSON.stringify(data))
       window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
