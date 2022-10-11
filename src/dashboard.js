@@ -1,13 +1,7 @@
 // url
 API_URLDEVICEconfig = 'https://tempec.vercel.app/enterprise/deviceConfig'
 
-<<<<<<< HEAD
 API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
-=======
-API_URLDEVICEvalues = 'https://tempec.vercel.app/device/'
-
-api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
->>>>>>> 7c002657e0fb47d9f88e7ead49a8064121160398
 
 
 const userData = localStorage.getItem('device')
@@ -51,8 +45,6 @@ async function getDeviceValues(){
   }
 }
 
-<<<<<<< HEAD
-=======
 // async function createDeviceById(device){
 //   // const res = await fetch(`${api_urlDevice}id`)
 //   const res = await fetch(`${api_urlEnterprise}deviceid`,{
@@ -76,5 +68,4 @@ async function getDeviceValues(){
 //   }
 // }
 
->>>>>>> 7c002657e0fb47d9f88e7ead49a8064121160398
 getDeviceValues()
