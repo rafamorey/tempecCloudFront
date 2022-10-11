@@ -1,29 +1,37 @@
 // url
-API_URLDEVICEconfig = 'https://tempec.vercel.app/enterprise/deviceConfig'
 
+<<<<<<< HEAD
 API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
+=======
+
+>>>>>>> 8310c394965ed225c97b5c6c6fdc01b655f24ba1
 
 
-const userData = localStorage.getItem('device')
-  const userDataParser = JSON.parse(userData)
-console.log(userDataParser)
+const deviceData = localStorage.getItem('deviceData')
+  const deviceDataParser = JSON.parse(deviceData)
+console.log(deviceDataParser)
+
+const deviceValues = localStorage.getItem('deviceValues')
+const deviceValuesParser = JSON.parse(deviceValues)
+console.log(deviceValues)
 
 const divSetpoint = document.getElementById('divSetpoint')
-divSetpointTextNode = document.createTextNode(userDataParser.setPoint)
+divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
 divSetpoint.appendChild(divSetpointTextNode)
 
 const divMin = document.getElementById('divMin')
-divMinTextNode = document.createTextNode(userDataParser.tempMin)
+divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
 divMin.appendChild(divMinTextNode)
 
 const divMax = document.getElementById('divMax')
-divMaxTextNode = document.createTextNode(userDataParser.tempMax)
+divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
 divMax.appendChild(divMaxTextNode)
 
 
 
 
 
+<<<<<<< HEAD
 async function getDeviceValues(){
   console.log("device values are coming...")
   const res = fetch(API_URLDEVICEvalues,{
@@ -69,3 +77,8 @@ async function getDeviceValues(){
 // }
 
 getDeviceValues()
+=======
+
+
+
+>>>>>>> 8310c394965ed225c97b5c6c6fdc01b655f24ba1

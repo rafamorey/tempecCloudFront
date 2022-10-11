@@ -8,6 +8,8 @@ api_urlUser = 'https://tempec.vercel.app/user/'
 
 api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
 
+API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
+
 // Nodes
 const addDevice = document.getElementById('addDeviceButton')
 
@@ -20,8 +22,9 @@ const sectionDevicesContainer = document.getElementById('devsCont')
 
 // localStorage
 const userData = localStorage.getItem('1')
-  const userDataParser = JSON.parse(userData)
+const userDataParser = JSON.parse(userData)
 console.log(userDataParser)
+console.log('ESTE es data parser')
 
 // Count id devices in screen
 var counterDevicesShown = 0 
@@ -39,35 +42,50 @@ function  deployFormForID(){
   console.log("adding device")
   const divFormNewDevice = document.getElementById('divFormNewDevice')
   divFormNewDevice.innerHTML = ""
+  divFormNewDevice.classList.add('formCreateNewDevice')
   const formFormNewDevice = document.createElement('div')
   formFormNewDevice.setAttribute("action", "./dashboard.js")
+  formFormNewDevice.classList.add('formCreateNewDeviceContainer')
   
   const pFormNewDevice = document.createElement('p')
   
   const pTextNodeFormNewDevice = document.createTextNode('Please introduce the name and Id for your Tempec Device')
   pFormNewDevice.append(pTextNodeFormNewDevice)
+  formFormNewDevice.appendChild(pFormNewDevice)
   
+  const divValuesContainer = document.createElement('div')
+  divValuesContainer.classList.add('divValuesContainer')
   const inputNameFormNewDevice = document.createElement('input')
   inputNameFormNewDevice.setAttribute('type', "text")
   inputNameFormNewDevice.setAttribute('placeholder', "Name device")
   inputNameFormNewDevice.setAttribute('id', "nameDevice")
-
   const labelNameFormNewDevice = document.createElement('label')
   labelNameFormNewDevice.setAttribute('for', 'nameDevice')
-
   const inputIdFormNewDevice = document.createElement('input')
   inputIdFormNewDevice.setAttribute('type', "text")
   inputIdFormNewDevice.setAttribute('placeholder', "Id device")
+
+  divValuesContainer.appendChild(inputNameFormNewDevice)
+  divValuesContainer.appendChild(labelNameFormNewDevice)
+  divValuesContainer.appendChild(inputIdFormNewDevice)
+  formFormNewDevice.appendChild(divValuesContainer)
   
+  const divInputsContainer = document.createElement('div')
+  divInputsContainer.classList.add('divInputsContainer')
   const inputSendFormNewDevice = document.createElement('input')
   inputSendFormNewDevice.setAttribute("type", "submit")
   inputSendFormNewDevice.setAttribute("value", "Send")
-  formFormNewDevice.appendChild(pFormNewDevice)
-  formFormNewDevice.appendChild(labelNameFormNewDevice)
-  formFormNewDevice.appendChild(inputNameFormNewDevice)
-  formFormNewDevice.appendChild(inputIdFormNewDevice)
-  formFormNewDevice.appendChild(inputSendFormNewDevice)
+  const inputCancelFormNewDevice = document.createElement('input')
+  inputCancelFormNewDevice.setAttribute("type", "submit")
+  inputCancelFormNewDevice.setAttribute("value", "Cancel")
+  divInputsContainer.appendChild(inputSendFormNewDevice)
+  divInputsContainer.appendChild(inputCancelFormNewDevice)
+  formFormNewDevice.appendChild(divInputsContainer)
+
+  
   divFormNewDevice.appendChild(formFormNewDevice)
+  
+  
 
   inputSendFormNewDevice.addEventListener('click', () => {
     const inputName = document.getElementById('nameDevice')
@@ -78,11 +96,17 @@ function  deployFormForID(){
     createDeviceById(data)
     divFormNewDevice.innerHTML = ""
   })
+
+  inputCancelFormNewDevice.addEventListener('click', () =>{
+    divFormNewDevice.innerHTML = "";
+  })
 }
 
 // funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
 async function bringAllDevices(){
   console.log("getting devices for user ...(put id for this user)")
+  
+
   // const userData = localStorage.getItem('1')
   // const userDataParser = JSON.parse(userData)
   
@@ -100,6 +124,7 @@ async function bringAllDevices(){
 
 async function createDeviceById(device){
   // const res = await fetch(`${api_urlDevice}id`)
+  console.log(device)
   const res = await fetch(`${api_urlEnterprise}deviceid`,{
     method:'POST',
     headers: {
@@ -118,6 +143,10 @@ async function createDeviceById(device){
   } else{
     console.log('Device ok')
     createDeviceContainer(data)
+    userDataParser.body.devices.push(device)
+    localStorage.setItem('1', JSON.stringify(userDataParser))
+    //  console.log(userDataParser)
+     console.log('localstorage update')
   }
 }
 
@@ -263,16 +292,59 @@ const res =  await fetch(`${api_urlEnterprise}deviceid`,{
     // console.log(data)
 // selecciono el elemento
     const deviceToDelete = document.getElementById(idDeviceContainer.id)
+
+    updateDeletedLocalstorage(idDevice)
     // remuevo el contenedor del device
     sectionDevicesContainer.removeChild(deviceToDelete)
+    bringAllDevices()
   }
 }
 
-async function getStatusDevice(device){
-  console.log(device)
-  localStorage.setItem('device', JSON.stringify(device))
-  window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+function updateDeletedLocalstorage(deviceToDeleteId){
+  // let existing = localStorage.getItem('1')
+  // existing = existing ? JSON.parse(existing): {}
+// console.log(`este es el id${deviceToDeleteId.id}`)
+// console.log(`este es el objeto de objetos${userDataParser}`)
+
+const findDevice = userDataParser.body.devices.find(device =>{
+  if(device.id === deviceToDeleteId.id){
+    return device
+  }
+ })
+//  console.log(deleteDevice)
+ const indexOfDevice = userDataParser.body.devices.indexOf(findDevice)
+//  console.log(deviceToDelete)
+ userDataParser.body.devices.splice(indexOfDevice,1)
+//  console.log(userDataParser)
+ localStorage.setItem('1', JSON.stringify(userDataParser))
+//  console.log(userDataParser)
+ console.log('localstorage update')
 }
 
+
+
+async function getStatusDevice(device){
+  console.log("device values coming...")
+  console.log(device)
+  const res = await fetch(API_URLDEVICEvalues,{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "name": "ok",
+      "id": "uno"
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 200){
+    console.log('No se encontro device')
+  } else{
+    console.log(data)
+    localStorage.setItem('deviceData', JSON.stringify(device))
+    localStorage.setItem('deviceValues', JSON.stringify(data))
+      window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+  }
+}
 
 bringAllDevices()

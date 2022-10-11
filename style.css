@@ -82,6 +82,32 @@ header{
   margin: 0 0 10px 25px;
 }
 
+.formCreateNewDevice{
+  position:absolute;
+  top: 3rem;
+  width:100%;
+ display:flex;
+  justify-content:center;
+}
+
+.formCreateNewDeviceContainer{
+
+}
+
+.divValuesContainer{
+
+}
+
+.divInputsContainer{
+  display:flex;
+  justify-content:space-around;
+}
+
+.divInputsContainer input{
+  border-radius: 5px;
+  color: red;
+}
+
 .sectionAddButton input{
   /* width: 30px;
   height: 30px;
