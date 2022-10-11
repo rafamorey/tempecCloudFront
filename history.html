@@ -38,6 +38,7 @@
       </div>
       <div class="exportContainer">
         <input class="divValue" id="divExport" value="Submit" type="button"></input>
+        <input class="divValue" id="divClear" value="Clear" type="button"></input>
       </div>
     </section>
   </main>
@@ -76,13 +77,23 @@
     const divEnd = document.getElementById('divEnd')
     const divExport = document.getElementById('divExport')
     divExport.addEventListener('click',() => {
-      console.log(divBeggin.value)
-      console.log(divEnd.value)
+      // console.log(divBeggin.value)
+      // console.log(divEnd.value)
       getDatesToGraphValues(divBeggin.value, divEnd.value)
       
     })
+    const divClear = document.getElementById('divClear')
+    divClear.addEventListener('click',() => {
+      // console.log(divBeggin.value)
+      // console.log(divEnd.value)
+      window.location.reload()
+      
+    })
 
-    async function getDatesToGraphValues(start, end){
+    async function getDatesToGraphValues(startDate, endDate){
+      const start = `${startDate}:00.00+00:00`
+      const end = `${endDate}:00.00+00:00`   
+      console.log(start, end)
       const res = await fetch(api_urlDevice,{
         method: 'POST',
         headers: {
@@ -90,8 +101,10 @@
         },
         body: JSON.stringify({
           "enterprise": deviceDataParser.enterprise,
-          "startDate": `${start}.00+00:00`,
-          "endDate": `${end}.00+00:00`
+          "name":deviceDataParser.name,
+          "id":deviceDataParser.id,
+          "startDate": start,
+          "endDate": end
         })
       })
       const data = await res.json()
@@ -99,69 +112,56 @@
         console.log("no se encontro periodo")
       }else{
         console.log("coming dates...")
+        console.log(data)
+        localStorage.setItem('dataDates', JSON.stringify(data))
+        // window.location.reload()
+        printChart()
       }
     }
 
-    const labels = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-    ];
-  
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'My First dataset',
+    
+    function printChart(){
+
+      const dataDates = localStorage.getItem('dataDates')
+      const dataDatesParser = JSON.parse(dataDates)
+      console.log(dataDatesParser)
+
+      const labels = dataDatesParser.body.tempDates
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'My First dataset',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [15.5,15.8, 16, 18.2, 17.5, 17, 16,15.5,15.8, 16, 18.2, 17.5, 17, 16,15.5,15.8, 16, 18.2]
+        data: dataDatesParser.body.temperatures
       },
       {
         label: 'My First dataset',
         backgroundColor: 'rgb(220, 199, 1)',
         borderColor: 'rgb(220, 199, 1)',
-        data: [15, 15, 15, 16, 16, 15, 15,15, 15, 15, 16, 16, 15, 15,15, 15, 15, 16,]
+        data: dataDatesParser.body.tempMin
       },
       {
         label: 'My First dataset',
         backgroundColor: 'rgb(2, 99, 132)',
         borderColor: 'rgb(2, 99, 132)',
-        data: [17, 17, 17, 20, 20, 18, 18,17, 17, 17, 20, 20, 18, 18,17, 17, 17, 20,],
+        data: dataDatesParser.body.tempMax
       }]
     };
-  
+    
     const config = {
       type: 'line',
       data: data,
       options: {}
     };
-    </script>
-  <script>
+    
+    
     const myChart = new Chart(
       document.getElementById('myChart'),
       config
       );
+    }
       </script>
 
 </body>
