@@ -33,11 +33,11 @@
         </canvas>
       </div>
       <div class="valuesContainer">
-        <div class="divValue" id="divBeggin">Start</div>
-        <div class="divValue" id="divEnd">End</div>
+        <input type="datetime-local" class="divValue" id="divBeggin" ></input>
+        <input type="datetime-local" class="divValue" id="divEnd" ></input>
       </div>
       <div class="exportContainer">
-        <input class="divValue" id="divExport" value="Export" type="button"></input>
+        <input class="divValue" id="divExport" value="Submit" type="button"></input>
       </div>
     </section>
   </main>
@@ -62,9 +62,46 @@
       </ul>    </div>
     
   </footer>
-  <script src="./src/dashboard.js"></script>
+  <!-- <script src="./src/dashboard.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+
+    api_urlDevice = 'https://tempec.vercel.app/device/dates'
+
+    const deviceData = localStorage.getItem('deviceData')
+    const deviceDataParser = JSON.parse(deviceData)
+    console.log(deviceDataParser)
+
+    const divBeggin = document.getElementById('divBeggin')
+    const divEnd = document.getElementById('divEnd')
+    const divExport = document.getElementById('divExport')
+    divExport.addEventListener('click',() => {
+      console.log(divBeggin.value)
+      console.log(divEnd.value)
+      getDatesToGraphValues(divBeggin.value, divEnd.value)
+      
+    })
+
+    async function getDatesToGraphValues(start, end){
+      const res = await fetch(api_urlDevice,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": deviceDataParser.enterprise,
+          "startDate": `${start}.00+00:00`,
+          "endDate": `${end}.00+00:00`
+        })
+      })
+      const data = await res.json()
+      if(res.status !== 201){
+        console.log("no se encontro periodo")
+      }else{
+        console.log("coming dates...")
+      }
+    }
+
     const labels = [
       'January',
       'February',

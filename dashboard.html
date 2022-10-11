@@ -22,7 +22,7 @@
       <ul>
         <li><a class="linkMenuOption" href="./device.html">Home</a></li>
         <li><a class="linkMenuOption" href="">Dashboard</a></li>
-        <li><a class="linkMenuOption" href="./history.html">History</a></li>
+        <li><div id="historyBtn" >History</div></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
         <li><div type="button"  id="signOut" class="linkMenuOption" href="./index.html">Sign out</div></li>
       </ul>
@@ -73,43 +73,37 @@ btnSignOut.addEventListener('click', ()=>{
   window.location.href = 'http://127.0.0.1:5501/index.html'
 })
     // url
+
+    
     const deviceData = localStorage.getItem('deviceData')
-  const deviceDataParser = JSON.parse(deviceData)
-console.log(deviceDataParser)
-console.log('deviceDataParser')
-const deviceValues = localStorage.getItem('deviceValues')
-const deviceValuesParser = JSON.parse(deviceValues)
-// console.log("deviceValues")
-console.log(deviceValuesParser)
-console.log("deviceValues")
-
-const deviceStatus = localStorage.getItem('deviceStatus')
-const deviceStatusParser = JSON.parse(deviceStatus)
-// console.log("deviceStatus")
-console.log(deviceStatusParser)
-console.log("deviceStatus")
-
-const divSetpoint = document.getElementById('divSetpoint')
-divSetpointTextNode = document.createTextNode(deviceStatusParser.body.setPoint)
-// divSetpoint.innerHTML= ""
-divSetpoint.appendChild(divSetpointTextNode)
-
-
-const divMin = document.getElementById('divMin')
-divMinTextNode = document.createTextNode(deviceStatusParser.body.tempMin)
-// divMin.innerHTML= ""
-divMin.appendChild(divMinTextNode)
-
-const divMax = document.getElementById('divMax')
-divMaxTextNode = document.createTextNode(deviceStatusParser.body.tempMax)
-// divMax.innerHTML= ""
-divMax.appendChild(divMaxTextNode)
-
-
-
-
-
-const labels = deviceValuesParser.body.tempDates
+    const deviceDataParser = JSON.parse(deviceData)
+    console.log(deviceDataParser)
+    
+    const deviceValues = localStorage.getItem('deviceValues')
+    const deviceValuesParser = JSON.parse(deviceValues)
+    console.log(deviceValuesParser)
+    
+    const divSetpoint = document.getElementById('divSetpoint')
+    divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
+    divSetpoint.appendChild(divSetpointTextNode)
+    
+    const divMin = document.getElementById('divMin')
+    divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
+    divMin.appendChild(divMinTextNode)
+    
+    const divMax = document.getElementById('divMax')
+    divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
+    divMax.appendChild(divMaxTextNode)
+    
+    
+    const inputHistory = document.getElementById('historyBtn')
+    inputHistory.addEventListener('click', () => {
+      window.location.href = 'http://127.0.0.1:5501/history.html'
+    })
+    
+    
+    
+    const labels = deviceValuesParser.body.tempDates
     
     const data = {
       labels: labels,
