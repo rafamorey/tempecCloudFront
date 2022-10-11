@@ -22,7 +22,7 @@
       <ul>
         <li><a class="linkMenuOption" href="./device.html">Home</a></li>
         <li><a class="linkMenuOption" href="">Dashboard</a></li>
-        <li><a class="linkMenuOption" href="./history.html">History</a></li>
+        <li><div id="historyBtn" >History</div></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
         <li><a class="linkMenuOption" href="./.html">Sign out</a></li>
       </ul>
@@ -64,31 +64,37 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // url
+
+    
     const deviceData = localStorage.getItem('deviceData')
-  const deviceDataParser = JSON.parse(deviceData)
-console.log(deviceDataParser)
-
-const deviceValues = localStorage.getItem('deviceValues')
-const deviceValuesParser = JSON.parse(deviceValues)
-console.log(deviceValuesParser)
-
-const divSetpoint = document.getElementById('divSetpoint')
-divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
-divSetpoint.appendChild(divSetpointTextNode)
-
-const divMin = document.getElementById('divMin')
-divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
-divMin.appendChild(divMinTextNode)
-
-const divMax = document.getElementById('divMax')
-divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
-divMax.appendChild(divMaxTextNode)
-
-
-
-
-
-const labels = deviceValuesParser.body.tempDates
+    const deviceDataParser = JSON.parse(deviceData)
+    console.log(deviceDataParser)
+    
+    const deviceValues = localStorage.getItem('deviceValues')
+    const deviceValuesParser = JSON.parse(deviceValues)
+    console.log(deviceValuesParser)
+    
+    const divSetpoint = document.getElementById('divSetpoint')
+    divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
+    divSetpoint.appendChild(divSetpointTextNode)
+    
+    const divMin = document.getElementById('divMin')
+    divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
+    divMin.appendChild(divMinTextNode)
+    
+    const divMax = document.getElementById('divMax')
+    divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
+    divMax.appendChild(divMaxTextNode)
+    
+    
+    const inputHistory = document.getElementById('historyBtn')
+    inputHistory.addEventListener('click', () => {
+      window.location.href = 'http://127.0.0.1:5501/history.html'
+    })
+    
+    
+    
+    const labels = deviceValuesParser.body.tempDates
     
     const data = {
       labels: labels,
