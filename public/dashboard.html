@@ -11,7 +11,7 @@
 <body>
   <header >
     <div class="headerLogo">
-      <img src="./icons/icono.jpg" alt="">
+      <img src="../icons/icono.jpg" alt="">
     </div>
     <div class="title">  
       <h1>Diinpec</h1>
@@ -70,7 +70,7 @@ btnSignOut.addEventListener('click', ()=>{
   localStorage.removeItem('deviceStatus')
   localStorage.removeItem('deviceValues')
   
-  window.location.href = 'http://127.0.0.1:5501/index.html'
+  window.location.href = 'http://127.0.0.1:5501/public/index.html'
 })
     // url
 
@@ -98,7 +98,7 @@ btnSignOut.addEventListener('click', ()=>{
     
     const inputHistory = document.getElementById('historyBtn')
     inputHistory.addEventListener('click', () => {
-      window.location.href = 'http://127.0.0.1:5501/history.html'
+      window.location.href = 'http://127.0.0.1:5501/public/history.html'
     })
     
     
