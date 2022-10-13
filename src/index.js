@@ -6,11 +6,11 @@ console.log('hola')
 // url del backend
 
 // getting info one user
-const api_urlId = 'https://tempec.vercel.app/enterprise/id'
+const api_urlId = 'https://tempecvoid.vercel.app/enterprise/id'
 // common url
-const api_url = 'https://tempec.vercel.app/'
+const api_url = 'https://tempecvoid.vercel.app/'
 // getting all enterprises
-const api_urlEnterprise = 'https://tempec.vercel.app/enterprise'
+const api_urlEnterprise = 'https://tempecvoid.vercel.app/enterprise'
 
 // nodes
 const signInButton = document.getElementById('signInButton')

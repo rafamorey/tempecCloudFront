@@ -1,12 +1,12 @@
 
 // Url backend
-api_urlDevice = 'https://tempec.vercel.app/device/'
+api_urlDevice = 'https://tempecvoid.vercel.app/device/'
 
-api_urlUser = 'https://tempec.vercel.app/user/'
+api_urlUser = 'https://tempecvoid.vercel.app/user/'
 
-api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
+api_urlEnterprise = 'https://tempecvoid.vercel.app/enterprise/'
 
-API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
+API_URLDEVICEvalues = 'https://tempecvoid.vercel.app/device/deviceValues'
 
 // Nodes
 const addDevice = document.getElementById('addDeviceButton')

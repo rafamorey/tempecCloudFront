@@ -6,7 +6,7 @@ console.log('account')
 // url al backend
 
 // getting all enterprises
-const api_UrlEnterprise = 'https://tempec.vercel.app/enterprise'
+const api_UrlEnterprise = 'https://tempecvooid.vercel.app/enterprise'
 
 // nodes
 const signInButton = document.getElementById('accountSendButton')
