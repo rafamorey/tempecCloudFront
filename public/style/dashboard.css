@@ -1,91 +1,71 @@
 
-header{
+main{
+  display: flex;
+}
+
+.menu{
+  /* width: 15%; */
+  /* height: 90vh; */
+  background-color:red;
+  border-radius:0 5px 5px 0;
+}
+
+.menu ul{
+  /* padding: 10px 0 0 10px; */
+  text-decoration: none;
   display:flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.headerLogo{
+.menu ul li{
+  margin: 20px 0 0 10px;
+}
+
+.linkMenuOption{
+  text-decoration: none;
+  color: white;
+}
+
+.sectionChart{
+  /* background-color:aquamarine; */
   display: flex;
+  width:100vw;
+  flex-direction:column;
   justify-content: center;
-  align-items:center
+  align-items: center;
+  /* height: 50vh; */
 }
 
-.headerLogo img{
-  width: 50px;
-  height: 50px;
-}
-
-
-.title{
+.chartContainer{ 
+  background-color: greenyellow;
   width:80%;
-  display: flex;
-  justify-content: center
-}
-
-.headerIconsMenu{
-  /* display:flex;
-  justify-content: space-between; */
-  width: 15%;
 
 }
 
-.headerMenu{
-  display: flex;
-  justify-content: space-around;
+
+.valuesContainer{
+  display:flex;
+  justify-content:space-between;
+  width: 90%;
+  /* align-items: flex-end; */
+  margin:20px 10px 0 20px;
 }
 
-.headerIcon{
-  width: 30px;
-  height: 30px;
-  
+
+
+.exportContainer{
+  display:flex;
+  justify-content:center;
+  width: 100%;
+  /* align-items: flex-end; */
+  margin:20px 10px 0 20px; 
 }
 
-
-.headerMenu li{
-  list-style: none;
-}
-
-/* ----------------------------------------------- */
-section{
-  
-
-}
-
-.groupContainer{
-  background-color: red;
-  /* width: 500px; */
-  /* height: 500px; */
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas: 
-    "graf graf graf maxMin"
-    "graf graf graf maxMin"
-    "graf graf graf maxMin"
-    "value value value ."
-    ;
-}
-
-.grafContainer{
-  background-color: blue;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 4;
-}
-
-.tempContainer{
-  background-color: violet;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-
-.maxContainer{
-  background-color: green;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 1;
-  grid-row-end: 4k;
+.divValue{
+  border: 1px solid black;
+  border-radius:5px;
+  padding:10px;
+  /* width:20%; */
+  display:flex;
+  justify-content:center; 
 }
