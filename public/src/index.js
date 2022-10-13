@@ -85,7 +85,7 @@ async function login() {
                     errorUserInfo.appendChild(pErrorText)
                 }else{
                     localStorage.setItem('1',JSON.stringify(data))
-                    window.location.href = 'https://uctempec.vercer.app/device.html'
+                    window.location.href = 'https://uctempec.vercel.app/device.html'
                     return data
                     
                 }
