@@ -4,8 +4,8 @@ main{
 }
 
 .menu{
-  width: 15%;
-  height: 90vh;
+  /* width: 15%; */
+  /* height: 90vh; */
   background-color:red;
   border-radius:0 5px 5px 0;
 }

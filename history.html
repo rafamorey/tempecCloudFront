@@ -9,7 +9,7 @@
   <title>Document</title>
 </head>
 <body>
-  <header >
+  <header class="headerContainer" >
     <div class="headerLogo">
       <img src="./icons/icono.jpg" alt="">
     </div>
@@ -18,13 +18,14 @@
     </div>
   </header>
   <main>
+    
     <section class="menu">
       <ul>
         <li><a class="linkMenuOption" href="./device.html">Home</a></li>
-        <li><a class="linkMenuOption" href="">Dashboard</a></li>
-        <li><a class="linkMenuOption" href="./history.html">History</a></li>
+        <li><a class="linkMenuOption" href="./dashboard.html">Dashboard</a></li>
+        <li><div id="historyBtn" >History</div></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
-        <li><a class="linkMenuOption" href="./.html">Sign out</a></li>
+        <li><div type="button"  id="signOut" class="linkMenuOption" href="./index.html">Sign out</div></li>
       </ul>
     </section>
     <section class="sectionChart">
@@ -42,8 +43,8 @@
       </div>
     </section>
   </main>
-  <footer>
-    <div class="cr">
+    <footer>
+      <div class="cr">
       Copyright 1995-2022 DIINPEC. Todods los derechos reservados
     </div>
     <div class="legal">
