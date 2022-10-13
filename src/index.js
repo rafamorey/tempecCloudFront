@@ -6,11 +6,11 @@ console.log('hola')
 // url del backend
 
 // getting info one user
-const api_urlId = 'https://tempecvoid.vercel.app/enterprise/id'
+const api_urlId = 'https://tempec.vercel.app/enterprise/id'
 // common url
-const api_url = 'https://tempecvoid.vercel.app/'
+const api_url = 'https://tempec.vercel.app/'
 // getting all enterprises
-const api_urlEnterprise = 'https://tempecvoid.vercel.app/enterprise'
+const api_urlEnterprise = 'https://tempec.vercel.app/enterprise'
 
 // nodes
 const signInButton = document.getElementById('signInButton')
@@ -85,7 +85,7 @@ async function login() {
                     errorUserInfo.appendChild(pErrorText)
                 }else{
                     localStorage.setItem('1',JSON.stringify(data))
-                    window.location.href = 'http://127.0.0.1:5501/device.html'
+                    window.location.href = 'http://127.0.0.1:5501/public/device.html'
                     return data
                     
                 }
