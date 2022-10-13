@@ -1,0 +1,18 @@
+html{
+    background-color: gray;
+    
+}
+
+body{
+    position:relative;
+}
+
+.fondo{
+     position:absolute;
+     top: 50%;
+     left:40%;
+}
+
+.fondo form{
+
+}
