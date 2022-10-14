@@ -398,7 +398,7 @@ async function getValuesDevice(device){
   } else{
     console.log(data)
     localStorage.setItem('deviceValues', JSON.stringify(data))
-    window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+    window.location.href = 'http://127.0.0.1:5501/public/dashboard.html'
 
   }
 }

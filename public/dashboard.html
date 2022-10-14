@@ -17,7 +17,6 @@
       <h1>Diinpec</h1>
     </div>
   </header>
-  <main>
 
     <section class="menu">
       <ul>
@@ -33,13 +32,13 @@
         <canvas id="myChart">
         </canvas>
       </div>
-      <div class="valuesContainer">
-        <div class="divValue" id="divSetpoint"></div>
-        <div class="divValue" id="divMin"></div>
-        <div class="divValue" id="divMax"></div>
-      </div>
     </section>
-  </main>
+    <div class="valuesContainer">
+      <div class="divValue" id="divSetpoint"></div>
+      <div class="divValue" id="divMin"></div>
+      <div class="divValue" id="divMax"></div>
+    </div>
+  
     
   <footer>
     <div class="cr">
@@ -132,7 +131,9 @@ btnSignOut.addEventListener('click', ()=>{
     const config = {
       type: 'line',
       data: data,
-      options: {}
+      options: {
+        maintainAspectRatio: false,
+      }
     };
 
     </script>

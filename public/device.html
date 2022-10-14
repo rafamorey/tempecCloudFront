@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style/style.css">
+  <!-- <link rel="stylesheet" href="./style/style.css"> -->
+  <link rel="stylesheet" href="./style/device.css">
   <title>Document</title>
 </head>
 <body>
@@ -22,15 +23,23 @@
       </ul>
     </div>  -->
   </header>
+  <main class="principalContainer">
+    <section class="menu">
+      <ul>
+      <li><a class="linkMenuOption" href="./device.html">Home</a></li>
+      <li><a class="linkMenuOption" href="./dashboard.html">Dashboard</a></li>
+      <li><a class="linkMenuOption" id="historyBtn" href="./history.html">History</a></li>
+      <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
+      <li><a id="signOut" class="linkMenuOption" href="./index.html">Sign out</a></li>
+    </ul>
+  </section>  
   
-
-  <body>
-    <div id="divFormNewDevice"></div>
-    <section class="sectionAddButton">
-        <input type="button" value="+" id="addDeviceButton">
+  <!-- <body> -->
+    <div class="formContainerNewDevice" id="divFormNewDevice"></div>
+    <section class="formCreateNewDevice">
+      <input class="sectionAddButton" type="button" value="+" id="addDeviceButton">
     </section>
     <div class="devicesContainer" id="devsCont">
-      
       <!-- <div class="deviceContainer" >
         <div class="deviceName">nameDevice</div>
         <div class="deviceContainer-description">
@@ -58,17 +67,15 @@
             <input type="button" value="Status" id="statusDeviceButton">
           </div>
         </div> 
-      </div> -->
-      
-      
-      
+      </div> -->   
     </div>
-  </body>
-  
-  
-  <footer>
-    <div class="cr">
-      Copyright 1995-2022 DIINPEC. Todods los derechos reservados
+    
+    
+    
+  </main>
+    <footer>
+      <div class="cr">
+        Copyright 1995-2022 DIINPEC. Todods los derechos reservados
     </div>
     <div class="legal">
       <ul class="legalTerms">
