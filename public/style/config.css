@@ -1,14 +1,14 @@
 body{
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-gap: 10px;
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
     "header header header header header header"
-    "menu data data data data data"
-    "menu data data data data data"
-    "menu data data data data data"
+    "menu data data data data data data data"
+    "menu data data data data data data data"
+    "menu data data data data data data data"
     "footer footer footer footer"
 }
 
