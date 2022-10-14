@@ -88,15 +88,25 @@ header{
   margin: 20px 0 0 10px;
 }
 
+.menu ul li a{
+  text-decoration:none;
+  color: white;
+}
+
 /* form user password */
 .principalContainer{
   /* height: 80vh; */
   display: flex;
+  /* width:100vw; */
   /* justify-content: center; */
   /* align-items: center; */
   /* margin-bottom: 40px; */
   padding:0; 
 } 
+
+.devicesAndFormContainer{
+  width:100%;
+}
 
 .sectionAddButton{
   height: 100px;
@@ -136,13 +146,14 @@ header{
 
 /* styles for dashboard.html */
 .devicesContainer{
+  /* width:100%; */
   background-color: red;
   padding:10px;
   margin-bottom: 40px;
   margin-left:20px;
   /* margin-bottom: 20px; */
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 }
 
