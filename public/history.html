@@ -23,9 +23,9 @@
       <ul>
         <li><a class="linkMenuOption" href="./device.html">Home</a></li>
         <li><a class="linkMenuOption" href="./dashboard.html">Dashboard</a></li>
-        <li><div id="historyBtn" >History</div></li>
+        <li><a id="historyBtn" href="./history.html">History</a></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
-        <li><div type="button"  id="signOut" class="linkMenuOption" href="./index.html">Sign out</div></li>
+        <li><a id="signOut" class="linkMenuOption" href="./index.html">Sign out</a></li>
       </ul>
     </section>
     <section class="sectionChart">
@@ -76,7 +76,7 @@ btnSignOut.addEventListener('click', ()=>{
   localStorage.removeItem('deviceStatus')
   localStorage.removeItem('deviceValues')
   
-  window.location.href = 'https://uctempec.vercel.app/index.html'
+  // window.location.href = 'https://uctempec.vercel.app/index.html'
 })
 
     const deviceData = localStorage.getItem('deviceData')
