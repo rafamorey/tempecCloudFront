@@ -69,6 +69,15 @@
   <script>
 
     api_urlDevice = 'https://tempec.vercel.app/device/dates'
+    
+    const btnSignOut = document.getElementById('signOut')
+btnSignOut.addEventListener('click', ()=>{
+  localStorage.removeItem('deviceData')
+  localStorage.removeItem('deviceStatus')
+  localStorage.removeItem('deviceValues')
+  
+  window.location.href = 'https://uctempec.vercel.app/index.html'
+})
 
     const deviceData = localStorage.getItem('deviceData')
     const deviceDataParser = JSON.parse(deviceData)
