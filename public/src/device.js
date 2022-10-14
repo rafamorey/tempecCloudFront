@@ -374,7 +374,7 @@ async function getStatusDevice(device){
     localStorage.setItem('deviceData', JSON.stringify(device))
     localStorage.setItem('deviceStatus', JSON.stringify(data))
     getValuesDevice(device)
-      // window.location.href = 'https://uctempec.vercel.app/dashboard.html'
+      // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
 }
 
@@ -398,7 +398,7 @@ async function getValuesDevice(device){
   } else{
     console.log(data)
     localStorage.setItem('deviceValues', JSON.stringify(data))
-    window.location.href = 'https://uctempec.vercel.app/dashboard.html'
+    window.location.href = 'http://127.0.0.1:5501/dashboard.html'
 
   }
 }
