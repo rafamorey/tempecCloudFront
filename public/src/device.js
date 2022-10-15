@@ -31,6 +31,15 @@ var counterDevicesShown = 0
 
 // Listener Buttons
 
+const btnSignOut = document.getElementById('signOut')
+btnSignOut.addEventListener('click', ()=>{
+  localStorage.removeItem('deviceData')
+  localStorage.removeItem('deviceStatus')
+  localStorage.removeItem('deviceValues')
+  localStorage.removeItem('1')
+  window.location.href = 'http://127.0.0.1:5501/public/index.html'
+})
+
 addDevice.addEventListener('click', () =>{
   deployFormForID()
 })
@@ -253,11 +262,13 @@ divDeviceContainer.appendChild(divDeviceName)
   const inputDelete = document.createElement('input')
   inputDelete.setAttribute("id", data.id)
   inputDelete.setAttribute("value", "Delete")
-  inputDelete.setAttribute("type", "Button") 
+  inputDelete.setAttribute("type", "Button")
+  inputDelete.classList.add('deviceInputDelete') 
   const inputStatus = document.createElement('input')
   inputStatus.setAttribute("id", "statusDeviceButton")
   inputStatus.setAttribute("value", "Status")
-  inputStatus.setAttribute("type", "Button") 
+  inputStatus.setAttribute("type", "Button")
+  inputStatus.classList.add('deviceInputStatus') 
   divDeviceButtons.appendChild(inputDelete)
   divDeviceButtons.appendChild(inputStatus)
   // element to container description

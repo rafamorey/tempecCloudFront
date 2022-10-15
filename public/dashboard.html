@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style/style.css">
-  <link rel="stylesheet" href="./style/dashboard.css">
   <title>Document</title>
 </head>
 <body>
@@ -24,7 +23,7 @@
         <li><a class="linkMenuOption" href="./dashboard.html">Dashboard</a></li>
         <li><a class="linkMenuOption" id="historyBtn" href="./history.html">History</a></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
-        <li><a id="signOut" class="linkMenuOption" href="./index.html">Sign out</a></li>
+        <li><div id="signOut" class="linkMenuOption">Sign out</div></li>
       </ul>
     </section>
     <section class="sectionChart">
@@ -70,8 +69,8 @@ btnSignOut.addEventListener('click', ()=>{
   localStorage.removeItem('deviceData')
   localStorage.removeItem('deviceStatus')
   localStorage.removeItem('deviceValues')
-  
-  // window.location.href = 'https://uctempec.vercel.app/index.html'
+  localStorage.removeItem('1')
+  window.location.href = 'http://127.0.0.1:5501/public/index.html'
 })
     // url
 
@@ -108,22 +107,23 @@ btnSignOut.addEventListener('click', ()=>{
     
     const data = {
       labels: labels,
-      datasets: [{
-        label: 'temperature',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: deviceValuesParser.body.temperatures
-      },
+      datasets: [
       {
         label: 'Min Limit',
-        backgroundColor: 'rgb(220, 199, 1)',
-        borderColor: 'rgb(220, 199, 1)',
+        backgroundColor: '#f44336',
+        borderColor: '#f44336',
         data: deviceValuesParser.body.tempMin
       },
       {
+        label: 'temperature',
+        backgroundColor: '#4CAF50',
+        borderColor: '#4CAF50',
+        data: deviceValuesParser.body.temperatures
+      },
+      {
         label: 'Max Limit',
-        backgroundColor: 'rgb(2, 99, 132)',
-        borderColor: 'rgb(2, 99, 132)',
+        backgroundColor: '#008CBA',
+        borderColor: '#008CBA',
         data: deviceValuesParser.body.tempMax
       }]
     };

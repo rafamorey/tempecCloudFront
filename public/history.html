@@ -24,7 +24,7 @@
         <li><a class="linkMenuOption" href="./dashboard.html">Dashboard</a></li>
         <li><a class="linkMenuOption"id="historyBtn" href="./history.html">History</a></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
-        <li><a id="signOut" class="linkMenuOption" href="./index.html">Sign out</a></li>
+        <li><div id="signOut" class="linkMenuOption">Sign out</div></li>
       </ul>
     </section>
     <section class="sectionChart">
@@ -70,14 +70,14 @@
   <script>
 
     api_urlDevice = 'https://tempec.vercel.app/device/dates'
-    
+
     const btnSignOut = document.getElementById('signOut')
 btnSignOut.addEventListener('click', ()=>{
   localStorage.removeItem('deviceData')
   localStorage.removeItem('deviceStatus')
   localStorage.removeItem('deviceValues')
-  
-  // window.location.href = 'https://uctempec.vercel.app/index.html'
+  localStorage.removeItem('1')
+  window.location.href = 'http://127.0.0.1:5501/public/index.html'
 })
 
     const deviceData = localStorage.getItem('deviceData')

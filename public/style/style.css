@@ -160,11 +160,11 @@ header{
   top:-10px;
   left: 25px;
   z-index:3;
-  background-color:lightgreen;
+  /* background-color:lightgreen; */
 }
 
 .ideal{
-  background-color: blue;
+  /* background-color: blue; */
   grid-column-start: 5;
   grid-column-end: 11;
   grid-row-start: 2;
@@ -175,7 +175,7 @@ header{
 }
 
 .temp{
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
   grid-column-start:2;
   grid-column-end: 11;
   grid-row-start: 3;
@@ -186,7 +186,7 @@ header{
 }
 
 .min{
-  background-color: lightcyan;
+  /* background-color: lightcyan; */
   grid-column-start:2;
   grid-column-end: 11;
   grid-row-start: 5;
@@ -197,7 +197,7 @@ header{
 }
 
 .max{
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   grid-column-start:2;
   grid-column-end: 11;
   grid-row-start: 7;
@@ -208,7 +208,7 @@ header{
 }
 
 .deviceButtons{
-  background-color: lightsalmon;
+  /* background-color: lightsalmon; */
   grid-column-start:2;
   grid-column-end: 11;
   grid-row-start: 10;
@@ -280,7 +280,7 @@ form a{
   .formInputInside:not(:placeholder-shown) + .formLabel{
   transform: translateY(-12px) scale(.7);
   transform-origin: left top;
-  color: #3866f2;
+  color: #088cd4;
 }
 
 .formInputInside:focus,
@@ -309,7 +309,7 @@ form a{
 }
 
 .formSubmit{
-  background-color:#3866f2;
+  background-color:#088cd4;
   color:#fff;
   font-weight: 300;
   font-size: 1rem;
@@ -320,7 +320,7 @@ form a{
 }
 
 .formSubmit:hover{
-  background-color:#0e48f7;
+  background-color:#067faf;
 }
 
 .formLine{
@@ -329,7 +329,7 @@ form a{
   left:0;
   width: 100%;
   height: 1px;
-  background-color: #3866f2;
+  background-color: #088cd4;
   transform:scale(0);
   transform: left bottom;
   transition: transform .4s;
@@ -411,14 +411,12 @@ header {
 
 
 .menu{
-  /* width: 15%; */
+  /* width: 20%; */
   /* height: 90vh; */
   grid-column: 1/2;
   grid-row:2/8;
-  background-color:red;
-  border-radius:0 5px 5px 0;
-  background-color:red;
-  border-radius:0 5px 5px 0;
+  background-color:#088cd4;
+  border-radius:0 8px 8px 0;
 }
 
 .menu ul{
@@ -430,6 +428,7 @@ header {
 
 .menu ul li{
   margin: 20px 0 0 10px;
+  /* width:100%; */
 }
 
 .dataconfigGraph{
@@ -478,7 +477,7 @@ header {
 }
 
 .chartContainer{ 
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
   width:98%;
   /* height: 30%; */
   grid-column: 1/2;
