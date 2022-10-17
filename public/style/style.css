@@ -412,7 +412,7 @@ header {
 
 .menu{
   /* width: 20%; */
-  /* height: 90vh; */
+  height: 85vh;
   grid-column: 1/2;
   grid-row:2/8;
   background-color:#088cd4;
@@ -424,6 +424,17 @@ header {
   text-decoration: none;
   display:flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.menu ul li:nth-child(5){
+  display: flex;
+  /* justify-content: flex-end; */
+  align-items:flex-end;
+  height: 100%;
+  padding-bottom: 20%;
+  
+  /* background-color: red; */
 }
 
 .menu ul li{
@@ -444,6 +455,12 @@ header {
 .configContainer{
   grid-column:2/9;
   grid-row:2/5;
+  display:flex;
+  flex-direction: column;
+}
+
+.inputConfig{
+  width: 20%;
 }
 
 /* main{
@@ -504,15 +521,18 @@ header {
   grid-row: 6/7;
   display:flex;
   justify-content:center;
+
   /* width: 100%; */
   /* align-items: flex-end; */
-  margin:20px 10px 0 20px; 
+  margin:20px 10px 10px 20px; 
 }
 
 .divValue{
-  border: 1px solid black;
-  border-radius:5px;
+  border: none;
+  color:#fff;
+  border-radius:8px;
   padding:10px;
+  background-color: #32a852;
   /* width:20%; */
   display:flex;
   justify-content:center; 

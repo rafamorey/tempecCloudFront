@@ -36,12 +36,12 @@
     <section class="dataconfigGraph">
       <div class="valuesContainer">
         <input type="datetime-local" class="divValue" id="divBeggin" ></input>
-        <input type="datetime-local" class="divValue" id="divEnd" ></input>
-      </div>
-      <div class="exportContainer">
         <input class="divValue" id="divExport" value="Submit" type="button"></input>
         <input class="divValue" id="divClear" value="Clear" type="button"></input>
+        <input type="datetime-local" class="divValue" id="divEnd" ></input>
       </div>
+      <!-- <div class="exportContainer">
+      </div> -->
     </section>
     
     <footer>
@@ -104,7 +104,7 @@ btnSignOut.addEventListener('click', ()=>{
     async function getDatesToGraphValues(startDate, endDate){
       const start = `${startDate}:00.00+00:00`
       const end = `${endDate}:00.00+00:00`   
-      console.log(start, end)
+      // console.log(start, end)
       const res = await fetch(api_urlDevice,{
         method: 'POST',
         headers: {
@@ -123,7 +123,7 @@ btnSignOut.addEventListener('click', ()=>{
         console.log("no se encontro periodo")
       }else{
         console.log("coming dates...")
-        console.log(data)
+        // console.log(data)
         localStorage.setItem('dataDates', JSON.stringify(data))
         // window.location.reload()
         printChart()
@@ -142,21 +142,21 @@ btnSignOut.addEventListener('click', ()=>{
       const data = {
         labels: labels,
         datasets: [{
-          label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: dataDatesParser.body.temperatures
-      },
-      {
-        label: 'My First dataset',
-        backgroundColor: 'rgb(220, 199, 1)',
-        borderColor: 'rgb(220, 199, 1)',
+          label: 'Min limit',
+        backgroundColor: '#f44336',
+        borderColor: '#f44336',
         data: dataDatesParser.body.tempMin
       },
       {
-        label: 'My First dataset',
-        backgroundColor: 'rgb(2, 99, 132)',
-        borderColor: 'rgb(2, 99, 132)',
+        label: 'Temperature',
+        backgroundColor: '#4CAF50',
+        borderColor: '#4CAF50',
+        data: dataDatesParser.body.temperatures
+      },
+      {
+        label: 'Max Limit',
+        backgroundColor: '#008CBA',
+        borderColor: '#008CBA',
         data: dataDatesParser.body.tempMax
       }]
     };

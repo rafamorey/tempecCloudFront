@@ -67,8 +67,8 @@ header{
 
 
 .menu{
-  width: 8%;
-  /* height: 90vh; */
+  width: 9%;
+  height: 90vh;
   grid-column: 1/2;
   grid-row:2/8;
   background-color:#088cd4;
@@ -80,6 +80,17 @@ header{
   text-decoration: none;
   display:flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.menu ul li:nth-child(3){
+  display: flex;
+  /* justify-content: flex-end; */
+  align-items:flex-end;
+  height: 100%;
+  padding-bottom: 20%;
+  
+  /* background-color: red; */
 }
 
 .menu ul li{
@@ -91,10 +102,15 @@ header{
   color: white;
 }
 
+.menu ul li div{
+  cursor: pointer;
+}
+
 .linkMenuOption{
   text-decoration: none;
   color: white;
 }
+
 
 /* form user password */
 .principalContainer{
@@ -173,7 +189,8 @@ header{
 .deviceContainer-description{
   /* width */
   border: 1px solid black;
-  border-radius:12px;
+  border-radius:8px;
+  background-color: #F0FFFF;
   display:grid;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -191,6 +208,10 @@ header{
   left: 25px;
   z-index:3;
   background-color:#32a852;
+  color:white;
+  border-radius: 8px;
+  width: 50%;
+  justify-content:center;
 }
 
 .ideal{
@@ -252,7 +273,8 @@ header{
   background-color:#32a852;
   border: none;
   border-radius:8px;
-  padding: 10px
+  padding: 10px;
+  color: white;
 }
 
 .deviceInputDelete:hover{
@@ -263,7 +285,8 @@ header{
   background-color:#32a852;
   border: none;
   border-radius:8px;
-  padding: 10px
+  padding: 10px;
+  color: white;
 }
 
 .deviceInputStatus:hover{

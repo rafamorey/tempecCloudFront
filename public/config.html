@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style/style.css">
   <!-- <link rel="stylesheet" href="dashboard.css"> -->
-  <link rel="stylesheet" href="./style/config.css">
+  <!-- <link rel="stylesheet" href="./style/config.css"> -->
   <title>Document</title>
 </head>
 <body>
@@ -27,14 +27,20 @@
         <li><a id="signOut" class="linkMenuOption" href="./index.html">Sign out</a></li>
       </ul>
     </section >
-    <section class="configContainer">
-        <input type="text" value="" class="inputConfig" placeholder="Setpoint">
-        <input type="text" value="" class="inputConfig" placeholder="Max limit">
-        <input type="text" value="" class="inputConfig" placeholder="Min limit">
-        <input type="text" value="" class="inputConfig" placeholder="Name Device">
-        <input type="text" value="" class="inputConfig" placeholder="Hist max">
-        <input type="text" value="" class="inputConfig" placeholder="Hist min">
-    </section>
+    <div class="configContainer">
+      <span>Setpoint</span>
+        <input type="text" value="" class="inputConfig" id="setPoint">
+        <span>Max Limit</span>
+        <input type="text" value="" class="inputConfig" id="maxLimit">
+        <span>Min Limit</span>
+        <input type="text" value="" class="inputConfig" id="minLimit" >
+        <span>Name Device</span>
+        <input type="text" value="" class="inputConfig" id="name">
+        <span>Hist Max</span>
+        <input type="text" value="" class="inputConfig" id="histMax">
+        <span>Hist Min</span>
+        <input type="text" value="" class="inputConfig" id="histMin">
+    </div>
   <footer>
     <div class="cr">
       Copyright 1995-2022 DIINPEC. Todods los derechos reservados
@@ -56,4 +62,29 @@
       </ul>    </div>
     
   </footer>
+  <script>
+    const data = localStorage.getItem('deviceData');
+    const dataParser = JSON.parse(data)
+    console.log(dataParser)
+    const setPoint = document.getElementById('setPoint')
+    const maxLimit = document.getElementById('maxLimit')
+    const minLimit = document.getElementById('minLimit')
+    const name = document.getElementById('name')
+    const histMax = document.getElementById('histMax')
+    const histMin = document.getElementById('histMin')
+
+
+    function putValues(){
+      setPoint.setAttribute("value", dataParser.setPoint)
+      maxLimit.setAttribute("value", dataParser.tempMax)
+      minLimit.setAttribute("value", dataParser.tempMin)
+      name.setAttribute("value", dataParser.name)
+      histMax.setAttribute("value", dataParser.histH)
+      histMin.setAttribute("value", dataParser.hisL)
+
+    }
+
+    putValues()
+  </script>
 </body>
+</html>
