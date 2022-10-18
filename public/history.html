@@ -145,7 +145,7 @@ btnSignOut.addEventListener('click', ()=>{
         console.log("coming dates...")
         console.log(data)
         data.body.forEach(device => {
-           temperatures.push(tempInt)
+           temperatures.push(data.body.tempInt)
         });
         console.log(temperatures)
         // console.log(data)
