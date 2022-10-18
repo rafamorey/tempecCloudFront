@@ -126,7 +126,7 @@ async function bringAllDevices(){
   }else{
     sectionDevicesContainer.innerHTML=""
     const devicesUser = userDataParser.body.devices
-    console.log(`userDataParser${userDataParser}`)
+    console.log(`devicesUser${devicesUser}`)
     devicesUser.forEach(device => {
       createDeviceContainer(device)
       console.log(`device ${device}`)
