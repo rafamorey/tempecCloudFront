@@ -37,6 +37,7 @@ btnSignOut.addEventListener('click', ()=>{
   localStorage.removeItem('deviceStatus')
   localStorage.removeItem('deviceValues')
   localStorage.removeItem('1')
+  localStorage.removeItem('dataDates')
   // window.location.href = 'http://127.0.0.1:5501/public/index.html'
   window.location.href = 'https://uctempec.vercel.app/index.html'
 
@@ -125,6 +126,7 @@ async function bringAllDevices(){
   }else{
     sectionDevicesContainer.innerHTML=""
     const devicesUser = userDataParser.body.devices
+    console.log(userDataParser)
     devicesUser.forEach(device => {
       createDeviceContainer(device)
       console.log(`device ${device}`)
@@ -176,8 +178,6 @@ async function createDeviceById(device){
     console.log('No se encontro device')
   } else{
     // console.log('Device ok')
-    createDeviceContainer(data)
-    console.log(`data${data}`)
     userDataParser.body.devices.push(data)
     localStorage.setItem('1', JSON.stringify(userDataParser))
     console.log(localStorage)
