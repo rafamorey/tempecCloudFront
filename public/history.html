@@ -110,7 +110,7 @@ btnSignOut.addEventListener('click', ()=>{
       
     })
 
-      console.log(deviceEnterpriseParser.enterprise)
+      console.log(deviceEnterpriseParser.body.enterprise)
       console.log(deviceDataParser.name)
       console.log(deviceDataParser.id)
 
@@ -125,7 +125,7 @@ btnSignOut.addEventListener('click', ()=>{
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "enterprise": deviceEnterpriseParser.enterprise,
+          "enterprise": deviceEnterpriseParser.body.enterprise,
           "name":deviceDataParser.name,
           "id":deviceDataParser.id,
           "startDate": start,
