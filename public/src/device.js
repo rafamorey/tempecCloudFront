@@ -126,7 +126,7 @@ async function bringAllDevices(){
   }else{
     sectionDevicesContainer.innerHTML=""
     const devicesUser = userDataParser.body.devices
-    console.log(userDataParser)
+    console.log(`userDataParser${userDataParser}`)
     devicesUser.forEach(device => {
       createDeviceContainer(device)
       console.log(`device ${device}`)
@@ -178,6 +178,7 @@ async function createDeviceById(device){
     console.log('No se encontro device')
   } else{
     // console.log('Device ok')
+
     userDataParser.body.devices.push(data)
     console.log(userDataParser)
     localStorage.setItem('1', JSON.stringify(userDataParser))
