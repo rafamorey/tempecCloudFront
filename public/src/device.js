@@ -145,7 +145,18 @@ async function createDeviceById(device){
       "enterprise": userDataParser.body.enterprise,
       "devices": [{
         "id": device.id,
-        "name": device.name
+        "name": device.name,
+        "grados": "C",
+        "alarmaH": 1.2,
+        "alarmaL": 1.2,
+        "online": true,
+        "last_setpoint": 16,
+        "last_hisH": 1,
+        "last_histL": 1,
+        "last_alarmaH": 1.2,
+        "last_alarmaL": 1.2,
+        "last_name": "xrc1",
+        "last_grados": "C"
       }]
     })
   })
