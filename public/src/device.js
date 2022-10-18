@@ -202,6 +202,7 @@ async function createDeviceContainer(data){
   counterDevicesShown++
   console.log(data)
   console.log("creating device")
+  console.log(data)
   // const sectionDevicesContainer = document.getElementById('devsCont')
   sectionDevicesContainer.innerHtml= "";
   // deviceContainer
