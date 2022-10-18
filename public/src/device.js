@@ -21,8 +21,8 @@ const sectionDevicesContainer = document.getElementById('devsCont')
 // localStorage
 const userData = localStorage.getItem('1')
 const userDataParser = JSON.parse(userData)
-console.log(userDataParser)
-console.log('ESTE es data parser')
+// console.log(userDataParser)
+// console.log('ESTE es data parser')
 
 // Count id devices in screen
 var counterDevicesShown = 0 
@@ -179,6 +179,7 @@ async function createDeviceById(device){
   } else{
     // console.log('Device ok')
     userDataParser.body.devices.push(data)
+    console.log(userDataParser)
     localStorage.setItem('1', JSON.stringify(userDataParser))
     console.log(localStorage)
     bringAllDevices()
