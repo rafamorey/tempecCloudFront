@@ -129,7 +129,8 @@ async function bringAllDevices(){
     console.log(`devicesUser${devicesUser}`)
     devicesUser.forEach(device => {
       createDeviceContainer(device)
-      console.log(`device ${device}`)
+      console.log('device')
+      console.log(device)
     })
   }
 
