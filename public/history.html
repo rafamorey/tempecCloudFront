@@ -89,9 +89,9 @@ btnSignOut.addEventListener('click', ()=>{
     console.log('localStorage DataParser')
     console.log(deviceDataParser)
 
-    const deviceValues = localStorage.getItem('deviceValues')
-    const deviceValuesParser = JSON.parse(deviceValues)
-    // console.log(deviceValuesParser)
+    const deviceEnterprise = localStorage.getItem('1')
+    const deviceEnterpriseParser = JSON.parse(deviceEnterprise)
+    console.log(deviceEnterpriseParser)
 
     const divBeggin = document.getElementById('divBeggin')
     const divEnd = document.getElementById('divEnd')
@@ -121,7 +121,7 @@ btnSignOut.addEventListener('click', ()=>{
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "enterprise": deviceDataParser.enterprise,
+          "enterprise": deviceEnterpriseParser.enterprise,
           "name":deviceDataParser.name,
           "id":deviceDataParser.id,
           "startDate": start,
