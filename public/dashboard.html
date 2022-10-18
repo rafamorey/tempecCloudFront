@@ -87,13 +87,14 @@ btnSignOut.addEventListener('click', ()=>{
     const deviceValuesParser = JSON.parse(deviceValues)
     console.log(deviceValuesParser)
     
+    const divMin = document.getElementById('divMin')
+    divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
+    divMin.appendChild(divMinTextNode)
+    
     const divSetpoint = document.getElementById('divSetpoint')
     divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
     divSetpoint.appendChild(divSetpointTextNode)
     
-    const divMin = document.getElementById('divMin')
-    divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
-    divMin.appendChild(divMinTextNode)
     
     const divMax = document.getElementById('divMax')
     divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
