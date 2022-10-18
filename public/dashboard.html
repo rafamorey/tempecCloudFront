@@ -64,8 +64,61 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
 
-const btnSignOut = document.getElementById('signOut')
-btnSignOut.addEventListener('click', ()=>{
+    api_urlDevice = 'https://tempec.vercel.app/device/'
+
+    async function getStatusDevice(device){
+  console.log("device values coming...")
+  console.log(device)
+  const res = await fetch(`${api_urlDevice}status`,{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "enterprise": device.enterprise,
+      "name": device.name,
+      "id": device.id
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 200){
+    console.log('No se encontro device')
+  } else{
+    console.log(data)
+    localStorage.setItem('deviceData', JSON.stringify(device))
+    localStorage.setItem('deviceStatus', JSON.stringify(data))
+    getValuesDevice(device)
+      // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+  }
+}
+
+async function getValuesDevice(device){
+  console.log("device values coming...")
+  console.log(device)
+  const res = await fetch(`${api_urlDevice}deviceValues`,{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      // "enterprise": device.enterprise,
+      "name": device.name,
+      "id": device.id
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 200){
+    console.log('No se encontro device')
+  } else{
+    console.log(data)
+    localStorage.setItem('deviceValues', JSON.stringify(data))
+    // window.location.href = 'http://127.0.0.1:5501/public/dashboard.html'
+    window.location.href = 'https://uctempec.vercel.app/dashboard.html'
+  }
+}
+
+  const btnSignOut = document.getElementById('signOut')
+  btnSignOut.addEventListener('click', ()=>{
   localStorage.removeItem('deviceData')
   localStorage.removeItem('deviceStatus')
   localStorage.removeItem('deviceValues')
@@ -141,12 +194,15 @@ btnSignOut.addEventListener('click', ()=>{
       }
     };
 
+      getStatusDevice(deviceDataParser)
     </script>
   <script>
     const myChart = new Chart(
       document.getElementById('myChart'),
       config
       );
+
+
       </script>
 
 </body>
