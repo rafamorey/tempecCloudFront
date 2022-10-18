@@ -112,7 +112,7 @@ btnSignOut.addEventListener('click', ()=>{
     async function getDatesToGraphValues(startDate, endDate){
       const start = `${startDate}:00.00+00:00`
       const end = `${endDate}:00.00+00:00`   
-      // console.log(start, end)
+      console.log(start, end)
       const res = await fetch(api_urlDevice,{
         method: 'POST',
         headers: {
