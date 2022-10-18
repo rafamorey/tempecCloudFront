@@ -416,7 +416,7 @@ async function getStatusDevice(device){
     console.log(data)
     localStorage.setItem('deviceData', JSON.stringify(device))
     // localStorage.setItem('deviceStatus', JSON.stringify(data))
-    // getValuesDevice(device)
+    getValuesDevice(device)
       // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
 }
