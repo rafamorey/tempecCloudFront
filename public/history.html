@@ -88,6 +88,10 @@ btnSignOut.addEventListener('click', ()=>{
     const deviceDataParser = JSON.parse(deviceData)
     console.log(deviceDataParser)
 
+    const deviceValues = localStorage.getItem('deviceValues')
+    const deviceValuesParser = JSON.parse(deviceValues)
+    console.log(deviceValuesParser)
+
     const divBeggin = document.getElementById('divBeggin')
     const divEnd = document.getElementById('divEnd')
     const divExport = document.getElementById('divExport')
