@@ -86,7 +86,7 @@ async function login() {
                 }else{
                     localStorage.setItem('1',JSON.stringify(data))
                     // window.location.href = 'http://127.0.0.1:5501/public/device.html'
-                    window.location.href = 'https://uctempec.vercel.app/public/device.html'
+                    window.location.href = 'https://uctempec.vercel.app/device.html'
 
                     return data
                     
