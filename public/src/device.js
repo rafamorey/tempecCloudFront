@@ -176,6 +176,7 @@ async function createDeviceById(device){
   } else{
     console.log('Device ok')
     createDeviceContainer(data)
+    console.log(`data${data}`)
     userDataParser.body.devices.push(data)
     localStorage.setItem('1', JSON.stringify(userDataParser))
     bringAllDevices()
