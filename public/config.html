@@ -67,7 +67,19 @@
     const name = document.getElementById('name')
     const histMax = document.getElementById('histMax')
     const histMin = document.getElementById('histMin')
+<<<<<<< HEAD
     const sendButton = document.getElementById('send')
+=======
+    const btnSignOut = document.getElementById('signOut')
+
+btnSignOut.addEventListener('click', ()=>{
+  localStorage.removeItem('deviceData')
+  localStorage.removeItem('deviceStatus')
+  localStorage.removeItem('deviceValues')
+  localStorage.removeItem('1')
+  window.location.href = 'http://127.0.0.1:5501/public/index.html'
+})
+>>>>>>> 9e6f59a736ca25c9ab27de66b85791d8cd6196bd
 
     send.addEventListener('click', () => {
       
@@ -112,7 +124,7 @@
       minLimit.setAttribute("value", dataParser.tempMin)
       name.setAttribute("value", dataParser.name)
       histMax.setAttribute("value", dataParser.histH)
-      histMin.setAttribute("value", dataParser.hisL)
+      histMin.setAttribute("value", dataParser.histL)
 
     }
 

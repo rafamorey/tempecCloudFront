@@ -234,7 +234,7 @@ divDeviceContainer.appendChild(divDeviceName)
   const divMinIdealTextNode = document.createTextNode(data.tempMin)
   divMinIdeal.appendChild(divMinIdealTextNode)
   const divMinActual = document.createElement('div')
-  const divMinActualTextNode = document.createTextNode(data.hisL)
+  const divMinActualTextNode = document.createTextNode(data.histL)
   divMinActual.appendChild(divMinActualTextNode)
 
   divDeviceMin.appendChild(divMin)
