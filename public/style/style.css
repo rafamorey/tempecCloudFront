@@ -463,6 +463,20 @@ header {
   width: 20%;
 }
 
+.sendConfig{
+  border: none;
+  border-radius: 8px;
+  color:#fff;
+  background-color:#32a852;
+  width: 30%;
+  height: 30%;
+  justify-self: center;
+}
+
+.sendConfig:hover{
+  background-color:#32a800
+}
+
 /* main{
   display: flex;
 } */

@@ -40,7 +40,8 @@
         <input type="text" value="" class="inputConfig" id="histMax">
         <span>Hist Min</span>
         <input type="text" value="" class="inputConfig" id="histMin">
-    </div>
+      </div>
+      <input type="Button" value="Send" class="sendConfig" id="send">
   <footer>
     <div class="cr">
       Copyright 1995-2022 DIINPEC. Todods los derechos reservados
@@ -53,13 +54,7 @@
         <li>Privacidad</li>
         <li>Legales</li>
       </ul>
-      <ul class="legalSocial">
-        <li>SIGUENOS EN</li>
-        <li>logoF</li>
-        <li>logoT</li>
-        <li>logoI</li>
-        <li>logoL</li>
-      </ul>    </div>
+      <
     
   </footer>
   <script>
@@ -72,7 +67,44 @@
     const name = document.getElementById('name')
     const histMax = document.getElementById('histMax')
     const histMin = document.getElementById('histMin')
+    const sendButton = document.getElementById('send')
 
+    send.addEventListener('click', () => {
+      
+    })
+
+    async function sendConfig(){
+
+      const res = await fetch(`${api_urlEnterprise}deviceid`,{
+        method:'UPDATE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": dataParser.enterprise,
+          "id": dataParser.id,
+          "setPoint": setPoint.value,
+          "maxLimit": maxLimit.value,
+          "minLimit": minLImit.value,
+          "name": name.value,
+          "histMax": histMax.value,
+          "histMin": histMin.value,
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 201){
+    console.log('No se actualizo')
+  } else{
+    console.log('Device ok')
+    createDeviceContainer(data)
+    userDataParser.body.devices.push(device)
+    localStorage.setItem('1', JSON.stringify(userDataParser))
+    bringAllDevices()
+    //  console.log(userDataParser)
+    console.log('localstorage update')
+    createSingleDevice(device)
+  }
+}
 
     function putValues(){
       setPoint.setAttribute("value", dataParser.setPoint)
