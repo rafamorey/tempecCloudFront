@@ -127,6 +127,7 @@ async function bringAllDevices(){
     const devicesUser = userDataParser.body.devices
     devicesUser.forEach(device => {
       createDeviceContainer(device)
+      console.log(`device ${device}`)
     })
   }
 
