@@ -411,9 +411,11 @@ async function getStatusDevice(device){
   if(res.status !== 200){
     console.log('No se encontro device')
   } else{
+    console.log("dataDevicedata")
+
     console.log(data)
     localStorage.setItem('deviceData', JSON.stringify(device))
-    localStorage.setItem('deviceStatus', JSON.stringify(data))
+    // localStorage.setItem('deviceStatus', JSON.stringify(data))
     // getValuesDevice(device)
       // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
