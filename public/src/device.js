@@ -120,7 +120,7 @@ async function bringAllDevices(){
   // const userDataParser = JSON.parse(userData)
   
   // console.log(devicesUser)
-  if(userDataParser.body == null){
+  if(userDataParser == null){
     console.log("no devices")
   }else{
     sectionDevicesContainer.innerHTML=""
