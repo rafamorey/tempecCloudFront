@@ -113,7 +113,7 @@ function  deployFormForID(){
 
 // funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
 async function bringAllDevices(){
-  console.log("getting devices for user ...(put id for this user)")
+  console.log("bringAllDevices")
   
 
   // const userData = localStorage.getItem('1')
@@ -135,6 +135,7 @@ async function bringAllDevices(){
 
 async function createDeviceById(device){
   // const res = await fetch(`${api_urlDevice}id`)
+  console.log("createDeviceById")
   console.log(device)
   
   const res = await fetch(`${api_urlEnterprise}deviceid`,{
@@ -174,11 +175,12 @@ async function createDeviceById(device){
   if(res.status !== 201){
     console.log('No se encontro device')
   } else{
-    console.log('Device ok')
+    // console.log('Device ok')
     createDeviceContainer(data)
     console.log(`data${data}`)
     userDataParser.body.devices.push(data)
     localStorage.setItem('1', JSON.stringify(userDataParser))
+    console.log(localStorage)
     bringAllDevices()
     //  console.log(userDataParser)
      console.log('localstorage update')
@@ -202,7 +204,7 @@ async function createSingleDevice(device){
 
 async function createDeviceContainer(data){
   counterDevicesShown++
-  console.log(data)
+  // console.log(data)
   console.log("creating device")
   console.log(data)
   // const sectionDevicesContainer = document.getElementById('devsCont')
