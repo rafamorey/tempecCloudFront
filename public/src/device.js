@@ -180,7 +180,7 @@ async function createDeviceById(device){
   } else{
     // console.log('Device ok')
 
-    userDataParser.body.devices.push(data)
+    userDataParser.body.devices.push(data.body.devices)
     console.log(userDataParser)
     localStorage.setItem('1', JSON.stringify(userDataParser))
     console.log(localStorage)
