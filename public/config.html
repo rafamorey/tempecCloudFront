@@ -72,6 +72,15 @@
     const name = document.getElementById('name')
     const histMax = document.getElementById('histMax')
     const histMin = document.getElementById('histMin')
+    const btnSignOut = document.getElementById('signOut')
+
+btnSignOut.addEventListener('click', ()=>{
+  localStorage.removeItem('deviceData')
+  localStorage.removeItem('deviceStatus')
+  localStorage.removeItem('deviceValues')
+  localStorage.removeItem('1')
+  window.location.href = 'http://127.0.0.1:5501/public/index.html'
+})
 
 
     function putValues(){
@@ -80,7 +89,7 @@
       minLimit.setAttribute("value", dataParser.tempMin)
       name.setAttribute("value", dataParser.name)
       histMax.setAttribute("value", dataParser.histH)
-      histMin.setAttribute("value", dataParser.hisL)
+      histMin.setAttribute("value", dataParser.histL)
 
     }
 
