@@ -114,10 +114,6 @@ btnSignOut.addEventListener('click', ()=>{
       console.log(deviceDataParser.name)
       console.log(deviceDataParser.id)
 
-      const temperatures  = []
-      const dates  = []
-      const tempMin  = []
-      const tempMax  = []
 
     async function getDatesToGraphValues(startDate, endDate){
       const start = `${startDate}:00.00+00:00`
@@ -144,10 +140,6 @@ btnSignOut.addEventListener('click', ()=>{
       }else{
         console.log("coming dates...")
         console.log(data)
-        data.body.forEach(device => {
-           temperatures.push(data.body.tempInt)
-        });
-        console.log(temperatures)
         // console.log(data)
         localStorage.setItem('dataDates', JSON.stringify(data))
         // window.location.reload()
