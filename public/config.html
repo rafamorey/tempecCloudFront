@@ -24,7 +24,7 @@
         <li><a class="linkMenuOption" href="./dashboard.html">Dashboard</a></li>
         <li><a class="linkMenuOption" id="historyBtn" href="./history.html">History</a></li>
         <li><a class="linkMenuOption" href="./config.html">Configuration</a></li>
-        <li><div id="signOut" class="linkMenuOption" >Sign out</div></li>
+        <li><div id="signOut" class="linkMenuOption" href="./index.html">Sign out</div></li>
       </ul>
     </section >
     <div class="configContainer">
@@ -40,7 +40,8 @@
         <input type="text" value="" class="inputConfig" id="histMax">
         <span>Hist Min</span>
         <input type="text" value="" class="inputConfig" id="histMin">
-    </div>
+      </div>
+      <input type="Button" value="Send" class="sendConfig" id="send">
   <footer>
     <div class="cr">
       Copyright 1995-2022 DIINPEC. Todods los derechos reservados
@@ -53,19 +54,22 @@
         <li>Privacidad</li>
         <li>Legales</li>
       </ul>
-      <ul class="legalSocial">
-        <li>SIGUENOS EN</li>
-        <li>logoF</li>
-        <li>logoT</li>
-        <li>logoI</li>
-        <li>logoL</li>
-      </ul>    </div>
+      <
     
   </footer>
   <script>
+
+api_urlDevice = 'https://tempec.vercel.app/device/'
+
+
     const data = localStorage.getItem('deviceData');
     const dataParser = JSON.parse(data)
     console.log(dataParser)
+
+    const deviceEnterprise = localStorage.getItem('1')
+    const deviceEnterpriseParser = JSON.parse(deviceEnterprise)
+    console.log(deviceEnterpriseParser)
+
     const setPoint = document.getElementById('setPoint')
     const maxLimit = document.getElementById('maxLimit')
     const minLimit = document.getElementById('minLimit')
@@ -79,11 +83,44 @@ btnSignOut.addEventListener('click', ()=>{
   localStorage.removeItem('deviceStatus')
   localStorage.removeItem('deviceValues')
   localStorage.removeItem('1')
-  // window.location.href = 'http://127.0.0.1:5501/public/index.html'
-  window.location.href = 'https://uctempec.vercel.app/index.html'
-
+  window.location.href = 'http://127.0.0.1:5501/public/index.html'
 })
 
+    send.addEventListener('click', () => {
+      
+    })
+
+    async function sendConfig(){
+
+      const res = await fetch(`${api_urlDevice}configDevice`,{
+        method:'UPDATE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": deviceEnterpriseParser.body.enterprise,
+          "id": dataParser.id,
+          "setPoint": setPoint.value,
+          "maxLimit": maxLimit.value,
+          "minLimit": minLImit.value,
+          "name": name.value,
+          "histMax": histMax.value,
+          "histMin": histMin.value,
+    })
+  })
+  const data = await res.json() 
+  if(res.status !== 201){
+    console.log('No se actualizo')
+  } else{
+    console.log('Data')
+    console.log(data)
+   
+    localStorage.setItem('1', JSON.stringify(userDataParser))
+    localStorage.setItem('deviceData', JSON.stringify(data))
+    
+   
+  }
+}
 
     function putValues(){
       setPoint.setAttribute("value", dataParser.setPoint)
