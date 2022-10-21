@@ -333,6 +333,33 @@ divDeviceContainer.appendChild(divDeviceName)
 function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   const containerMessage = document.getElementById('modal')
 
+  containerMessage.classList.add('containerMessage')
+  const containerMessageButton = document.createElement('div')
+  containerMessageButton.classList.add('containerMessageButton')
+  containerMessage.appendChild(containerMessageButton)
+
+  const messageP = document.createElement('p')
+  messageP.classList.add('messageP')
+  messageP.classList.add('messageP')
+  const messagePTextNode = document.createTextNode('You are about to delete in a permanent way this device, are you sure you wanna keep going whit this task?')
+  messageP.appendChild(messagePTextNode)
+  containerMessageButton.appendChild(messageP)
+
+  const buttonsContainer = document.createElement('div')
+  buttonsContainer.classList.add('buttonsContainer')
+  const aggreButton = document.createElement('input')
+  aggreButton.setAttribute('value', "agree")
+  aggreButton.setAttribute('type','submit')
+  aggreButton.classList.add('agrreButton')
+  buttonsContainer.appendChild(aggreButton)
+  const cancelButton = document.createElement('input')
+  cancelButton.setAttribute('value', "cancel")
+  cancelButton.setAttribute('type','submit')
+  cancelButton.classList.add('cancelButton')
+  buttonsContainer.appendChild(cancelButton)
+  
+  containerMessageButton.appendChild(buttonsContainer)
+
   aggreButton.addEventListener('click', () =>{
     deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
     containerMessage.classList.remove('containerMessage')
