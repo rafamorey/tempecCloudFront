@@ -280,6 +280,7 @@ header{
 .deviceimgButton{
   width: 25px;
   height:25px;
+  justify-self: flex-start;
 }
 
 .deviceInputDelete:hover{
