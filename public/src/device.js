@@ -359,7 +359,7 @@ function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   containerMessageButton.appendChild(buttonsContainer)
 
   
-  deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
+  // deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
 }
 
 async function deleteDeviceById(idDeviceContainer, idDevice, deviceUser){
