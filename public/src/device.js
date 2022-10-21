@@ -319,7 +319,7 @@ divDeviceContainer.appendChild(divDeviceName)
   // const buttonDelete = document.getElementById(data.id)
   // click on buttons, le paso el contenedor del device a eliminar, y el segundo parametro es el id del dispositivo en la base de datos
   imgButton.addEventListener('click', () => {
-    // console.log(data.id)
+    console.log('deleteButton')
     deleteMessage(divDeviceContainer, imgButton ,userDataParser)
   })
 
