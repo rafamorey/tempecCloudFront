@@ -289,12 +289,12 @@ divDeviceContainer.appendChild(divDeviceName)
   // div button
   const divDeviceButtons = document.createElement('div')
   divDeviceButtons.classList.add('deviceButtons')
-  // const inputDelete = document.createElement('input')
+  // const imgButton = document.createElement('input')
   const imgButton = document.createElement('img')
   imgButton.setAttribute("id", data.id)
   // imgButton.setAttribute("value", "Delete")
   // imgButton.setAttribute("type", "Button")
-  imgButton.classList.add('deviceInputDelete')
+  imgButton.classList.add('deviceimgButton')
   imgButton.setAttribute("src", "../icons/bote-de-basura.png") 
   const inputStatus = document.createElement('input')
   inputStatus.setAttribute("id", "statusDeviceButton")
@@ -318,9 +318,9 @@ divDeviceContainer.appendChild(divDeviceName)
   // le asigno id a boton de borrar para identificar que boton es el que se oprime
   // const buttonDelete = document.getElementById(data.id)
   // click on buttons, le paso el contenedor del device a eliminar, y el segundo parametro es el id del dispositivo en la base de datos
-  inputDelete.addEventListener('click', () => {
+  imgButton.addEventListener('click', () => {
     // console.log(data.id)
-    deleteDeviceById(divDeviceContainer, inputDelete ,userDataParser)
+    deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
   })
 
   inputStatus.addEventListener('click', () => {
