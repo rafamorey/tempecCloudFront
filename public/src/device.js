@@ -332,13 +332,14 @@ divDeviceContainer.appendChild(divDeviceName)
 
 function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   const containerMessage = document.getElementById('modal')
-  
+
   containerMessage.classList.add('containerMessage')
   const containerMessageButton = document.createElement('div')
   containerMessageButton.classList.add('containerMessageButton')
   containerMessage.appendChild(containerMessageButton)
 
   const messageP = document.createElement('p')
+  messageP.classList.add('messageP')
   messageP.classList.add('messageP')
   const messagePTextNode = document.createTextNode('You are about to delete in a permanent way this device, are you sure you wanna keep going whit this task?')
   messageP.appendChild(messagePTextNode)
@@ -359,8 +360,16 @@ function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   
   containerMessageButton.appendChild(buttonsContainer)
 
-  
-  // deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
+  aggreButton.addEventListener('click', () =>{
+    deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
+    containerMessage.classList.remove('containerMessage')
+    
+  })
+
+  cancelButton.addEventListener('click', () =>{
+    containerMessage.classList.remove('containerMessage')
+    
+  })
 }
 
 async function deleteDeviceById(idDeviceContainer, idDevice, deviceUser){
