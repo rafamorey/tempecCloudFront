@@ -363,12 +363,14 @@ function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   aggreButton.addEventListener('click', () =>{
     deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
     containerMessage.classList.remove('containerMessage')
-    
+    containerMessage.innerHTML = ""
   })
 
   cancelButton.addEventListener('click', () =>{
     containerMessage.classList.remove('containerMessage')
-    
+    // containerMessage.remove()    
+    containerMessage.innerHTML = ""
+
   })
 }
 
