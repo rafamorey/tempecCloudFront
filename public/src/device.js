@@ -331,7 +331,8 @@ divDeviceContainer.appendChild(divDeviceName)
 }
 
 function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
-  const containerMessage = document.getElementById('devicesAndFormContainer')
+  const containerMessage = document.getElementById('modal')
+  
   containerMessage.classList.add('containerMessage')
   const containerMessageButton = document.createElement('div')
   containerMessageButton.classList.add('containerMessageButton')
