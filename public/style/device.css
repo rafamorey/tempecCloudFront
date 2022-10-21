@@ -355,14 +355,16 @@ header{
   /* color:green; */
   border-radius: 8px;
   border: none;
-  width: 50em;
-  height:30em;
+  width: 5em;
+  height:3em;
 
 }
 
 .cancelButton{
   border-radius: 8px;
   border: none;
+  width: 5em;
+  height:3em;
   /* color:yellow; */
 }
 
