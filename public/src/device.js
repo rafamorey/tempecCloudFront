@@ -350,7 +350,7 @@ function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   const aggreButton = document.createElement('input')
   aggreButton.setAttribute('value', "agree")
   aggreButton.setAttribute('type','submit')
-  aggreButton.classList.add('agrreButton')
+  aggreButton.classList.add('aggreButton')
   buttonsContainer.appendChild(aggreButton)
   const cancelButton = document.createElement('input')
   cancelButton.setAttribute('value', "cancel")
