@@ -307,7 +307,7 @@ header{
   /* justify-content: center; */
   /* align-items: center; */
   position:fixed;
-  top:0vh;
+  top:-100vh;
   left:0;
   height:100vh;
   width:100vw;
@@ -352,7 +352,7 @@ header{
 }
 
 .aggreButton{
-  color:white;
+  color:green;
 }
 
 .cancelButton{
