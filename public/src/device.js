@@ -301,7 +301,7 @@ divDeviceContainer.appendChild(divDeviceName)
   inputStatus.setAttribute("value", "Status")
   inputStatus.setAttribute("type", "Button")
   inputStatus.classList.add('deviceInputStatus') 
-  divDeviceButtons.appendChild(inputDelete)
+  divDeviceButtons.appendChild(imgButton)
   divDeviceButtons.appendChild(inputStatus)
   // element to container description
   divDeviceContainerDescription.appendChild(divDeviceIdeal)
