@@ -334,7 +334,7 @@ function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   const containerMessage = document.getElementById('divFormNewDevice')
   containerMessage.classList.add('containerMessage')
   const containerMessageButton = document.createElement('div')
-  containerMessage.classList.add('containerMessageButton')
+  containerMessageButton.classList.add('containerMessageButton')
   containerMessage.appendChild(containerMessageButton)
 
   const messageP = document.createElement('p')
@@ -349,10 +349,12 @@ function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
   aggreButton.setAttribute('value', "agree")
   aggreButton.setAttribute('type','submit')
   aggreButton.classList.add('agrreButton')
+  buttonsContainer.appendChild(aggreButton)
   const cancelButton = document.createElement('input')
   cancelButton.setAttribute('value', "cancel")
   cancelButton.setAttribute('type','submit')
   cancelButton.classList.add('cancelButton')
+  buttonsContainer.appendChild(cancelButton)
   
   containerMessageButton.appendChild(buttonsContainer)
 
