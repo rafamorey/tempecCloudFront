@@ -320,7 +320,7 @@ divDeviceContainer.appendChild(divDeviceName)
   // click on buttons, le paso el contenedor del device a eliminar, y el segundo parametro es el id del dispositivo en la base de datos
   imgButton.addEventListener('click', () => {
     // console.log(data.id)
-    deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
+    deleteMessage(divDeviceContainer, imgButton ,userDataParser)
   })
 
   inputStatus.addEventListener('click', () => {
@@ -330,6 +330,35 @@ divDeviceContainer.appendChild(divDeviceName)
 
 }
 
+function deleteMessage(divDeviceContainer, imgButton ,userDataParser){
+  const containerMessage = document.createElement('div')
+  containerMessage.classList.add('containerMessage')
+  const containerMessageButton = document.createElement('div')
+  containerMessage.classList.add('containerMessageButton')
+  containerMessage.appendChild(containerMessageButton)
+
+  const messageP = document.createElement('p')
+  messageP.classList.add('messageP')
+  const messagePTextNode = document.createTextNode('You are about to delete in a permanent way this device, are you sure you wanna keep going whit this task?')
+  messageP.appendChild(messagePTextNode)
+  containerMessageButton.appendChild(messageP)
+
+  const buttonsContainer = document.createElement('div')
+  buttonsContainer.classList.add('buttonsContainer')
+  const aggreButton = document.createElement('input')
+  aggreButton.setAttribute('value', "agree")
+  aggreButton.setAttribute('type','submit')
+  aggreButton.classList.add('agrreButton')
+  const cancelButton = document.createElement('input')
+  cancelButton.setAttribute('value', "cancel")
+  cancelButton.setAttribute('type','submit')
+  cancelButton.classList.add('cancelButton')
+  
+  containerMessageButton.appendChild(buttonsContainer)
+
+  
+  deleteDeviceById(divDeviceContainer, imgButton ,userDataParser)
+}
 
 async function deleteDeviceById(idDeviceContainer, idDevice, deviceUser){
   console.log(deviceUser.body.name)

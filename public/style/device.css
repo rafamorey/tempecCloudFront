@@ -299,6 +299,37 @@ header{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+.containerMessage{
+  background-color: lightgray;
+  opacity: 70%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  position:absolute;
+
+}
+
+.containerMessageButton{
+  background-color: red;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsContainer{
+  display: flex;
+  justify-content:space-around;
+}
+
+.aggreButton{
+  color:white;
+}
+
+.cancelButton{
+  color:yellow;
+}
 
 footer{
   color: gray;
