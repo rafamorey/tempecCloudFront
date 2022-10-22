@@ -33,9 +33,15 @@
       </div>
     </section>
     <div class="valuesContainer">
-      <div class="divValue" id="divMin"></div>
+      <div>
+        <div class="divValue" id="divMin"></div>
+        <div class="divValue" id="divMinRe"></div>
+      </div>
       <div class="divValue" id="divSetpoint"></div>
-      <div class="divValue" id="divMax"></div>
+      <div>
+        <div class="divValue" id="divMax"></div>
+        <div class="divValue" id="divMaxRe"></div>
+      </div>
     </div>
   
     
@@ -65,6 +71,35 @@
   <script>
 
     api_urlDevice = 'https://tempec.vercel.app/device/'
+
+    const refreshMinButton = document.getElementById('divMinRe')
+    const refreshMaxButton = document.getElementById('divMaxRe')
+
+    refreshMaxButton.addEventListener('click', () => {
+      refrechMaxValue()
+    })
+
+    refrechMinButton.addEventListener('click', () => {
+      refreshMinValue()
+    })
+
+    async function refreshMinButton(device){
+      console.log("device")
+      console.log(device)
+
+      const res = await fetch(`${api_urlDevice}refrechMin`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": device.enterprise,
+          "name": device.name,
+          "id": device.id,
+          "setPoint": device.setPoint
+        })
+      })
+    }
 
     async function getStatusDevice(device){
   console.log("device values coming...")
