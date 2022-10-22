@@ -516,12 +516,12 @@ header {
 
 .minValueButtonContainer{
   display:flex;
-  width: 30%;
-  align-items: center;
-  justify-content: space-evenly;
+  /* width: 30%; */
+  /* align-items: center; */
+  /* justify-content: space-evenly; */
 }
 
-.divRefresh img{
+.divRefresh{
   width: 1rem;
   height: 1rem;
 }
