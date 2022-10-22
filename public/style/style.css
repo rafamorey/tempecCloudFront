@@ -518,12 +518,17 @@ header {
   display:flex;
   width: 30%;
   align-items: center;
-  justify-content: space-around;
+  justify-content:center;
+
 }
 
 .divRefresh{
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.divRefresh:nth-child(2){
+  margin-left: 5px;
 }
 
 .exportContainer{
