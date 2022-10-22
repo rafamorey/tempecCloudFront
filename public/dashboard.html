@@ -33,9 +33,11 @@
       </div>
     </section>
     <div class="valuesContainer">
-      <div>
+      <div class="minValueButtonContainer">
         <div class="divValue" id="divMin"></div>
-        <div class="divValue" id="divMinRe"></div>
+        <div class="divRefresh" id="divMinRe">
+          <img src="./icons/actualizar.png" alt="">
+        </div>
       </div>
       <div class="divValue" id="divSetpoint"></div>
       <div>
@@ -83,7 +85,7 @@
       refreshMinValue()
     })
 
-    async function requestMinButton(device){
+    async function refreshMinValue(device){
       console.log("device")
       console.log(device)
 
