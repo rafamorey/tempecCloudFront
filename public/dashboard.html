@@ -81,24 +81,42 @@
     const refreshMaxButton = document.getElementById('divMaxRe')
 
     refreshMaxButton.addEventListener('click', () => {
-      refrechMaxValue()
+      refrechMaxValue(deviceDataParser)
     })
 
     refreshMinButton.addEventListener('click', () => {
-      refreshMinValue()
+      refreshMinValue(deviceDataParser)
     })
 
     async function refreshMinValue(device){
       console.log("device")
       console.log(device)
 
-      const res = await fetch(`${api_urlDevice}refrechMin`,{
+      const res = await fetch(`${api_urlDevice}refreshMin`,{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "enterprise": deviceDataParser.enterprise,
+          "enterprise": device.enterprise,
+          "name": device.name,
+          "id": device.id,
+          "setPoint": device.setPoint
+        })
+      })
+    }
+
+    async function refreshMaxValue(device){
+      console.log("device")
+      console.log(device)
+
+      const res = await fetch(`${api_urlDevice}refreshMax`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": device.enterprise,
           "name": device.name,
           "id": device.id,
           "setPoint": device.setPoint
