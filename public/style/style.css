@@ -517,13 +517,13 @@ header {
 .minValueButtonContainer{
   display:flex;
   width: 30%;
-  /* align-items: center; */
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .divRefresh{
-  /* width: 2rem; */
-  /* height: 2rem; */
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .exportContainer{
