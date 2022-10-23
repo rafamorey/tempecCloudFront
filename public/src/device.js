@@ -184,10 +184,10 @@ async function createDeviceById(device){
     console.log(userDataParser)
     localStorage.setItem('1', JSON.stringify(userDataParser))
     console.log(localStorage)
-    bringAllDevices()
+    // bringAllDevices()
     //  console.log(userDataParser)
      console.log('localstorage update')
-     createSingleDevice(device)
+    //  createSingleDevice(device)
   }
 }
 
