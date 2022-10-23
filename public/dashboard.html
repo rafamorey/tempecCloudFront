@@ -92,8 +92,12 @@
     async function refreshMinValue(device){
       console.log("device")
       console.log(device)
-      console.log("userDataParser")
-      console.log(userDataParser)
+      console.log("deviceDataParser")
+      console.log(deviceDataParser)
+      console.log("deviceValuesParser")
+      console.log(deviceValuesParser)
+      console.log("deviceStatusParser")
+      console.log(deviceStatusParser)
 
       const res = await fetch(`${api_urlDevice}refreshMin`,{
         method: 'POST',
@@ -220,6 +224,10 @@ async function getValuesDevice(device){
     const deviceValues = localStorage.getItem('deviceValues')
     const deviceValuesParser = JSON.parse(deviceValues)
     console.log(deviceValuesParser)
+
+    const deviceStatus = localStorage.getItem('deviceStatus')
+    const deviceStatusParser = JSON.parse(deviceStatus)
+    console.log(deviceStatusParser)
     
     const divMin = document.getElementById('divMin')
     divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
