@@ -206,6 +206,8 @@
 
     async function getLastDate(){
       const newestDate = new Date
+      const newest = newestDate.toISOString()
+      console.log(newest)
       const res = await fetch(`${api_urlDevice}lastDate`,{
         method: 'POST',
         headers: {
@@ -225,7 +227,7 @@
       console.log(data)
       // localStorage.setItem('deviceData', JSON.stringify(device))
       // localStorage.setItem('deviceStatus', JSON.stringify(data))
-      getValuesDevice(device)
+      // getValuesDevice(device)
         // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
     }
