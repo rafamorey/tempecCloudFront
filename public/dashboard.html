@@ -105,7 +105,7 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "enterprise": deviceDataParser.enterprise,
+          "enterprise": deviceDParser.enterprise,
           "name": device.name,
           "id": device.id,
           "setPoint": device.setPoint
@@ -118,7 +118,7 @@
       console.log(data)
       // localStorage.setItem('deviceData', JSON.stringify(device))
       // localStorage.setItem('deviceStatus', JSON.stringify(data))
-      // getValuesDevice(device)
+      getValuesDevice(device)
         // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
     }
@@ -133,7 +133,7 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "enterprise": device.enterprise,
+          "enterprise": deviceDParser.enterprise,
           "name": device.name,
           "id": device.id,
           "setPoint": device.setPoint
@@ -186,7 +186,7 @@
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      // "enterprise": device.enterprise,
+      "enterprise": deviceDParser.enterprise,
       "name": device.name,
       "id": device.id
     })
