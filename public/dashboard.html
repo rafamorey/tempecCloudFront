@@ -207,16 +207,21 @@
 }
 
     async function getLastDate(device){
-    const last = deviceValuesParser.body.tempDates.slice(-1).pop()
-    const lastD = new Date(last)
-    const dateY = new Date()
-    const year = dateY.getFullYear()
-    const newDate = lastD.setFullYear(year)
-    const newest = lastD.toISOString()
-    console.log(lastD)
-      // const newestDate = new Date()
-      // const newest = newestDate.toISOString()
-      console.log(newest)
+    // const last = deviceValuesParser.body.tempDates.slice(-1).pop()
+    // const lastD = new Date(last)
+    // const dateY = new Date()
+    // const year = dateY.getFullYear()
+    // const newDate = lastD.setFullYear(year)
+    // const newest = lastD.toISOString()
+    // console.log("newestParse")
+    // console.log(Date.parse(newest))
+    // console.log("lastD")
+    // console.log(lastD)
+    //   // const newestDate = new Date()
+    //   // const newest = newestDate.toISOString()
+    //   console.log("newest")
+    //   console.log(newest)
+
       const res = await fetch(`${api_urlDevice}lastDate`,{
         method: 'POST',
         headers: {
@@ -226,7 +231,6 @@
           "enterprise": deviceDParser.enterprise,
           "name": device.name,
           "id": device.id,
-          "date": lastD
         })
       })
       const data = await res.json() 
