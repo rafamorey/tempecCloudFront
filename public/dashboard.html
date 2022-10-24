@@ -204,6 +204,32 @@
   }
 }
 
+    async function getLastDate(){
+      const newestDate = new Date
+      const res = await fetch(`${api_urlDevice}lastDate`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": deviceDParser.enterprise,
+          "name": device.name,
+          "id": device.id,
+          "date": newestDate
+        })
+      })
+      const data = await res.json() 
+    if(res.status !== 201){
+      console.log('No se encontro device')
+    } else{
+      console.log(data)
+      // localStorage.setItem('deviceData', JSON.stringify(device))
+      // localStorage.setItem('deviceStatus', JSON.stringify(data))
+      getValuesDevice(device)
+        // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+  }
+    }
+
       const btnSignOut = document.getElementById('signOut')
       btnSignOut.addEventListener('click', ()=>{
       localStorage.removeItem('deviceData')
@@ -229,9 +255,9 @@
     const deviceDParser = JSON.parse(deviceD)
     console.log(deviceDParser)
     
-    const last = deviceValuesParser.body.tempDates.slice(-1).pop()
-    const lastD = new Date(last)
-    console.log(lastD)
+    // const last = deviceValuesParser.body.tempDates.slice(-1).pop()
+    // const lastD = new Date(last)
+    // console.log(lastD)
     
       const divMin = document.getElementById('divMin')
       divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
