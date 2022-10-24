@@ -90,6 +90,7 @@
     })
 
     async function refreshMinValue(device){
+      
       console.log("device")
       console.log(device)
       console.log("deviceDataParser")
@@ -108,7 +109,8 @@
           "enterprise": deviceDParser.enterprise,
           "name": device.name,
           "id": device.id,
-          "setPoint": device.setPoint
+          "setPoint": device.setPoint,
+          "date": deviceValues.body.tempDates.slice(-1).pop()
         })
       })
       const data = await res.json() 
@@ -215,6 +217,9 @@
 
 })
     // url
+      const last = deviceValues.body.tempDates.slice(-1).pop()
+      console.log(last)
+      console.log(deviceValues.body.tempDates.slice(-1).pop())
       const deviceData = localStorage.getItem('deviceData')
       const deviceDataParser = JSON.parse(deviceData)
       console.log(deviceDataParser)
