@@ -177,7 +177,7 @@
   }
 }
 
-async function getValuesDevice(device){
+    async function getValuesDevice(device){
   console.log("device values coming...")
   console.log(device)
   const res = await fetch(`${api_urlDevice}deviceValues`,{
@@ -202,49 +202,47 @@ async function getValuesDevice(device){
   }
 }
 
-  const btnSignOut = document.getElementById('signOut')
-  btnSignOut.addEventListener('click', ()=>{
-  localStorage.removeItem('deviceData')
-  localStorage.removeItem('deviceStatus')
-  localStorage.removeItem('deviceValues')
-  localStorage.removeItem('1')
-  localStorage.removeItem('dataDates')
+      const btnSignOut = document.getElementById('signOut')
+      btnSignOut.addEventListener('click', ()=>{
+      localStorage.removeItem('deviceData')
+      localStorage.removeItem('deviceStatus')
+      localStorage.removeItem('deviceValues')
+      localStorage.removeItem('1')
+      localStorage.removeItem('dataDates')
 
-  // window.location.href = 'http://127.0.0.1:5501/public/index.html'
-  window.location.href = 'https://uctempec.vercel.app/index.html'
+    // window.location.href = 'http://127.0.0.1:5501/public/index.html'
+      window.location.href = 'https://uctempec.vercel.app/index.html'
 
 })
     // url
+      const deviceData = localStorage.getItem('deviceData')
+      const deviceDataParser = JSON.parse(deviceData)
+      console.log(deviceDataParser)
+    
+      const deviceValues = localStorage.getItem('deviceValues')
+      const deviceValuesParser = JSON.parse(deviceValues)
+      console.log(deviceValuesParser)
 
+      const deviceD = localStorage.getItem('1')
+      const deviceDParser = JSON.parse(deviceD)
+      console.log(deviceDParser)
     
-    const deviceData = localStorage.getItem('deviceData')
-    const deviceDataParser = JSON.parse(deviceData)
-    console.log(deviceDataParser)
+      const divMin = document.getElementById('divMin')
+      divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
+      divMin.appendChild(divMinTextNode)
     
-    const deviceValues = localStorage.getItem('deviceValues')
-    const deviceValuesParser = JSON.parse(deviceValues)
-    console.log(deviceValuesParser)
-
-    const deviceStatus = localStorage.getItem('deviceStatus')
-    const deviceStatusParser = JSON.parse(deviceStatus)
-    console.log(deviceStatusParser)
-    
-    const divMin = document.getElementById('divMin')
-    divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
-    divMin.appendChild(divMinTextNode)
-    
-    const divSetpoint = document.getElementById('divSetpoint')
-    divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
-    divSetpoint.appendChild(divSetpointTextNode)
+      const divSetpoint = document.getElementById('divSetpoint')
+      divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
+      divSetpoint.appendChild(divSetpointTextNode)
     
     
-    const divMax = document.getElementById('divMax')
-    divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
-    divMax.appendChild(divMaxTextNode)
+      const divMax = document.getElementById('divMax')
+      divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
+      divMax.appendChild(divMaxTextNode)
     
     
-    const inputHistory = document.getElementById('historyBtn')
-    inputHistory.addEventListener('click', () => {
+      const inputHistory = document.getElementById('historyBtn')
+      inputHistory.addEventListener('click', () => {
       // window.location.href = 'https://uctempec.vercel.app/history.html'
     })
     
