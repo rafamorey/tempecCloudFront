@@ -86,7 +86,8 @@
     })
 
     refreshMinButton.addEventListener('click', () => {
-      refreshMinValue(deviceDataParser, last)
+      getLastDate()
+      // refreshMinValue(deviceDataParser)
     })
 
     async function refreshMinValue(device, lastDate){
