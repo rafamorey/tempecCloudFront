@@ -121,7 +121,8 @@
       console.log(data)
       // localStorage.setItem('deviceData', JSON.stringify(device))
       // localStorage.setItem('deviceStatus', JSON.stringify(data))
-      getValuesDevice(device)
+      // getValuesDevice(device)
+      getLastDate(device)
         // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
     }
@@ -205,14 +206,14 @@
   }
 }
 
-    async function getLastDate(){
+    async function getLastDate(device){
     const last = deviceValuesParser.body.tempDates.slice(-1).pop()
     const lastD = new Date(last)
     const dateY = new Date()
     const year = dateY.getFullYear()
     const newDate = lastD.setFullYear(year)
     const newest = lastD.toISOString()
-    console.log(newest)
+    console.log(lastD)
       // const newestDate = new Date()
       // const newest = newestDate.toISOString()
       console.log(newest)
