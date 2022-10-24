@@ -229,7 +229,8 @@
     const deviceDParser = JSON.parse(deviceD)
     console.log(deviceDParser)
     
-    const last = deviceValuesParser.body.tempDates.slice(-1).pop()
+    const last = deviceValuesParser.body.tempDates.slice(-1).pop().toISOStirng()
+    
     console.log(last)
     
       const divMin = document.getElementById('divMin')
