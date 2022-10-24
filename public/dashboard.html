@@ -230,8 +230,8 @@
     console.log(deviceDParser)
     
     const last = deviceValuesParser.body.tempDates.slice(-1).pop()
-    const lastD = last.toISOString()
-    console.log(last)
+    const lastD = Date.parse(last)
+    console.log(lastD)
     
       const divMin = document.getElementById('divMin')
       divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
