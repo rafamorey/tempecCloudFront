@@ -230,7 +230,7 @@
     console.log(deviceDParser)
     
     const last = deviceValuesParser.body.tempDates.slice(-1).pop()
-    const lastD = Date.parse(last)
+    const lastD = new Date(last)
     console.log(lastD)
     
       const divMin = document.getElementById('divMin')
