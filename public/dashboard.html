@@ -265,17 +265,7 @@
     const deviceDParser = JSON.parse(deviceD)
     console.log(deviceDParser)
     
-    const last = deviceValuesParser.body.tempDates.slice(-1).pop()
-    const lastD = new Date(last)
-    const dateY = new Date()
-    const year = dateY.getFullYear()
-    const newDate = lastD.setFullYear(year)
-    const newest = lastD.toISOString()
-    console.log(newest)
     
-    // console.log(newDate)
-    // console.log(year)
-    console.log(lastD)
     
       const divMin = document.getElementById('divMin')
       divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
