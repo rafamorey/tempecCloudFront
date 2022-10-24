@@ -86,10 +86,10 @@
     })
 
     refreshMinButton.addEventListener('click', () => {
-      refreshMinValue(deviceDataParser)
+      refreshMinValue(deviceDataParser, last)
     })
 
-    async function refreshMinValue(device){
+    async function refreshMinValue(device, lastDate){
       
       console.log("device")
       console.log(device)
@@ -110,7 +110,7 @@
           "name": device.name,
           "id": device.id,
           "setPoint": device.setPoint,
-          "date": deviceValues.body.tempDates.slice(-1).pop()
+          "date": lastDate
         })
       })
       const data = await res.json() 
@@ -231,7 +231,6 @@
     
     const last = deviceValuesParser.body.tempDates.slice(-1).pop()
     console.log(last)
-    console.log(deviceValues.body.tempDates.slice(-1).pop())
     
       const divMin = document.getElementById('divMin')
       divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
