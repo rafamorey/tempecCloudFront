@@ -208,6 +208,7 @@
 
     async function getLastDate(){
     console.log(deviceDParser)
+    console.log(deviceDataParser)
   
 
       const res = await fetch(`${api_urlDevice}lastDate`,{
@@ -217,8 +218,8 @@
         },
         body: JSON.stringify({
           "enterprise": deviceDParser.enterprise,
-          "name": deviceDParse.name,
-          "id": deviceDParser.id,
+          "name": deviceDataParser.name,
+          "id": deviceDataParser.id,
         })
       })
       const data = await res.json() 
