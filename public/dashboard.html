@@ -206,7 +206,7 @@
 }
 
     async function getLastDate(){
-      const newestDate = new Date
+      const newestDate = new Date()
       const newest = newestDate.toISOString()
       console.log(newest)
       const res = await fetch(`${api_urlDevice}lastDate`,{
