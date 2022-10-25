@@ -86,46 +86,12 @@
     })
 
     refreshMinButton.addEventListener('click', () => {
-      getLastDate()
+      const lastDate = getLastDate()
+      console.log("lastDate")
+      console.log(lastDate)
+      updateLastDate(deviceDataParser, lastDate)
       // refreshMinValue(deviceDataParser)
     })
-
-    async function refreshMinValue(device, lastDate){
-      
-      console.log("device")
-      console.log(device)
-      console.log("deviceDataParser")
-      console.log(deviceDataParser)
-      console.log("deviceValuesParser")
-      console.log(deviceValuesParser)
-      console.log("deviceStatusParser")
-      console.log(deviceDParser)
-
-      const res = await fetch(`${api_urlDevice}refreshMin`,{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          "enterprise": deviceDParser.enterprise,
-          "name": device.name,
-          "id": device.id,
-          "setPoint": device.setPoint,
-          "date": lastDate
-        })
-      })
-      const data = await res.json() 
-    if(res.status !== 201){
-      console.log('No se encontro device')
-    } else{
-      console.log(data)
-      // localStorage.setItem('deviceData', JSON.stringify(device))
-      // localStorage.setItem('deviceStatus', JSON.stringify(data))
-      // getValuesDevice(device)
-      getLastDate(device)
-        // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
-  }
-    }
 
     async function refreshMaxValue(device){
       console.log("device")
@@ -207,14 +173,6 @@
 }
 
     async function getLastDate(){
-      console.log("deviceDParser")
-      console.log(deviceDParser)
-
-    console.log(deviceDParser.body.enterprise)
-    console.log("deviceDataParser")
-    console.log(deviceDataParser.name)
-    console.log(deviceDataParser.id)
-  
 
       const res = await fetch(`${api_urlDevice}lastDate`,{
         method: 'POST',
@@ -233,12 +191,33 @@
     } else{
       console.log("data")
       console.log(data)
-      // localStorage.setItem('deviceData', JSON.stringify(device))
-      // localStorage.setItem('deviceStatus', JSON.stringify(data))
-      // getValuesDevice(device)
-        // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+      return data
   }
     }
+
+    async function updateLastDate(device, lastDate){
+      const res = await fetch(`${api_urlDevice}refreshMin`,{
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": deviceDParser.body.enterprise,
+          "name": device.name,
+          "id": device.id,
+          "setPoint": device.setPoint,
+          "date": lastDate
+        })
+      })
+      const data = await res.json() 
+    if(res.status !== 201){
+      console.log('No se encontro device')
+    } else{
+      console.log(data)
+      
+  } 
+    }
+
 
       const btnSignOut = document.getElementById('signOut')
       btnSignOut.addEventListener('click', ()=>{
