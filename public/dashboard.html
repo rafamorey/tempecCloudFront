@@ -86,10 +86,8 @@
     })
 
     refreshMinButton.addEventListener('click', () => {
-      const lastDate = refreshMinValue()
-      console.log("lastDate")
-      console.log(lastDate)
-      updateLastDate(deviceDataParser, lastDate) 
+      const min = refreshMinValue()
+      updateMinValue(deviceDataParser, min)
       // refreshMinValue(deviceDataParser)
     })
 
