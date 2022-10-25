@@ -86,13 +86,19 @@
     })
 
     refreshMinButton.addEventListener('click', () => {
-      getLastDate()
-      const lastDate = getLastDate()
+      const lastDate = refreshMinValue()
       console.log("lastDate")
       console.log(lastDate)
-      updateLastDate(deviceDataParser, lastDate)
+      updateLastDate(deviceDataParser, lastDate) 
       // refreshMinValue(deviceDataParser)
     })
+
+    function refreshMinValue(){
+      return new Promise((resolve,reject)=>{
+      resolve(getLastDate())
+})
+
+    }
 
     async function refreshMaxValue(device){
       console.log("device")
