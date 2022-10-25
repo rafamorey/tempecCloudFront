@@ -208,9 +208,10 @@
 
     async function getLastDate(){
       console.log("deviceDParser")
-    console.log(deviceDParser)
+    console.log(deviceDParser.enterprise)
     console.log("deviceDataParser")
-    console.log(deviceDataParser)
+    console.log(deviceDataParser.name)
+    console.log(deviceDataParser.id)
   
 
       const res = await fetch(`${api_urlDevice}lastDate`,{
