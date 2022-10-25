@@ -1,14 +1,14 @@
 
 // Url backend
-api_urlDevice = 'https://tempec.vercel.app/device/'
+const api_urlDevice = 'https://tempec.vercel.app/device/'
 
-api_urlUser = 'https://tempec.vercel.app/user/'
+const api_urlUser = 'https://tempec.vercel.app/user/'
 
-api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
+const api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
 
-API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
+const API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
 
-api_urlId = 'https://tempec.vercel.app/'
+const api_urlId = 'https://tempec.vercel.app/enterprise/id'
 
 // Nodes
 const addDevice = document.getElementById('addDeviceButton')
@@ -125,7 +125,7 @@ async function getUserInfo(dataUser){
         {
             "enterprise": dataUser.body.enterprise,
             "name": dataUser.body.name,
-            "id": dataUser.body.password
+            "password": dataUser.body.password
 })
 })
     const data = await res.json()
