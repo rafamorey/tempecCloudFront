@@ -122,8 +122,9 @@ async function getUserInfo(dataUser){
     },
     body: JSON.stringify(
         {
-            "name": dataUser.value,
-            "password": dataPassword.value
+            "enterprise": dataUser.enterprise,
+            "name": dataUser.name,
+            "id": dataUser.password
 })
 })
     const data = await res.json()
