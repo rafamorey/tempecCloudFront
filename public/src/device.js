@@ -115,6 +115,7 @@ function  deployFormForID(){
 }
 
 async function getUserInfo(dataUser){
+  console.log(dataUser)
   const res = await fetch(api_urlId, {
     method: 'POST',
     headers: {
