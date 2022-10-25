@@ -96,36 +96,6 @@
 //       resolve(getLastDate())
 // })
 
-    
-
-    async function refreshMaxValue(device){
-      console.log("device")
-      console.log(device)
-
-      const res = await fetch(`${api_urlDevice}refreshMax`,{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          "enterprise": deviceDParser.enterprise,
-          "name": device.name,
-          "id": device.id,
-          "setPoint": device.setPoint
-        })
-      })
-      const data = await res.json() 
-  if(res.status !== 200){
-    console.log('No se encontro device')
-  } else{
-    console.log(data)
-    // localStorage.setItem('deviceData', JSON.stringify(device))
-    // localStorage.setItem('deviceStatus', JSON.stringify(data))
-    // getValuesDevice(device)
-      // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
-  }
-    }
-
     async function getStatusDevice(device){
   console.log("device values coming...")
   console.log(device)
@@ -232,7 +202,7 @@
     console.log(data)
     divMax.innerHTML = ""
     const divMxTextNode = document.createTextNode(device.setPoint)
-    divMx.appendChild(divMxTextNode)
+    divMax.appendChild(divMxTextNode)
     deviceDataParser.tempMax = device.setPoint
     localStorage.setItem('deviceData', JSON.stringify(deviceDataParser))
   }
