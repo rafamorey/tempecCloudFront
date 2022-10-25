@@ -86,16 +86,16 @@
     })
 
     refreshMinButton.addEventListener('click', () => {
-      updateLastDate(deviceDataParser,refreshMinValue())
+      getLastDate()
       // refreshMinValue(deviceDataParser)
     })
 
-    function refreshMinValue(){
-      return new Promise((resolve,reject)=>{
-      resolve(getLastDate())
-})
+//     function refreshMinValue(){
+//       return new Promise((resolve,reject)=>{
+//       resolve(getLastDate())
+// })
 
-    }
+    
 
     async function refreshMaxValue(device){
       console.log("device")
@@ -198,8 +198,8 @@
       console.log('No se encontro device')
     } else{
       console.log("data")
-      console.log(data)
-      return data
+      console.log(data.body.final)
+      updateLastDate(deviceDataParser, data.body.final)
   }
     }
 
