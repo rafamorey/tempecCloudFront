@@ -123,7 +123,7 @@ async function getUserInfo(dataUser){
     },
     body: JSON.stringify(
         {
-            "enterprise": dataUse.body.enterprise,
+            "enterprise": dataUser.body.enterprise,
             "name": dataUser.body.name,
             "id": dataUser.body.password
 })
