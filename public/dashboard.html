@@ -194,15 +194,15 @@
     } else if(refresh === "refreshMin"){
       console.log(data)
       divMin.innerHTML = ""
-      divMnTextNode = document.createTextNode(device.setPoint) 
-      divMin.appendChild(divMnTextNode)
+      divMinTextNode = document.createTextNode(device.setPoint) 
+      divMin.appendChild(divMinTextNode)
       deviceDataParser.tempMin = device.setPoint
       localStorage.setItem('deviceData', JSON.stringify(deviceDataParser))
   } else if(refresh === "refreshMax"){
     console.log(data)
     divMax.innerHTML = ""
-    const divMxTextNode = document.createTextNode(device.setPoint)
-    divMax.appendChild(divMxTextNode)
+    divMaxTextNode = document.createTextNode(device.setPoint)
+    divMax.appendChild(divMaxTextNode)
     deviceDataParser.tempMax = device.setPoint
     localStorage.setItem('deviceData', JSON.stringify(deviceDataParser))
   }
