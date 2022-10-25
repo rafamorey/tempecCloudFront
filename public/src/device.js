@@ -8,7 +8,7 @@ api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
 
 API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
 
-const api_url = 'https://tempec.vercel.app/'
+api_urlId = 'https://tempec.vercel.app/'
 
 // Nodes
 const addDevice = document.getElementById('addDeviceButton')
