@@ -8,6 +8,8 @@ api_urlEnterprise = 'https://tempec.vercel.app/enterprise/'
 
 API_URLDEVICEvalues = 'https://tempec.vercel.app/device/deviceValues'
 
+const api_url = 'https://tempec.vercel.app/'
+
 // Nodes
 const addDevice = document.getElementById('addDeviceButton')
 
@@ -112,6 +114,29 @@ function  deployFormForID(){
   })
 }
 
+async function getUserInfo(dataUser){
+  const res = await fetch(api_urlId, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+        {
+            "name": dataUser.value,
+            "password": dataPassword.value
+})
+})
+    const data = await res.json()
+    if(res.status !== 200){
+        console.log('error de conexion')
+    }else{
+        localStorage.setItem('1',JSON.stringify(data))
+       
+        console.log(data)
+        bringAllDevices()
+        
+    }
+}
 // funcion para enviar una peticion al server para saber cuantos devices hay para este usuario y entonces hacer el render de todos.
 async function bringAllDevices(){
   console.log("bringAllDevices")
@@ -493,4 +518,4 @@ async function getValuesDevice(device){
   }
 }
 
-bringAllDevices()
+getUserInfo(userDataParser)
