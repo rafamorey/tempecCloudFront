@@ -86,7 +86,8 @@
     })
 
     refreshMinButton.addEventListener('click', () => {
-      getLastDate()
+      getLastDate("refreshMin")
+      
       // refreshMinValue(deviceDataParser)
     })
 
@@ -176,7 +177,7 @@
   }
 }
 
-    async function getLastDate(){
+    async function getLastDate(refresh){
       console.log("execute getLastDate")
       console.log(deviceDParser.body.enterprise)
       console.log(deviceDataParser.name)
@@ -199,12 +200,12 @@
     } else{
       console.log("data")
       console.log(data)
-      updateLastDate(deviceDataParser, data.body)
+      updateLastDate(deviceDataParser, data.body, refresh)
   }
     }
 
-    async function updateLastDate(device, lastDate){
-      const res = await fetch(`${api_urlDevice}refreshMin`,{
+    async function updateLastDate(device, lastDate, refresh){
+      const res = await fetch(`${api_urlDevice}${refresh}`,{
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -220,10 +221,15 @@
       const data = await res.json() 
     if(res.status !== 201){
       console.log('No se encontro device')
-    } else{
+    } else if(refresh === "refreshMin"){
       console.log(data)
-      
-  } 
+      divMin.innerHTML = ""
+      const divMnTextNode = document.createElement(device.setPoint) 
+  } else if(refresh === "refreshMax"){
+    console.log(data)
+    divMax.innerHTML = ""
+    const divMxTextNode = document.createElement(device.setPoint)
+  }
     }
 
 
