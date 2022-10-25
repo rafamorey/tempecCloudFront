@@ -226,11 +226,15 @@
       divMin.innerHTML = ""
       divMnTextNode = document.createTextNode(device.setPoint) 
       divMin.appendChild(divMnTextNode)
+      deviceDataParser.tempMin = device.setPoint
+      localStorage.setItem('deviceData', JSON.stringify(deviceDataParser))
   } else if(refresh === "refreshMax"){
     console.log(data)
     divMax.innerHTML = ""
     const divMxTextNode = document.createTextNode(device.setPoint)
     divMx.appendChild(divMxTextNode)
+    deviceDataParser.tempMax = device.setPoint
+    localStorage.setItem('deviceData', JSON.stringify(deviceDataParser))
   }
     }
 
