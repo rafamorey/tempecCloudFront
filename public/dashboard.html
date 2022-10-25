@@ -174,7 +174,11 @@
 }
 
     async function getLastDate(){
-
+      console.log("execute getLastDate")
+      console.log(deviceDParser.body.enterprise)
+      console.log(deviceDataParser.name)
+      console.log(deviceDataParser.id)
+      
       const res = await fetch(`${api_urlDevice}lastDate`,{
         method: 'POST',
         headers: {
