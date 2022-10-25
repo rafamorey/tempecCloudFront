@@ -224,12 +224,13 @@
     } else if(refresh === "refreshMin"){
       console.log(data)
       divMin.innerHTML = ""
-      divMnTextNode = document.createElement(device.setPoint.toString()) 
+      divMnTextNode = document.createTextNode(device.setPoint) 
       divMin.appendChild(divMnTextNode)
   } else if(refresh === "refreshMax"){
     console.log(data)
     divMax.innerHTML = ""
-    const divMxTextNode = document.createElement(device.setPoint)
+    const divMxTextNode = document.createTextNode(device.setPoint)
+    divMx.appendChild(divMxTextNode)
   }
     }
 
