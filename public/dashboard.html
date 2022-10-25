@@ -224,7 +224,8 @@
     } else if(refresh === "refreshMin"){
       console.log(data)
       divMin.innerHTML = ""
-      const divMnTextNode = document.createElement(device.setPoint) 
+      divMnTextNode = document.createElement(device.setPoint) 
+      divMin.appendChild(divMnTextNode)
   } else if(refresh === "refreshMax"){
     console.log(data)
     divMax.innerHTML = ""
