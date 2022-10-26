@@ -334,6 +334,23 @@ header{
   align-items: center;
 }
 
+.containerMessageContact{
+  background-color: #088cd4;
+  border-radius: 8px;
+  width:60%;
+  height:40%;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  margin:auto;
+  text-align:center;
+  /* display:flex; */
+  /* justify-content:center; */
+  align-items: center;
+}
+
 .messageP{
   
   font-size: 1.5em;
@@ -363,9 +380,8 @@ header{
 .cancelButton{
   border-radius: 8px;
   border: none;
-  width: 5em;
-  height:3em;
-  /* color:yellow; */
+  width: 2em;
+  height:2em;
 }
 
 footer{
