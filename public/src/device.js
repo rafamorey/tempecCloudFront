@@ -563,7 +563,7 @@ function contactMessage(){
   const cancelButton = document.createElement('input')
   cancelButton.setAttribute('value', "X")
   cancelButton.setAttribute('type','submit')
-  cancelButton.classList.add('cancelButton')
+  cancelButton.classList.add('closeButton')
   buttonsContainer.appendChild(cancelButton)
   
   containerMessageButton.appendChild(buttonsContainer)

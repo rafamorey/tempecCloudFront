@@ -380,10 +380,16 @@ header{
 .cancelButton{
   border-radius: 8px;
   border: none;
+  width: 5em;
+  height:3em;
+}
+
+.closeButton{
+  border-radius: 8px;
+  border: none;
   width: 2em;
   height:2em;
 }
-
 footer{
   color: gray;
   font-size: small;
