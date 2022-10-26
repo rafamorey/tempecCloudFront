@@ -20,13 +20,15 @@ body{
 
 header{
   display:flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .headerLogo{
   display: flex;
-  justify-content: center;
-  align-items:center
+  justify-content: flex-start;
+  margin-left: 10px;
+  align-items:center;
+  width: 15%;
 }
 
 .headerLogo img{
@@ -39,6 +41,13 @@ header{
   width:80%;
   display: flex;
   justify-content: center
+}
+
+.clientTitle{
+  width:80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerIconsMenu{
