@@ -55,7 +55,7 @@ async function createEnterprise(){
                     console.log('error de conexion')
                 }else {
                     // console.log(data)
-                    window.location.href = 'https://uctempec.vercel.app/public/index.html'
+                    window.location.href = 'https://uctempec.vercel.app/index.html'
                     return data
 
                 }
