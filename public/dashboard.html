@@ -88,11 +88,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
 
-    const clientTitle = document.getElementById('clientTitle')
-    const h1 = document.createElement('h1')
-    const h1Text = document.createTextNode(userDParser.enterprise)
-    h1.appendChild(h1Text)
-    clientTitle.appendChild(h1)
+    
 
     api_urlDevice = 'https://tempec.vercel.app/device/'
 
@@ -257,6 +253,11 @@
     const deviceDParser = JSON.parse(deviceD)
     console.log(deviceDParser)
     
+    const clientTitle = document.getElementById('clientTitle')
+    const h1 = document.createElement('h1')
+    const h1Text = document.createTextNode(deviceDParser.enterprise)
+    h1.appendChild(h1Text)
+    clientTitle.appendChild(h1)
     
     
       const divMin = document.getElementById('divMin')
