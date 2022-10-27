@@ -32,7 +32,7 @@ var counterDevicesShown = 0
 
 const clientTitle = document.getElementById('clientTitle')
 const h1 = document.createElement('h1')
-const h1Text = document.createTextNode(userDataParser.enterprise)
+const h1Text = document.createTextNode(userDataParser.body.enterprise)
 h1.appendChild(h1Text)
 clientTitle.appendChild(h1)
 
