@@ -21,7 +21,13 @@ body{
 
 header{
   display:flex;
-  justify-content: center;
+  /* justify-content: center; */
+
+}
+
+.iconContainer{
+  display:flex;
+  width: 18%;
 }
 
 .headerLogo{
@@ -37,34 +43,39 @@ header{
 
 
 .title{
-  width:80%;
+  /* width:80%; */
   display: flex;
-  justify-content: center
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .headerIconsMenu{
-  /* display:flex;
-  justify-content: space-between; */
   width: 15%;
   
 }
 
-.headerMenu{
+/* .headerMenu{
   display: flex;
   justify-content: space-around;
-}
-
+} */
+/* 
 .headerIcon{
   width: 30px;
   height: 30px;
   
-}
+} */
 
 
-.headerMenu li{
+/* .headerMenu li{
   list-style: none;
-}
+} */
 
+.clientContainer{
+  width:65%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
 
 .menu{
