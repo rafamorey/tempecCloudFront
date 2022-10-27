@@ -30,6 +30,9 @@ console.log('ESTE es data parser')
 // Count id devices in screen
 var counterDevicesShown = 0 
 
+const hi = document.getElementById('hi')
+hi.value= userDataParser.enterprise
+
 // const sectionDevicesContainer = document.getElementById('devsCont')
 
 // Listener Buttons
