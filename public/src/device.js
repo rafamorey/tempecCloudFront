@@ -235,6 +235,7 @@ async function createSingleDevice(device){
         "name": device.name
     })
   })
+  bringAllDevices()
 }
 
 async function createDeviceContainer(data){
