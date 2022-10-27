@@ -30,8 +30,11 @@ console.log('ESTE es data parser')
 // Count id devices in screen
 var counterDevicesShown = 0 
 
-const hi = document.getElementById('hi')
-hi.value= userDataParser.enterprise
+const clientTitle = document.getElementById('clientTitle')
+const h1 = document.createElement('h1')
+const h1Text = document.createTextNode(userDataParser.enterprise)
+h1.appendChild(h1Text)
+clientTitle.appendChild(h1)
 
 // const sectionDevicesContainer = document.getElementById('devsCont')
 
