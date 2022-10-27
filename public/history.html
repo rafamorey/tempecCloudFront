@@ -78,11 +78,7 @@
 
     api_urlDevice = 'https://tempec.vercel.app/device/dates'
 
-    const clientTitle = document.getElementById('clientTitle')
-    const h1 = document.createElement('h1')
-    const h1Text = document.createTextNode(deviceEnterpriseParser.body.enterprise)
-    h1.appendChild(h1Text)
-    clientTitle.appendChild(h1)
+  
 
     const btnSignOut = document.getElementById('signOut')
 btnSignOut.addEventListener('click', ()=>{
@@ -122,6 +118,12 @@ btnSignOut.addEventListener('click', ()=>{
       window.location.reload()
       
     })
+
+    const clientTitle = document.getElementById('clientTitle')
+    const h1 = document.createElement('h1')
+    const h1Text = document.createTextNode(deviceEnterpriseParser.body.enterprise)
+    h1.appendChild(h1Text)
+    clientTitle.appendChild(h1)
 
       console.log(deviceEnterpriseParser.body.enterprise)
       console.log(deviceDataParser.name)
