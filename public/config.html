@@ -71,7 +71,12 @@
   </footer>
   <script>
 
-const clientTitle = document.getElementById('clientTitle')
+
+    const deviceEnterprise = localStorage.getItem('1')
+    const deviceEnterpriseParser = JSON.parse(deviceEnterprise)
+    console.log(deviceEnterpriseParser)
+
+    const clientTitle = document.getElementById('clientTitle')
     const h1 = document.createElement('h1')
     const h1Text = document.createTextNode(deviceEnterpriseParser.body.enterprise)
     h1.appendChild(h1Text)
