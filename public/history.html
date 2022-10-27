@@ -14,8 +14,8 @@
       <img src="./icons/icono.jpg" alt="">  
       <h2>Diinpec</h2>
     </div>
-    <div class="clientTitle">
-      <h1>Kowi</h1>
+    <div class="clientTitle" id="clientTitle">
+      <h1></h1>
     </div>
     <!-- <div class="headerIconsMenu">
       <ul class="headerMenu">
@@ -77,6 +77,12 @@
   <script>
 
     api_urlDevice = 'https://tempec.vercel.app/device/dates'
+
+    const clientTitle = document.getElementById('clientTitle')
+    const h1 = document.createElement('h1')
+    const h1Text = document.createTextNode(userDataParser.body.enterprise)
+    h1.appendChild(h1Text)
+    clientTitle.appendChild(h1)
 
     const btnSignOut = document.getElementById('signOut')
 btnSignOut.addEventListener('click', ()=>{
