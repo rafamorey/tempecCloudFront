@@ -1,4 +1,3 @@
-
 // Url backend
 const api_urlDevice = 'https://tempec.vercel.app/device/'
 
@@ -18,6 +17,8 @@ const deleteDevice = document.getElementById('deleteDeviceButton')
 const statusDevice = document.getElementById('statusDeviceButton')
 
 const sectionDevicesContainer = document.getElementById('devsCont')
+
+const contact = document.getElementById('contact')
 
 
 // localStorage
@@ -47,6 +48,10 @@ btnSignOut.addEventListener('click', ()=>{
 
 addDevice.addEventListener('click', () =>{
   deployFormForID()
+})
+
+contact.addEventListener('click', () => {
+  contactMessage()
 })
 
 
@@ -518,6 +523,60 @@ async function getValuesDevice(device){
 
 
   }
+}
+
+function contactMessage(){
+  const containerMessage = document.getElementById('modal')
+
+  containerMessage.classList.add('containerMessage')
+  const containerMessageButton = document.createElement('div')
+  containerMessageButton.classList.add('containerMessageContact')
+  containerMessage.appendChild(containerMessageButton)
+
+  const messageP = document.createElement('p')
+  messageP.classList.add('messageP')
+  // messageP.classList.add('messageP')
+  const messagePTextNode = document.createTextNode('DIINPEC S.A DE C.V ')
+  messageP.appendChild(messagePTextNode)
+  containerMessageButton.appendChild(messageP)
+  const messageCel = document.createElement('p')
+  messageCel.classList.add('messageP')
+  // messageP.classList.add('messageP')
+  const messageCelTextNode = document.createTextNode('+52 644-236-34-92')
+  messageCel.appendChild(messageCelTextNode)
+  containerMessageButton.appendChild(messageCel)
+  const messageMail = document.createElement('p')
+  messageMail.classList.add('messageP')
+  // messageP.classList.add('messageP')
+  const messageMailTextNode = document.createTextNode('rafael.morales@diinpec.mx')
+  messageMail.appendChild(messageMailTextNode)
+  containerMessageButton.appendChild(messageMail)
+
+  const buttonsContainer = document.createElement('div')
+  buttonsContainer.classList.add('buttonsContainer')
+  // const aggreButton = document.createElement('input')
+  // aggreButton.setAttribute('value', "")
+  // aggreButton.setAttribute('type','submit')
+  // aggreButton.classList.add('aggreButton')
+  // buttonsContainer.appendChild(aggreButton)
+  const cancelButton = document.createElement('input')
+  cancelButton.setAttribute('value', "X")
+  cancelButton.setAttribute('type','submit')
+  cancelButton.classList.add('closeButton')
+  buttonsContainer.appendChild(cancelButton)
+  
+  containerMessageButton.appendChild(buttonsContainer)
+
+  // aggreButton.addEventListener('click', () =>{
+    
+  // })
+
+  cancelButton.addEventListener('click', () =>{
+    containerMessage.classList.remove('containerMessage')
+    // containerMessage.remove()    
+    containerMessage.innerHTML = ""
+
+  })
 }
 
 getUserInfo(userDataParser)

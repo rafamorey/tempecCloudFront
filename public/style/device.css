@@ -22,18 +22,23 @@ body{
 header{
   display:flex;
   /* justify-content: center; */
+<<<<<<< HEAD
 
 }
 
 .iconContainer{
   display:flex;
   width: 18%;
+=======
+>>>>>>> 3325f4ecc6366a7addbc64c0c1da43ef4e8e7c3e
 }
 
 .headerLogo{
   display: flex;
-  justify-content: center;
-  align-items:center
+  justify-content: flex-start;
+  margin-left: 10px;
+  align-items:center;
+  width: 15%;
 }
 
 .headerLogo img{
@@ -47,6 +52,13 @@ header{
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+.clientTitle{
+  width:80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerIconsMenu{
@@ -345,6 +357,23 @@ header{
   align-items: center;
 }
 
+.containerMessageContact{
+  background-color: #088cd4;
+  border-radius: 8px;
+  width:60%;
+  height:40%;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  margin:auto;
+  text-align:center;
+  /* display:flex; */
+  /* justify-content:center; */
+  align-items: center;
+}
+
 .messageP{
   
   font-size: 1.5em;
@@ -376,9 +405,14 @@ header{
   border: none;
   width: 5em;
   height:3em;
-  /* color:yellow; */
 }
 
+.closeButton{
+  border-radius: 8px;
+  border: none;
+  width: 2em;
+  height:2em;
+}
 footer{
   color: gray;
   font-size: small;
