@@ -347,6 +347,8 @@ divDeviceContainer.appendChild(divDeviceName)
 
   divDeviceButtons.appendChild(inputStatus)
   divDeviceButtons.appendChild(imgButton)
+  divDeviceButtons.appendChild(imgConf)
+
   // element to container description
   divDeviceContainerDescription.appendChild(divDeviceIdeal)
   divDeviceContainerDescription.appendChild(divDeviceTemp)
