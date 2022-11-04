@@ -346,8 +346,8 @@ divDeviceContainer.appendChild(divDeviceName)
   imgButton.setAttribute("src", "../icons/bote-de-basura.png")
 
   divDeviceButtons.appendChild(inputStatus)
-  divDeviceButtons.appendChild(imgButton)
   divDeviceButtons.appendChild(imgConf)
+  divDeviceButtons.appendChild(imgButton)
 
   // element to container description
   divDeviceContainerDescription.appendChild(divDeviceIdeal)
