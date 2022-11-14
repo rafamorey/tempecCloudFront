@@ -115,7 +115,7 @@
 //       resolve(getLastDate())
 // })
 
-    async function getStatusDevice(device){
+    async function getStatusDevice(device, enterprise){
   console.log("device values coming...")
   console.log(device)
   const res = await fetch(`${api_urlDevice}status`,{
@@ -124,7 +124,7 @@
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "enterprise": device.enterprise,
+      "enterprise": enterprise.body.enterprise,
       "name": device.name,
       "id": device.id
     })
@@ -401,7 +401,7 @@ async function getFinalDate(device){
       );
     }
 
-    getStatusDevice(deviceDParser)
+    getStatusDevice(deviceDataParser, deviceDParser)
     </script>
 
 </body>
