@@ -153,8 +153,6 @@
       "enterprise": deviceDParser.enterprise,
       "name": device.name,
       "id": device.id,
-      "startDate": startDate,
-      "endDate": endDate
     })
   })
   const data = await res.json() 
@@ -340,8 +338,8 @@ async function getFinalDate(device){
           "enterprise": deviceDParser.body.enterprise,
           "name":deviceDataParser.name,
           "id":deviceDataParser.id,
-          "startDate": startDate,
-          "endDate": finalDate
+          "startDate": finalDate,
+          "endDate": startDate
           
         })
       })
