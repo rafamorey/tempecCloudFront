@@ -144,6 +144,9 @@
     async function getValuesDevice(device, dateFinal){
   console.log("device values coming...")
   console.log(device)
+  const d = new Date()
+  const endDate = sumarDias(d, -7)
+  console.log(endDate)
   const res = await fetch(`${api_urlDevice}deviceValues`,{
     method:'POST',
     headers: {
@@ -166,6 +169,11 @@
     // window.location.href = 'http://127.0.0.1:5501/public/dashboard.html'
     // window.location.href = 'https://uctempec.vercel.app/dashboard.html'
   }
+}
+
+function sumarDias(fecha, dias){
+  fecha.setDate(fecha.getDate() + dias)
+  return fecha
 }
 
 async function getFinalDate(device){
