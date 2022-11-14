@@ -319,7 +319,7 @@ async function getFinalDate(device){
     
     async function getDatesToGraphValues(startDate){
       console.log(startDate)
-      const d = new Date(2022,10,14)
+      const d = new Date(startDate).toISOString()
       console.log(d)
       const endDate = sumarDias(d, -7)
       console.log(endDate)
