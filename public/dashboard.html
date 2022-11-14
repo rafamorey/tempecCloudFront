@@ -141,7 +141,7 @@
   }
 }
 
-    async function getValuesDevice(device, dateFinal){
+    async function getValuesDevice(device, startDate){
   console.log("device values coming...")
   console.log(device)
   const d = new Date()
@@ -156,8 +156,8 @@
       "enterprise": deviceDParser.enterprise,
       "name": device.name,
       "id": device.id,
-      "startDate": dateFinal,
-      "endDate": dateFinal
+      "startDate": startDate,
+      "endDate": endDate
     })
   })
   const data = await res.json() 
