@@ -190,8 +190,8 @@ async function getFinalDate(device){
       console.log('No se encontro device')
     } else{
       console.log("data")
-      console.log(data)
-      const dateFinal = data
+      console.log(data.body)
+      const dateFinal = data.body
       getValuesDevice(device, dateFinal)
 
   }
