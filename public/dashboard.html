@@ -136,12 +136,12 @@
     console.log(data)
     localStorage.setItem('deviceData', JSON.stringify(device))
     localStorage.setItem('deviceStatus', JSON.stringify(data))
-    getValuesDevice(device)
+    getFinalDate(device)
       // window.location.href = 'http://127.0.0.1:5501/dashboard.html'
   }
 }
 
-    async function getValuesDevice(device){
+    async function getValuesDevice(device, dateFinal){
   console.log("device values coming...")
   console.log(device)
   const res = await fetch(`${api_urlDevice}deviceValues`,{
@@ -152,7 +152,9 @@
     body: JSON.stringify({
       "enterprise": deviceDParser.enterprise,
       "name": device.name,
-      "id": device.id
+      "id": device.id,
+      "startDate": dateFinal,
+      "endDate": dateFinal
     })
   })
   const data = await res.json() 
@@ -165,6 +167,35 @@
     // window.location.href = 'https://uctempec.vercel.app/dashboard.html'
   }
 }
+
+async function getFinalDate(device){
+      console.log("execute getFinalDate")
+      console.log(deviceDParser.body.enterprise)
+      console.log(deviceDataParser.name)
+      console.log(deviceDataParser.id)
+      
+      const res = await fetch(`${api_urlDevice}lastDate`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": deviceDParser.body.enterprise,
+          "name": deviceDataParser.name,
+          "id": deviceDataParser.id,
+        })
+      })
+      const data = await res.json() 
+    if(res.status !== 201){
+      console.log('No se encontro device')
+    } else{
+      console.log("data")
+      console.log(data)
+      const dateFinal = data
+      getValuesDevice(device, dateFinal)
+
+  }
+    }
 
     async function getLastDate(refresh){
       console.log("execute getLastDate")
@@ -313,7 +344,6 @@
         maintainAspectRatio: false,
       }
     };
-
       getStatusDevice(deviceDataParser)
     </script>
   <script>
