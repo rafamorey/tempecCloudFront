@@ -141,12 +141,9 @@
   }
 }
 
-    async function getValuesDevice(device, startDate){
+    async function getValuesDevice(device){
   console.log("device values coming...")
   console.log(device)
-  const d = new Date()
-  const endDate = sumarDias(d, -7)
-  console.log(endDate)
   const res = await fetch(`${api_urlDevice}deviceValues`,{
     method:'POST',
     headers: {
@@ -171,10 +168,7 @@
   }
 }
 
-function sumarDias(fecha, dias){
-  fecha.setDate(fecha.getDate() + dias)
-  return fecha
-}
+
 
 async function getFinalDate(device){
       console.log("execute getFinalDate")
@@ -200,7 +194,7 @@ async function getFinalDate(device){
       console.log("data")
       console.log(data.body)
       const dateFinal = data.body
-      getValuesDevice(device, dateFinal)
+      getDatesToGraphValues(dateFinal)
 
   }
     }
@@ -317,34 +311,81 @@ async function getFinalDate(device){
       // window.location.href = 'https://uctempec.vercel.app/history.html'
     })
     
+    function sumarDias(fecha, dias){
+      fecha.setDate(fecha.getDate() + dias)
+
+      return fecha
+    }
     
+    async function getDatesToGraphValues(startDate){
+      console.log(startDate)
+      const d = new Date(startDate)
+      console.log(d)
+      const endDate = sumarDias(d, -7)
+      console.log(endDate)
+      const start = `${startDate}:00.00+00:00`
+      const end = `${endDate}:00.00+00:00`   
+      console.log(start, end)
+      // console.log(deviceDataParser)
+      const res = await fetch(api_urlDevice,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "enterprise": deviceEnterpriseParser.body.enterprise,
+          "name":deviceDataParser.name,
+          "id":deviceDataParser.id,
+          "startDate": start,
+          "endDate": end
+          
+        })
+      })
+      const data = await res.json()
+      if(res.status !== 201){
+        console.log("no se encontro periodo")
+      }else{
+        console.log("coming dates...")
+        console.log(data)
+        // console.log(data)
+        localStorage.setItem('dataDates', JSON.stringify(data))
+        // window.location.reload()
+        printChart()
+      }
+    }
+
     
-    const labels = deviceValuesParser.body.tempDates
-    
-    const data = {
-      labels: labels,
-      datasets: [
-      {
-        label: 'Min Limit',
+    function printChart(){
+
+      const dataDates = localStorage.getItem('dataDates')
+      const dataDatesParser = JSON.parse(dataDates)
+      console.log(dataDatesParser)
+      
+
+      const labels = dataDatesParser.body.tempDates
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Min limit',
         backgroundColor: '#008CBA',
         borderColor: '#008CBA',
-        data: deviceValuesParser.body.tempMin
+        data: dataDatesParser.body.tempMin
       },
       {
-        label: 'temperature',
+        label: 'Temperature',
         backgroundColor: '#4CAF50',
         borderColor: '#4CAF50',
-        data: deviceValuesParser.body.temperatures
+        data: dataDatesParser.body.temperatures
       },
       {
         label: 'Max Limit',
         backgroundColor: '#f44336',
         borderColor: '#f44336',
-        data: deviceValuesParser.body.tempMax
-
+        data: dataDatesParser.body.tempMax
       }]
     };
-  
+    
     const config = {
       type: 'line',
       data: data,
@@ -352,16 +393,14 @@ async function getFinalDate(device){
         maintainAspectRatio: false,
       }
     };
-      getStatusDevice(deviceDataParser)
-    </script>
-  <script>
+    
+    
     const myChart = new Chart(
       document.getElementById('myChart'),
       config
       );
-
-
-      </script>
+    }
+    </script>
 
 </body>
 </html>
