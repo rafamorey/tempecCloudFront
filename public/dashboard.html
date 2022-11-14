@@ -319,10 +319,13 @@ async function getFinalDate(device){
     
     async function getDatesToGraphValues(startDate){
       console.log(startDate)
-      const d = new Date(startDate)
+      const d = new Date(2022,10,14)
       console.log(d)
       const endDate = sumarDias(d, -7)
       console.log(endDate)
+      
+      // const dateEndString = endDate.toString()
+      // const reducEnd = dateEndString.substring()
       // const start = `${startDate}:00.00+00:00`
       // const end = `${endDate}:00.00+00:00`   
       // console.log(start, end)
