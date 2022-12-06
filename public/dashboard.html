@@ -86,9 +86,10 @@
   </footer>
   <!-- <script src="./src/dashboard.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
   <script>
 
-    
+   
 
     api_urlDevice = 'https://tempec.vercel.app/device/'
 
@@ -99,6 +100,7 @@
     home.addEventListener('click', () => {
       window.location.href = 'https://uctempec.vercel.app/device.html'
     })
+    
 
     refreshMaxButton.addEventListener('click', () => {
       getLastDate("refreshMax")
@@ -197,7 +199,7 @@ async function getFinalDate(device){
   }
     }
 
-    async function getLastDate(refresh){
+  async function getLastDate(refresh){
       console.log("execute getLastDate")
       console.log(deviceDParser.body.enterprise)
       console.log(deviceDataParser.name)
@@ -224,7 +226,7 @@ async function getFinalDate(device){
   }
     }
 
-    async function updateLastDate(device, lastDate, refresh){
+  async function updateLastDate(device, lastDate, refresh){
       const res = await fetch(`${api_urlDevice}${refresh}`,{
         method: 'PUT',
         headers: {
@@ -290,30 +292,30 @@ async function getFinalDate(device){
     h1.appendChild(h1Text)
     clientTitle.appendChild(h1)
     
-      const divMin = document.getElementById('divMin')
-      divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
-      divMin.appendChild(divMinTextNode)
+    const divMin = document.getElementById('divMin')
+    divMinTextNode = document.createTextNode(deviceDataParser.tempMin)
+    divMin.appendChild(divMinTextNode)
     
-      const divSetpoint = document.getElementById('divSetpoint')
-      divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
-      divSetpoint.appendChild(divSetpointTextNode)
-    
-    
-      const divMax = document.getElementById('divMax')
-      divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
-      divMax.appendChild(divMaxTextNode)
+    const divSetpoint = document.getElementById('divSetpoint')
+    divSetpointTextNode = document.createTextNode(deviceDataParser.setPoint)
+    divSetpoint.appendChild(divSetpointTextNode)
     
     
-      const inputHistory = document.getElementById('historyBtn')
-      inputHistory.addEventListener('click', () => {
-      // window.location.href = 'https://uctempec.vercel.app/history.html'
-    })
+    const divMax = document.getElementById('divMax')
+    divMaxTextNode = document.createTextNode(deviceDataParser.tempMax)
+    divMax.appendChild(divMaxTextNode)
     
-    function sumarDias(fecha, dias){
-      fecha.setDate(fecha.getDate() + dias)
+    
+    const inputHistory = document.getElementById('historyBtn')
+    inputHistory.addEventListener('click', () => {
+    // window.location.href = 'https://uctempec.vercel.app/history.html'
+  })
+    
+  function sumarDias(fecha, dias){
+    fecha.setDate(fecha.getDate() + dias)
 
-      return fecha
-    }
+    return fecha
+  }
     
     async function getDatesToGraphValues(startDate){
       console.log(startDate)
@@ -374,7 +376,7 @@ async function getFinalDate(device){
         borderColor: '#008CBA',
         data: dataDatesParser.body.tempMin
       },
-      {
+      { 
         label: 'Temperature',
         backgroundColor: '#4CAF50',
         borderColor: '#4CAF50',
@@ -396,9 +398,12 @@ async function getFinalDate(device){
       }
     };
     
+    const ctx = document.getElementById('myChart')
     
-    const myChart = new Chart(
-      document.getElementById('myChart'),
+    new Chart(
+      ctx, {
+
+      },
       config
       );
     }
