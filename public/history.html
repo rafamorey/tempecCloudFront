@@ -170,7 +170,7 @@ btnSignOut.addEventListener('click', ()=>{
       console.log(dataDatesParser)
       
 
-      const labels = dataDatesParser.body.tempDates
+      const labels = dataDatesParser.body.tempDates.reverse()
 
       const data = {
         labels: labels,
@@ -178,19 +178,19 @@ btnSignOut.addEventListener('click', ()=>{
           label: 'Min limit',
         backgroundColor: '#008CBA',
         borderColor: '#008CBA',
-        data: dataDatesParser.body.tempMin
+        data: dataDatesParser.body.tempMin.reverse()
       },
       {
         label: 'Temperature',
         backgroundColor: '#4CAF50',
         borderColor: '#4CAF50',
-        data: dataDatesParser.body.temperatures
+        data: dataDatesParser.body.temperatures.reverser()
       },
       {
         label: 'Max Limit',
         backgroundColor: '#f44336',
         borderColor: '#f44336',
-        data: dataDatesParser.body.tempMax
+        data: dataDatesParser.body.tempMax.reverse()
       }]
     };
     
