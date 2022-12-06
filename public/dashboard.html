@@ -398,12 +398,9 @@ async function getFinalDate(device){
       }
     };
     
-    const ctx = document.getElementById('myChart')
-    
-    new Chart(
-      ctx, {
-
-      },
+    // const ctx = document.getElementById('myChart')
+    const myChart = new Chart(
+      document.getElementById('myChart'),
       config
       );
     }
