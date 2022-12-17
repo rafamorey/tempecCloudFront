@@ -199,6 +199,8 @@ async function getFinalDate(device){
   }
     }
 
+
+    // retorna la ultima en la que se almaceno algun dato en DB
   async function getLastDate(refresh){
       console.log("execute getLastDate")
       console.log(deviceDParser.body.enterprise)
@@ -227,6 +229,7 @@ async function getFinalDate(device){
     }
 
   async function updateLastDate(device, lastDate, refresh){
+    console.log("updateDate")
       const res = await fetch(`${api_urlDevice}${refresh}`,{
         method: 'PUT',
         headers: {
@@ -244,6 +247,7 @@ async function getFinalDate(device){
     if(res.status !== 201){
       console.log('No se encontro device')
     } else if(refresh === "refreshMin"){
+      console.log("updated Data")
       console.log(data)
       divMin.innerHTML = ""
       divMinTextNode = document.createTextNode(device.setPoint) 
