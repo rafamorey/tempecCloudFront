@@ -230,6 +230,7 @@ async function getFinalDate(device){
 
   async function updateLastDate(device, lastDate, refresh){
     console.log("updateDate")
+    console.log(device, lastDate)
       const res = await fetch(`${api_urlDevice}${refresh}`,{
         method: 'PUT',
         headers: {
